@@ -1,0 +1,66 @@
+body {
+  text-transform: none;
+}
+
+h1 {
+  font-size: 1.5em !important;
+}
+
+.my-gallery {
+  width: 100%;
+  float: left;
+}
+.my-gallery img {
+  width: 100%;
+  height: auto;
+  background-color: #ffffff;
+}
+.my-gallery figure {
+  display: block;
+  float: left;
+  padding: 1%;
+  width: 48%;
+  margin: 0;
+}
+
+.pswp__button--close {
+  background: none !important;
+  color: white;
+  font-family: arial;
+  font-size: 2em;
+  padding-right: 3%;
+}
+
+.pswp__caption__center {
+  font-size: 1.5em;
+  text-shadow: none;
+}
+
+@media only screen and (min-device-width: 400px) {
+  .my-gallery figure {
+    width: 31%;
+  }
+  .pswp__caption__center {
+    font-size: 1.5em;
+  }
+  .pswp__button--close {
+    font-size: 3em;
+  }
+}
+
+@media only screen and (min-device-width: 1000px) {
+  .my-gallery figure {
+    width: 22%;
+  }
+  .pswp__caption__center {
+    font-size: 2em;
+  }
+}
+
+.my-gallery figcaption {
+  display: none;
+}
+
+.pswp img {
+  background-color: #ffffff;
+}

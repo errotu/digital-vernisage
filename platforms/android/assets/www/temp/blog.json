@@ -1,0 +1,87 @@
+{
+	"blogentries":	[
+		{
+			"id":			8,
+			"type":		"text",
+			"title":		"Eliza’s green cookies",
+			"content":	"A world based on local, self-sufficient economies, <br>in small, collaborating communities,<br>within smaller, integrated countries,<br>with less resource exploitation,<br>less material values,<br>slow transportation and logistics,<br>human business models, <br>focus on human culture,<br>and a simple way of life.",
+			"suggestion":	"Eliza’s green cookies",
+			"thumb":		"temp/img/youhaveapoint_thumb.png",
+			"source":	"temp/img/youhaveapoint.png",
+			"tags":		"new world;point;"
+		},
+		{
+			"id":			7,
+			"type":		"text",
+			"title":		"Eliza’s green cookies - Version 2",
+			"content":	"A world based on local, self-sufficient economies, <br>in small, collaborating communities,<br>within smaller, integrated countries,<br>with less resource exploitation,<br>less material values,<br>slow transportation and logistics,<br>human business models, <br>focus on human culture,<br>and a simple way of life.",
+			"suggestion":	"Eliza’s green cookies - Version 2",
+			"thumb":		"temp/img/youhaveapoint_thumb.png",
+			"source":	"temp/img/youhaveapoint.png",
+			"tags":		"new world;point;"
+		},
+		{
+			"id":			6,
+			"type":		"html5video",
+			"title":		"BucksBunny - the original open-source movie!",
+			"content":	null,
+			"suggestion":	"BucksBunny - the original open-source movie!",
+			"thumb":		"temp/img/bucksbunny.jpg",
+			"source":	"http://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_1080p_h264.mov",
+			"filetype":	"ogg",
+			"width":	   640,
+			"height":	360,
+			"tags":		"water;prduction;meat"
+		},
+		{
+			"id":			5,
+			"type":		"video",
+			"title":		"Save the Great Barrier Reef!",
+			"content":	null,
+			"suggestion":	"Save the Great Barrier Reef!",
+			"thumb":		"temp/img/wwf-greatbarrierreef.jpg",
+			"source":	"http://www.youtube.com/watch?v=2c8n-iujRQA",
+			"tags":		"water;prduction;meat"
+		},
+		{
+			"id":			4,
+			"type":		"img",
+			"title":		"Test",
+			"content":	null,
+			"suggestion":	"This is a test entry",
+			"thumb":	"temp/img/zenmaster.png",
+			"source":		"temp/img/zenmaster.png",
+			"tags":		"water;prduction;meat"
+		},
+		{
+			"id":			3,
+			"type":		"img",
+			"title":		"Be careful with the water around you!",
+			"content":	null,
+			"suggestion":	"Be careful with the water around you!",
+			"thumb":		"temp/img/water.png",
+			"source":	"temp/img/water.png",
+			"tags":		"water;prduction;meat"
+		},
+		{
+			"id":			2,
+			"type":		"img",
+			"title":		"Being a Zenmaster or being Shakespeare?",
+			"content":	null,
+			"suggestion":	"Being a Zenmaster or being Shakespeare?",
+			"thumb":		"temp/img/zenmaster.png",
+			"source":	"temp/img/zenmaster.png",
+			"tags":		"water;prduction;meat"
+		},
+		{
+			"id":			1,
+			"type":		"img",
+			"title":		"Take care of the world, you have only this one!",
+			"content":	null,
+			"suggestion":	"Take care of the world, you have only this one!",
+			"thumb":		"temp/img/water.png",
+			"source":	"temp/img/water.png",
+			"tags":		"water;prduction;meat"
+		}
+	]
+}

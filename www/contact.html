@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <!-- Good default declaration:
+    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+        * Enable inline JS: add 'unsafe-inline' to default-src
+        * Enable eval(): add 'unsafe-eval' to default-src
+    * Create your own at http://cspisawesome.com
+    -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+
+    <!-- Disabled due to compatibilty issues -->
+    <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+
+    <!-- Core CSS file -->
+    <link rel="stylesheet" type="text/css" href="css/photoswipe.css" />
+
+    <!-- Skin CSS file (styling of UI - buttons, caption, etc.)
+     In the folder of skin CSS file there are also:
+     - .png and .svg icons sprite,
+     - preloader.gif (for browsers that do not support CSS animations) -->
+    <link rel="stylesheet" type="text/css" href="css/default-skin.css" />
+    <link rel="stylesheet" type="text/css" href="css/wdc-skin.css" />
+
+
+    <title>WeeDooCare Gallery</title>
+</head>
+<body>
+  <div data-role="page">
+    <div data-role="header">
+      <h1>Contact</h1>
+    </div>
+        <div class="ui-content">
+          <div class=3D"signature" style=3D"border-top:1px solid; width: 300px">
+          <br >
+          Gemma Durany
+          <br >Geschäftsführerin | President
+          <br ><a href="mailto:Gemma.Durany@WeeDooCare.com">Gemma.Durany@WeeDooCare.com</a>
+          <p ><img src="https://media.wdc-cloud.com/wdc-logo_mail.jpg" =
+          title="WeeDooCare-Logo" alt="WeeDooCare-Logo" ></p>
+          <p style="color:#689D1C;" >We help companies become
+          <br >ecologically intelligent and wise</p>
+          WeeDooCare Business Solutions GmbH
+          <br >Im Breitspiel 11 B
+          <br >D-69126 Heidelberg
+          <br >Germany
+
+          <br >
+          <br >Phone: <a href="tel:+4962217280559">+49 (0) 6221 728 05 59</a>
+          <br >Fax: +49 (0) 6221 727 86 70
+          <br >Mobile: <a href="tel:+4916090386853">+49 (0)160 90 38 68 53</a>
+          <br >E-Mail: <a href="mailto:info@weedoocare.com">Info@WeeDooCare.com</a>
+          <br ><a href="http://www.weedoocare.com" target=_blank">www.WeeDooCare.com</a>
+          <br >
+          <br >Geschäftsführerin: Gemma Durany
+          <br >Amtsgericht Mannheim HRB 708677
+          <br >USt-IdNr.: DE815166869
+
+          </div>
+        </div>
+    <div data-role="navbar" class="ui-state-persist">
+      <a href="index.html">Back to Gallery</a>
+    </div>
+    </div>
+
+
+
+        <script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+
+</body>
+
+</html>
