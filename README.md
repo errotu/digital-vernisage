@@ -9,6 +9,11 @@ This is currently an alpha version.
     
 You are now able to connect via the [Phonegap Developer App](https://play.google.com/store/apps/details?id=com.adobe.phonegap.app). Scan some of the Sample QR Codes.
 
+### Android
+To run the App on your Android device connect it via USB.
+    
+    phonegap run android
+    
 ## Sample QR Codes
 Take care of the world, you have only this one!
 
