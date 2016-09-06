@@ -1,92 +1,56 @@
 <!DOCTYPE html>
-<!--
-    Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
-
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
-
 <head>
-    <meta charset="utf-8" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="msapplication-tap-highlight" content="no" />
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
-    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: http://weedocare.eknoes.de 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
-    <!-- Good default declaration:
-    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-        * Enable inline JS: add 'unsafe-inline' to default-src
-        * Enable eval(): add 'unsafe-eval' to default-src
-    * Create your own at http://cspisawesome.com
-    -->
-    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
-
-    <!-- Disabled due to compatibilty issues -->
-    <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css" />
-
-    <link rel="stylesheet" type="text/css" href="css/index.css" />
-
-    <!-- Core CSS file -->
-    <link rel="stylesheet" type="text/css" href="css/photoswipe.css" />
-
-    <!-- Skin CSS file (styling of UI - buttons, caption, etc.)
-     In the folder of skin CSS file there are also:
-     - .png and .svg icons sprite,
-     - preloader.gif (for browsers that do not support CSS animations) -->
-    <link rel="stylesheet" type="text/css" href="css/default-skin.css" />
-    <link rel="stylesheet" type="text/css" href="css/wdc-skin.css" />
-
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="lib/font-awesome.min.css">
+    <link rel="stylesheet" href="css/styles.css">
 
     <title>WeeDooCare Gallery</title>
 </head>
 <body>
-  <div data-role="page">
-    <div data-role="header" data-mini="false" data-position="fixed">
-      <h1>WeeDooCare</h1>
-      <a data-mini="false" data-iconpos="notext" class="ui-icon ui-btn-right" data-icon="mail" href="contact.html"></a>
-    </div>
-    <div class="ui-content">
-        <div id="loadEntries">
-            <a href="#" onclick="app.initScan()" class="received" style="display: none">Init scan</a>
-            <span class="listening">Loading Blog information</span>
+<div class="statusbar-overlay"></div>
+<div class="views">
+    <!-- Main View -->
+    <div class="view view-main navbar-through">
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="center sliding">WeeDooCare Gallery</div>
+            </div>
         </div>
-        <div id="gallery">
-            <h2 id="imgTitle"></h2>
-            <img id="image" style="max-width: 90%;"/>
+        <div class="pages">
+            <div data-page="index" class="page">
+                <div class="page-content">
+                    <div class="content-block" id="loadEntries">
+                        <div class="listening">
+                            <p><span class="progressbar-infinite"></span></p>
+                            <p>Loading Image Information</p>
+                        </div>
+                        <div class="received">
+                            <p>Start with scanning a QR code to get more information about an Artwork or browse images.</p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- Bottom Toolbar-->
+        <div class="toolbar toolbar-bottom">
+            <div class="toolbar-inner">
+                <!-- Toolbar links -->
+                <a href="#" class="link" id="init-scan">QR Scan</a>
+                <a href="about.html" class="link">About</a>
+            </div>
         </div>
     </div>
 </div>
-
-
-
-
-        <script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
-        <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-
-        <!-- Core JS file -->
-        <script type="text/javascript" src="js/photoswipe.min.js"></script>
-        <!-- UI JS file -->
-        <script type="text/javascript" src="js/photoswipe-ui-default.min.js"></script>
-        <script type="text/javascript" src="js/photoswipe.custom.js"></script>
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="lib/framework7/js/framework7.min.js"></script>
+<script type="text/javascript" src="js/my-app.js"></script>
 </body>
 
 </html>
