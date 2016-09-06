@@ -1,29 +1,27 @@
-# Framework7 PhoneGap Application 
+# Digital Vernisage
+Cordova / Phonegap App for a digital vernisage. Scan a QR Code and get the related information. 
+This is currently an alpha version.
 
-> [Framework7](http://www.idangero.us/framework7) is a Mobile UI framework that can be used to build hybrid apps with PhoneGap. This template allows you to get started using Framework7 
-  quickly. 
-  
-  For a more extensive Framework7 sample, see the [one included in their Github project](https://github.com/nolimits4web/Framework7/tree/master/dist)
-  or the [demo apps on their website](http://www.idangero.us/framework7/apps/#.VpQCc5MrKjQ).
+## Build & Run
     
-  Also, for an intro to Framework7, check out [this post on the PhoneGap blog](http://phonegap.com/blog/2015/11/30/framework7/).   
-
-
-## Usage
+    ./init.sh
+    phonegap serve
     
-### PhoneGap CLI
+You are now able to connect via the [Phonegap Developer App](https://play.google.com/store/apps/details?id=com.adobe.phonegap.app). Scan some of the Sample QR Codes.
 
-    $ phonegap create my-app --template phonegap-template-framework7
+## Sample QR Codes
+Take care of the world, you have only this one!
 
-### Cordova CLI
+![http://weedocare.eknoes.de/#water](resources/water.gif)
 
-    $ cordova create my-app --template phonegap-template-framework7
-    
-### Desktop
+Being a Zenmaster or being Shakespeare?
 
-In your browser, open the file:
+![http://weedocare.eknoes.de/#zenmaster](resources/zenmaster.gif)
 
-    /www/index.html
+Impressive, this example of how much water is used for one glass of wine, isn't it?
 
+![http://weedocare.eknoes.de/#winevswater](resources/winevswater.gif)
 
-  
+Sometimes, both opinions have their point.
+
+![http://weedocare.eknoes.de/#youhaveapoint](resources/youhaveapoint.gif)
