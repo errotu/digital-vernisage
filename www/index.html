@@ -63,7 +63,10 @@
       <a data-mini="false" data-iconpos="notext" class="ui-icon ui-btn-right" data-icon="mail" href="contact.html"></a>
     </div>
     <div class="ui-content">
-        <a href="#" onclick="app.initScan()">Init scan</a>
+        <div id="loadEntries">
+            <a href="#" onclick="app.initScan()" class="received" style="display: none">Init scan</a>
+            <span class="listening">Loading Blog information</span>
+        </div>
         <div id="gallery">
             <h2 id="imgTitle"></h2>
             <img id="image" style="max-width: 90%;"/>

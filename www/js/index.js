@@ -64,6 +64,7 @@ var app = {
                     console.log("Got img:" + imgId);
                 }
                 app.baseUrl = blog.baseUrl;
+                app.receivedEvent("loadEntries");
             })
             .fail(function (error) {
                 console.log("Got error");
