@@ -31,3 +31,11 @@
 .received {
     display: none;
 }
+
+a .fa {
+    color: black;
+}
+
+#gallery img {
+    margin-bottom: 50px;
+}

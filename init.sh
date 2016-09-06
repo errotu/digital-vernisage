@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 phonegap platform remove ios
 phonegap platform remove browser
 phonegap platform remove android

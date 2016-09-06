@@ -3,7 +3,7 @@ var isAndroid = Framework7.prototype.device.android === true;
 var isIos = Framework7.prototype.device.ios === true;
 
 if(!isAndroid && !isIos) {
-    isIos = true;
+    isAndroid = true;
 }
 
 Template7.global = {
@@ -73,7 +73,8 @@ var app = {
 
         /* Manage special cases */
         if(id == "loadEntries") {
-
+            console.log(app.images);
+            app.loadGallery("#gallery");
         }
     },
 
@@ -128,6 +129,20 @@ var app = {
                 text: app.images[id].suggestion
             }
         });
+    },
+
+    loadGallery: function (container) {
+        console.log("Loading Gallery Images: " + app.images.length);
+        var template = '<img src="{{src}}" alt="{{title}}" class="col-100 tablet-50"/>';
+
+        for (var key in app.images) {
+            var value = app.images[key];
+            $$(container).append(Template7.compile(template)({
+                src: app.baseUrl + "/" + value.source,
+                title: value.title
+            }));
+        }
+
     }
 };
 
