@@ -59,16 +59,8 @@ var app = {
         /* Manage (In)Visible Elements for certain events */
         var parentElement = document.getElementById(id);
         if (parentElement != null) {
-            var listeningElement = parentElement.querySelector('.listening');
-            var receivedElement = parentElement.querySelector('.received');
-
-            if(listeningElement != null) {
-                listeningElement.setAttribute('style', 'display:none;');
-            }
-
-            if(receivedElement != null) {
-                receivedElement.setAttribute('style', 'display:block;');
-            }
+            $$("#" + id + " .listening").attr("style", "display: none;");
+            $$("#" + id + " .received").attr("style", "display: block;");
         }
 
         /* Manage special cases */
