@@ -24,11 +24,26 @@
     text-align: center;
 }
 
-.swiper-slide span {
+.swiper-slide span:not(.helper) {
     text-align:center;
     display:block;
     margin:20px;
     font-size:21px;
+}
+
+.swiper-slide .helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.swiper-slide img {
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.swiper-slide div {
+    height: 100%;
 }
 
 /* Helper Classes */
