@@ -3,7 +3,7 @@ var isAndroid = Framework7.prototype.device.android === true;
 var isIos = Framework7.prototype.device.ios === true;
 
 if(!isAndroid && !isIos) {
-    isAndroid = true;
+    isIos = true;
 }
 
 Template7.global = {
@@ -24,12 +24,16 @@ if (isAndroid) {
         '<link rel="stylesheet" href="lib/framework7/css/framework7.material.min.css">' +
         '<link rel="stylesheet" href="lib/framework7/css/framework7.material.colors.min.css">'
     );
+    Dom7('.ios-only').remove();
 } else {
     Dom7('head').append(
         '<link rel="stylesheet" href="lib/framework7/css/framework7.ios.min.css">' +
         '<link rel="stylesheet" href="lib/framework7/css/framework7.ios.colors.min.css">'
     );
+    Dom7('.android-only').remove();
 }
+//Append it at last, so it wont be overriden
+Dom7('head').append('<link rel="stylesheet" href="css/styles.css">');
 
 /**
  * App logic
@@ -57,19 +61,16 @@ var app = {
 
     receivedEvent: function (id) {
         /* Manage (In)Visible Elements for certain events */
-        var parentElement = document.getElementById(id);
-        if (parentElement != null) {
-            $$("#" + id + " .listening").attr("style", "display: none;");
-            $$("#" + id + " .received").attr("style", "display: block;");
-        }
+        console.log(id);
+        $$("#" + id + " .listening").attr("style", "display: none;");
+        $$("#" + id + " .received").attr("style", "display: block;");
 
         /* Manage special cases */
         if(id == "loadEntries") {
-            console.log(app.images);
-            app.loadGallery("#gallery");
+            app.initialized = true;
         }
     },
-
+    initialized: false,
     images: [],
     baseUrl: null,
 
@@ -118,23 +119,32 @@ var app = {
             url: 'showInfo.html',
             context: {
                 title: app.images[id].title,
-                text: app.images[id].suggestion
-            }
+                text: app.images[id].suggestion,
+                src: app.baseUrl + "/" + app.images[id].source,
+                hasAudio: app.images[id].mp3 != undefined,
+                audioSrc: app.baseUrl + "/" + app.images[id].mp3
+            },
+            pushState: true,
         });
     },
 
-    loadGallery: function (container) {
-        console.log("Loading Gallery Images: " + app.images.length);
-        var template = '<img src="{{src}}" alt="{{title}}" class="col-100 tablet-50"/>';
-
+    createGallerySlides: function (container) {
+        console.log("Creating slides");
         for (var key in app.images) {
+            console.log("Creating Slide for " + key);
             var value = app.images[key];
-            $$(container).append(Template7.compile(template)({
+            $$(container).append(Template7.templates.slideTemplate({
                 src: app.baseUrl + "/" + value.source,
-                title: value.title
+                title: value.title,
+                description: value.suggestion,
+                id: key
             }));
+            $$(container + " #" + key).on('click', app.openDetail);
         }
+    },
 
+    openDetail: function (info) {
+        app.showInfo(info.target.id);
     }
 };
 
@@ -142,19 +152,39 @@ var vernisageApp = new Framework7({
     modalTitle: 'Digital Vernisage',
     material: isAndroid,    // Enable Template7 pages
     template7Pages: true,
-    pushState: true
+    pushState: true,
+    precompileTemplates: true
 });
 
 // Add view
 var mainView = vernisageApp.addView('.view-main', {
     // Because we want to use dynamic navbar, we need to enable it for this view:
-    dynamicNavbar: true
+    dynamicNavbar: true,
+    domCache: true
+});
+
+vernisageApp.onPageReinit('index', function (page) {
+    if (app.initialized) {
+        $$("#loadentries .listening").attr("style", "display: none;");
+        $$("#loadentries .received").attr("style", "display: block;");
+    }
 });
 
 // Now we need to run the code that will be executed only for About page.
-vernisageApp.onPageInit('about', function (page) {
-    // Do something here for "about" page
+vernisageApp.onPageInit('gallery', function (page) {
+    app.createGallerySlides('.swiper-wrapper');
+    vernisageApp.swiper('.swiper-container', {
+        spaceBetween: 100,
+        pagination: '.swiper-pagination',
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev'
+    });
+    mainView.hideToolbar();
 });
 
+vernisageApp.onPageBack('gallery', function (page) {
+    mainView.showToolbar();
+    mainView.showNavbar();
+});
 
 app.initialize();

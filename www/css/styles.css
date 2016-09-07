@@ -14,13 +14,16 @@
     background: #000000;
 }
 
-/* A bit of demo styles */
+/* Gallery Swiper Style */
 .swiper-container {
     height: 100%;
 }
 .swiper-slide {
     background:#fff;
+    overflow: auto;
+    text-align: center;
 }
+
 .swiper-slide span {
     text-align:center;
     display:block;
@@ -28,14 +31,11 @@
     font-size:21px;
 }
 
+/* Helper Classes */
 .received {
     display: none;
 }
 
-a .fa {
-    color: black;
-}
-
-#gallery img {
-    margin-bottom: 50px;
+.nowrap {
+    white-space: normal;
 }

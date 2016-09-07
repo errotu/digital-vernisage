@@ -29,10 +29,21 @@
     {{/if}}
 
     <div class="page-content">
-        <div class="content-block-title">{{title}}</div>
+        <div class="content-block-title nowrap">{{title}}</div>
         <div class="content-block">
             <div class="content-block-inner">
                 <p>{{text}}</p>
+            </div>
+        </div>
+        {{#if hasAudio}}
+        <div class="content-block-title nowrap">AUDIO INFORMATION</div>
+        <div class="content-block">
+            <audio src="{{audioSrc}}" controls></audio>
+        </div>
+        {{/if}}
+        <div class="row" style="text-align: center">
+            <div class="col-100">
+                <img src="{{src}}" style="max-width: 80%; max-height: 80%;" id="{{id}}">
             </div>
         </div>
     </div>

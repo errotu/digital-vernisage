@@ -11,3 +11,4 @@ phonegap platform add android
 phonegap platform add windows
 
 phonegap plugin add phonegap-plugin-barcodescanner
+cordova plugin add cordova-plugin-nativeaudio
