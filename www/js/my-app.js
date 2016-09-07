@@ -24,12 +24,14 @@ if (isAndroid) {
         '<link rel="stylesheet" href="lib/framework7/css/framework7.material.min.css">' +
         '<link rel="stylesheet" href="lib/framework7/css/framework7.material.colors.min.css">'
     );
+    Dom7('body').addClass("theme-lightgreen");
     Dom7('.ios-only').remove();
 } else {
     Dom7('head').append(
         '<link rel="stylesheet" href="lib/framework7/css/framework7.ios.min.css">' +
         '<link rel="stylesheet" href="lib/framework7/css/framework7.ios.colors.min.css">'
     );
+    Dom7('body').addClass("theme-green");
     Dom7('.android-only').remove();
 }
 //Append it at last, so it wont be overriden
