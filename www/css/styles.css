@@ -54,3 +54,9 @@
 .nowrap {
     white-space: normal;
 }
+
+/* Image Overview */
+#gallery-overview div {
+    text-align: center;
+    margin-bottom: 30px;
+}

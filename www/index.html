@@ -34,9 +34,12 @@
                             <div class="row">
                                 <p class="col-100">Start with scanning a QR code to get more information about an
                                     Artwork or browse images.</p>
-                                <a href="gallery.html" class="button button-fill button-raised android-only col-50">Browse
+                                <!--<a href="gallery.html" class="button button-fill button-raised android-only col-50">Browse
                                     Gallery</a>
-                                <a href="gallery.html" class="button col-50 ios-only">Browse Gallery</a>
+                                <a href="gallery.html" class="button col-50 ios-only">Browse Gallery</a>-->
+                            </div>
+                            <div id="gallery-overview" class="row">
+
                             </div>
 
                         </div>
@@ -60,11 +63,19 @@
         <div class="row">
             <div class="col-100">
                 <span class="helper"></span>
-                <img src="{{src}}" style="max-width: 80%; max-height: 80%;" id="{{id}}">
+                <!--suppress XmlDuplicatedId -->
+                <img src="{{src}}" style="max-width: 80%; max-height: 80%;" id="{{id}}" alt="{{title}}">
             </div>
         </div>
     </div>
 </script>
+<script type="text/template7" id="overviewImage">
+    <div class="col-50 tablet-50">
+        <!--suppress XmlDuplicatedId -->
+        <img src="{{src}}" style="max-width: 80%; max-height: 80%;" id="{{id}}" alt="{{title}}">
+    </div>
+</script>
+
 
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="lib/framework7/js/framework7.min.js"></script>

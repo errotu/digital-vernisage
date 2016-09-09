@@ -58,6 +58,7 @@ var app = {
 
     onDeviceReady: function () {
         app.receivedEvent('deviceready');
+        navigator.splashscreen.hide();
         app.loadGalleryInfo();
     },
 
@@ -70,6 +71,7 @@ var app = {
         /* Manage special cases */
         if(id == "loadEntries") {
             app.initialized = true;
+            app.createOverview("#gallery-overview");
         }
     },
     initialized: false,
@@ -138,15 +140,42 @@ var app = {
             $$(container).append(Template7.templates.slideTemplate({
                 src: app.baseUrl + "/" + value.source,
                 title: value.title,
-                description: value.suggestion,
                 id: key
             }));
             $$(container + " #" + key).on('click', app.openDetail);
         }
     },
 
-    openDetail: function (info) {
-        app.showInfo(info.target.id);
+    openInGallery: function (event) {
+        console.log("Opening Gallery");
+        mainView.router.load({
+            url: 'gallery.html',
+            context: {
+                id: event.target.id.split("-")[1]
+            },
+            pushState: true
+        });
+
+    },
+    createOverview: function (container) {
+        console.log("Creating Overview");
+        var i = 0;
+        for (var key in app.images) {
+            console.log("Creating Slide for " + key);
+            var value = app.images[key];
+            $$(container).append(Template7.templates.overviewImage({
+                src: app.baseUrl + "/" + value.source,
+                title: value.title,
+                description: value.suggestion,
+                id: "overview-" + i
+            }));
+            $$(container + " #overview-" + i).on('click', app.openInGallery);
+            i++;
+        }
+    },
+
+    openDetail: function (event) {
+        app.showInfo(event.target.id);
     }
 };
 
@@ -175,13 +204,16 @@ vernisageApp.onPageReinit('index', function (page) {
 // Now we need to run the code that will be executed only for About page.
 vernisageApp.onPageInit('gallery', function (page) {
     app.createGallerySlides('.swiper-wrapper');
-    vernisageApp.swiper('.swiper-container', {
+    var gallerySwiper = vernisageApp.swiper('.swiper-container', {
         spaceBetween: 100,
         pagination: '.swiper-pagination',
         nextButton: '.swiper-button-next',
         prevButton: '.swiper-button-prev'
     });
+    gallerySwiper.slideTo(page.context.id);
     mainView.hideToolbar();
+
+    console.log("Open Gallery Slide ID " + page.context.id);
 });
 
 vernisageApp.onPageBack('gallery', function (page) {

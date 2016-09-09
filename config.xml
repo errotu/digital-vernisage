@@ -19,7 +19,6 @@
 
 
     <gap:plugin name="cordova-plugin-x-socialsharing" source="npm" />
-    <gap:plugin name="org.apache.cordova.media"/>
     <plugin name="cordova-plugin-device" source="npm" spec="~1.1.1" />
     <plugin name="cordova-plugin-device-motion" source="npm" spec="~1.2.0" />
     <plugin name="cordova-plugin-device-orientation" source="npm" spec="~1.0.2" />
@@ -99,4 +98,7 @@
     <feature name="SocialSharing">
         <param name="android-package" value="nl.xservices.plugins.SocialSharing" />
     </feature>
+
+    <!-- Remove Splash Screen after deviceready -->
+    <preference name="AutoHideSplashScreen" value="false"/>
 </widget>
