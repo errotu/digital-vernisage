@@ -102,6 +102,8 @@
         <param name="android-package" value="nl.xservices.plugins.SocialSharing" />
     </feature>
 
-    <!-- Remove Splash Screen after deviceready -->
+    <!-- Do not Remove Splash Screen after deviceready -->
     <preference name="AutoHideSplashScreen" value="false"/>
+    <preference name="FadeSplashScreen" value="false"/>
+
 </widget>
