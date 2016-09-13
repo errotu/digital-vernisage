@@ -27,8 +27,8 @@
     <plugin name="phonegap-plugin-barcodescanner" source="npm" spec="~3.0.0"/>
     <plugin name="cordova-plugin-splashscreen" source="npm" spec="~3.2.2"/>
 
-    <icon src="icon.png" />
-    <splash src="splash.png"/>
+    <icon src="res/icon.png"/>
+    <splash src="res/splash.png"/>
 
     <platform name="android">
         <icon qualifier="ldpi" src="res/icons/android/icon-36-ldpi.png"/>
