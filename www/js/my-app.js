@@ -58,7 +58,9 @@ var app = {
 
     onDeviceReady: function () {
         app.receivedEvent('deviceready');
-        navigator.splashscreen.hide();
+        if (navigator.splashscreen != undefined) {
+            navigator.splashscreen.hide();
+        }
         app.loadGalleryInfo();
     },
 
