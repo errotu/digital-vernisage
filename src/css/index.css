@@ -13,6 +13,13 @@ h2.headline {
 
 #overview img {
     width: inherit;
+    max-width: 90%;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: block;
 }
 
 #swiper div.container {
@@ -34,4 +41,8 @@ h2.headline {
 
 ons-toolbar .right .ons-icon.fa-envelope {
     padding-right: 8px;
+}
+
+.contact-page img {
+    max-width: 100%;
 }
