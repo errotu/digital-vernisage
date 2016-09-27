@@ -1,8 +1,6 @@
-import React from 'react';
-import ons from 'onsenui';
-import {
-    Fab,Icon
-} from 'react-onsenui'
+import React from "react";
+import ons from "onsenui";
+import {Fab, Icon} from "react-onsenui";
 import {ERR_INVALID_QR} from "../index";
 
 export default class QRButton extends React.Component {
@@ -20,7 +18,10 @@ export default class QRButton extends React.Component {
                 this.props.navigation.pushPage("qr-code", result.text);
             },
             (error) => {
-                this.props.navigation.displayError(ERR_INVALID_QR);
+                console.log(error);
+                if (error != "No barcode") {
+                    this.props.navigation.displayError(ERR_INVALID_QR);
+                }
             },
             {
                 "preferFrontCamera": false, // iOS and Android

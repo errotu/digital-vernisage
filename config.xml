@@ -7,7 +7,7 @@
     <author email="erik.tuchtfeld@weedoocare.com" href="http://weedoocare.com">
         Erik Tuchtfeld - WeeDooCare
     </author>
-    <content src="www/index.html" />
+    <content src="index.html"/>
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="14" />
     <preference name="android-targetSdkVersion" value="24" />
@@ -88,4 +88,6 @@
     </feature>
     <preference name="AutoHideSplashScreen" value="true" />
     <preference name="FadeSplashScreen" value="false" />
+    <preference name="StatusBarBackgroundColor" value="#689f38"/>
+    <preference name="SplashScreenDelay" value="1000"/>
 </widget>

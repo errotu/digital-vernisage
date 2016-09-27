@@ -14,7 +14,7 @@ export const ERR_INVALID_QR = 0;
 export const ERR_NO_CONNECTION = 1;
 
 if(!ons.platform.isIOS()) {
-    //ons.platform.select("android");
+    ons.platform.select("android");
 }
 
 class App extends React.Component {
