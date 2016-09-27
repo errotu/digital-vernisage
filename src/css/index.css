@@ -6,7 +6,7 @@
     text-align: center;
 }
 
-h2.headline {
+h2#headline {
     font-weight: bold;
     font-size: 18px;
 }
@@ -43,6 +43,6 @@ ons-toolbar .right .ons-icon.fa-envelope {
     padding-right: 8px;
 }
 
-.contact-page img {
+img {
     max-width: 100%;
 }
