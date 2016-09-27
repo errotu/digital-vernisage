@@ -1,0 +1,33 @@
+.content {
+  padding: 10px;
+}
+
+.centered {
+    text-align: center;
+}
+
+h2.headline {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#overview img {
+    width: inherit;
+}
+
+#swiper div.container {
+    height: 75%;
+    width: 100%;
+    text-align: center;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+    display: block;
+}
+
+ons-toolbar .right .ons-icon.fa-envelope {
+    padding-right: 8px;
+}
