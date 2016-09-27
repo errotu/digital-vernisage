@@ -42,7 +42,12 @@
     "serve": "node config && $(npm bin)/webpack && phonegap serve",
     "test": "echo \"No tests (yet!) -- submit a PR?\" && exit 0"
   },
-  "keywords": [],
-  "author": "none specified",
-  "license": "none specified"
+  "keywords": [
+    "react",
+    "onsenui2",
+    "cordova",
+    "phonegap"
+  ],
+  "author": "Erik Tuchtfeld, Sönke Huster",
+  "license": "Apache-2.0"
 }
