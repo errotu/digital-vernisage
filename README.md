@@ -17,16 +17,16 @@ To run the App on your Android device connect it via USB.
 ## Sample QR Codes
 Take care of the world, you have only this one!
 
-![http://weedocare.eknoes.de/#water](resources/water.gif)
+![https://weedocare.eknoes.de/#water](resources/water.png)
 
 Being a Zenmaster or being Shakespeare?
 
-![http://weedocare.eknoes.de/#zenmaster](resources/zenmaster.gif)
+![https://weedocare.eknoes.de/#zenmaster](resources/zenmaster.png)
 
 Impressive, this example of how much water is used for one glass of wine, isn't it?
 
-![http://weedocare.eknoes.de/#winevswater](resources/winevswater.gif)
+![https://weedocare.eknoes.de/#winevswater](resources/winevswater.png)
 
 Sometimes, both opinions have their point.
 
-![http://weedocare.eknoes.de/#youhaveapoint](resources/youhaveapoint.gif)
+![https://weedocare.eknoes.de/#youhaveapoint](resources/youhaveapoint.png)
