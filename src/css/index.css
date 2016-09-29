@@ -39,8 +39,8 @@ h2#headline {
     max-height: 100%;
 }
 
-ons-toolbar .right .ons-icon.fa-envelope {
-    padding-right: 8px;
+ons-toolbar .right .ons-icon {
+    padding-right: 16px;
 }
 
 img {
