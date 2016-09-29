@@ -15,7 +15,7 @@ export default class QRButton extends React.Component {
 
     handleClick() {
         if (cordova === undefined) {
-            ons.notification.alert('Cordova is not available in `npm start`');
+            ons.notification.alert('Cordova is not available in `npm start`', {modifier: ons.platform.isIOS ? null : "material"});
         } else {
             cordova.plugins.barcodeScanner.scan(
                 (result) => {

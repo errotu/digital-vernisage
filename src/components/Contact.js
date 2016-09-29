@@ -1,5 +1,7 @@
 import React from "react";
 import {Col, Row} from "react-onsenui";
+import ons from "onsenui";
+import ImgCache from "imgcache.js";
 var logo = require('../static/logo.png');
 
 export default class Contact extends React.Component {
@@ -34,6 +36,19 @@ export default class Contact extends React.Component {
             <Col width="100%"> <br/>Geschäftsführerin: Gemma Durany
                 <br/>Amtsgericht Mannheim HRB 708677
                     <br/>USt-IdNr.: DE815166869
+                <br/>
+            </Col>
+
+            <Col width="100%">
+                <ons-button onClick={() => {
+                    ImgCache.clearCache(function () {
+                        ons.notification.alert("Cache was cleared successfully", {modifier: ons.platform.isIOS ? null : "material"});
+                    }, function () {
+                        ons.notification.alert("Could not clear cache", {modifier: ons.platform.isIOS ? null : "material"});
+                    });
+                }}>Clear Cache
+                </ons-button>
+
             </Col>
     </Row>);
     }

@@ -84,7 +84,7 @@ class App extends React.Component {
     displayError(id) {
         if (id == ERR_INVALID_QR) {
             console.log("Got Invalid QR Error");
-            ons.notification.alert('This QR Code is not for use with the Digital Vernisage App!');
+            ons.notification.alert('This QR Code is not for use with the Digital Vernisage App!', {modifier: ons.platform.isIOS ? null : "material"});
         } else if (id == ERR_NO_CONNECTION) {
             console.log("Got No Connection Error");
             this.setState({
@@ -133,9 +133,9 @@ function start() {
     ImgCache.options.debug = true;
 
     ImgCache.init(function () {
-        alert('ImgCache init: success!');
+        console.log('ImgCache init: success!');
     }, function () {
-        alert('ImgCache init: error! Check the log for errors');
+        console.log('ImgCache init: error! Check the log for errors');
     });
     ReactDOM.render(<MainNavigation />, document.getElementById('app'));
 }
