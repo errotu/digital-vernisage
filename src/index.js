@@ -5,6 +5,7 @@ import PageRoot from "./components/PageRoot";
 import "whatwg-fetch";
 import {Navigator} from "react-onsenui";
 import ons from "onsenui";
+import ImgCache from "imgcache.js/js/imgcache";
 
 require('onsenui/css/onsenui.css');
 require('onsenui/css/onsen-css-components-sunshine-theme.css');
@@ -12,10 +13,6 @@ require('./css/theme.styl');
 
 export const ERR_INVALID_QR = 0;
 export const ERR_NO_CONNECTION = 1;
-
-if(!ons.platform.isIOS()) {
-    ons.platform.select("android");
-}
 
 class App extends React.Component {
     constructor(props) {
@@ -37,12 +34,7 @@ class App extends React.Component {
     }
 
     loadData() {
-        /*this.setState({
-         state: 'fetching',
-         msg: undefined
-         });*/
         fetch('https://weedocare.eknoes.de/blog.json')
-        //fetch('./cache/blog.json')
             .then((response) => {
                 return response.json();
             }).then((vernisage) => {
@@ -57,7 +49,7 @@ class App extends React.Component {
         }).catch((ex) => {
             console.log('parsing failed', ex.message);
             this.displayError(ERR_NO_CONNECTION);
-        })
+        });
     }
 
     pushPage(view, index) {
@@ -132,5 +124,25 @@ class MainNavigation extends React.Component {
         );
     }
 }
+function start() {
+    "use strict";
+    if (!ons.platform.isIOS()) {
+        ons.platform.select("android");
+    }
 
-ReactDOM.render(<MainNavigation />, document.getElementById('app'));
+    ImgCache.options.debug = true;
+
+    ImgCache.init(function () {
+        alert('ImgCache init: success!');
+    }, function () {
+        alert('ImgCache init: error! Check the log for errors');
+    });
+    ReactDOM.render(<MainNavigation />, document.getElementById('app'));
+}
+
+if (typeof(cordova) !== 'undefined') {
+    document.addEventListener('deviceready', start, false);
+} else {
+    start();
+}
+

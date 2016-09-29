@@ -1,6 +1,7 @@
 import React from "react";
 import {Toolbar as OnsToolbar, BackButton, Icon} from "react-onsenui";
 
+
 export default class Toolbar extends React.Component {
 
     render() {

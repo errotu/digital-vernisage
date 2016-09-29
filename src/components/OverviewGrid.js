@@ -1,10 +1,6 @@
-import React from 'react';
-import SingleImage from './SingleImage'
-
-
-import {
-    Row, Col,
-} from 'react-onsenui'
+import React from "react";
+import SingleImage from "./SingleImage";
+import {Row, Col} from "react-onsenui";
 
 export default class OverviewGrid extends React.Component {
 
