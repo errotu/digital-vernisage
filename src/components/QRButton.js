@@ -22,6 +22,7 @@ export default class QRButton extends React.Component {
                     this.props.navigation.pushPage("qr-code", result.text);
                 },
                 (error) => {
+                    console.log("Error:");
                     console.log(error);
                     if (error != "No barcode") {
                         this.props.navigation.displayError(ERR_INVALID_QR);
