@@ -41,9 +41,12 @@ export default class StartPageContent extends React.Component {
                             <Intro title={entry.title} intro={entry.suggestion}/>
                         </Col>
                         {entry.mp3 !== undefined ?
-                            <Col width="100%"><AudioPlayer src={this.props.baseurl + "/" + entry.mp3}/></Col> : ""}
+                            <Col width="100%"><b>Audio</b><br /><AudioPlayer
+                                src={this.props.baseurl + "/" + entry.mp3}/></Col> : ""}
                         {entry.video !== undefined ?
-                            <Col width="100%"><Video src={this.props.baseurl + "/" + entry.video}/></Col> : ""}
+                            <Col width="100%"><b>Video</b><br/ ><Video sources={entry.video}
+                                                                       baseurl={this.props.baseurl}
+                                                                       poster={this.props.baseurl + "/" + entry.source}/></Col> : ""}
 
                         <Col width="100%"><SingleImage alt={entry.title} src={this.props.baseurl + "/" + entry.source}/></Col>
                     </Row>
