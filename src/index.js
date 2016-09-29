@@ -53,7 +53,7 @@ class App extends React.Component {
     }
 
     pushPage(view, index) {
-        if(view == 'qr-code') {
+        if (view == 'qr-code' && index !== undefined && index.length > 0) {
             let success = false;
             this.state.entries.map((entry, entryIndex) => {
                 if(entry.url === index) {
