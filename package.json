@@ -49,10 +49,10 @@
   "scripts": {
     "android": "$(npm bin)/webpack && cordova run android",
     "ios": "$(npm bin)/webpack && cordova run ios",
-    "prepare": "node config && $(npm bin)/webpack && cordova prepare",
-    "build": "node config && $(npm bin)/webpack && cordova build",
-    "start": "node config && HOST=0.0.0.0 $(npm bin)/webpack-dev-server",
-    "serve": "node config && $(npm bin)/webpack && phonegap serve",
+    "prepare": "$(npm bin)/webpack && cordova prepare",
+    "build": "$(npm bin)/webpack && cordova build",
+    "start": "HOST=0.0.0.0 $(npm bin)/webpack-dev-server",
+    "serve": "$(npm bin)/webpack && phonegap serve",
     "test": "echo \"No tests (yet!) -- submit a PR?\" && exit 0"
   },
   "keywords": [
