@@ -34,6 +34,9 @@ export default class StartPageContent extends React.Component {
 
         } else if (this.props.view.page == "detail" && this.props.view.index !== undefined && this.props.view.index <= this.props.entries.length) {
             let entry = this.props.entries[this.props.view.index];
+            if(entry.video !== undefined) {
+                console.log("Has Video!");1
+            }
             return (
                 <div className="content">
                     <Row>
@@ -44,7 +47,7 @@ export default class StartPageContent extends React.Component {
                             <Col width="100%"><b>Audio</b><br /><AudioPlayer
                                 src={this.props.baseurl + "/" + entry.mp3}/></Col> : ""}
                         {entry.video !== undefined ?
-                            <Col width="100%"><b>Video</b><br/ ><Video sources={entry.video}
+                            <Col width="100%"><b>Video</b><br /><Video sources={entry.video}
                                                                        baseurl={this.props.baseurl}
                                                                        poster={this.props.baseurl + "/" + entry.source}/></Col> : ""}
 

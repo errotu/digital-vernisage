@@ -50,3 +50,7 @@ img {
 ons-col {
     margin-bottom: 20px;
 }
+
+audio, video {
+    max-width: 100%;
+}
