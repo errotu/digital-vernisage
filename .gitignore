@@ -1,7 +1,6 @@
 plugins/
 platforms/
 .idea/
-www/
 node_modules/
 *compiled.js
 *compiled.js.map
