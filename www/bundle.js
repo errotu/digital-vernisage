@@ -135,14 +135,14 @@
 
 	            fetch('https://weedocare.eknoes.de/blog.json').then(function (response) {
 	                return response.json();
-	            }).then(function (vernisage) {
+	            }).then(function (vernissage) {
 	                console.log("Got JSON");
 	                _this2.setState({
 	                    status: { state: 'fetched', msg: undefined },
-	                    title: vernisage.title,
-	                    intro: vernisage.intro,
-	                    entries: vernisage.entries,
-	                    baseurl: vernisage.baseurl
+	                    title: vernissage.title,
+	                    intro: vernissage.intro,
+	                    entries: vernissage.entries,
+	                    baseurl: vernissage.baseurl
 	                });
 	            }).catch(function (ex) {
 	                console.log('parsing failed', ex.message);
@@ -185,7 +185,7 @@
 	        value: function displayError(id) {
 	            if (id == ERR_INVALID_QR) {
 	                console.log("Got Invalid QR Error");
-	                _onsenui2.default.notification.alert('This QR Code is not for use with the Digital Vernisage App!', { modifier: _onsenui2.default.platform.isIOS ? null : "material" });
+	                _onsenui2.default.notification.alert('This QR Code is not for use with the Digital Vernissage App!', { modifier: _onsenui2.default.platform.isIOS ? null : "material" });
 	            } else if (id == ERR_NO_CONNECTION) {
 	                console.log("Got No Connection Error");
 	                this.setState({
@@ -52176,7 +52176,7 @@
 	                _react2.default.createElement(
 	                    "div",
 	                    { className: "center" },
-	                    "Digital Vernisage"
+	                    "Digital Vernissage"
 	                ),
 	                _react2.default.createElement(
 	                    "div",
@@ -53668,16 +53668,13 @@
 	        value: function render() {
 	            var _this2 = this;
 
-                var sources = [];
+	            var sources = [];
 	            this.props.sources.map(function (source) {
 	                //See https://www.broken-links.com/2010/07/08/making-html5-video-work-on-android-phones/
 	                if (_onsenui2.default.platform.isAndroid() && source.type == "video/mp4") {
-                        sources.push(_react2.default.createElement("source", {src: _this2.props.baseurl + "/" + source.source}));
+	                    sources.push(_react2.default.createElement("source", { src: _this2.props.baseurl + "/" + source.source }));
 	                } else {
-                        sources.push(_react2.default.createElement("source", {
-                            src: _this2.props.baseurl + "/" + source.source,
-                            type: source.type
-                        }));
+	                    sources.push(_react2.default.createElement("source", { src: _this2.props.baseurl + "/" + source.source, type: source.type }));
 	                }
 	            });
 
@@ -53685,8 +53682,8 @@
 
 	            return _react2.default.createElement(
 	                "video",
-                    {controls: "true", poster: this.props.poster},
-                    sources
+	                { controls: "true", poster: this.props.poster },
+	                sources
 	            );
 	        }
 	    }]);

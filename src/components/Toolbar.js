@@ -13,7 +13,7 @@ export default class Toolbar extends React.Component {
             : <Icon icon="fa-info" onClick={this.handleClick.bind(this)}/>;
         return (<OnsToolbar>
             <div className='left'>{backButton}</div>
-            <div className="center">Digital Vernisage</div>
+            <div className="center">Digital Vernissage</div>
             <div className="right">{infoButton}</div>
         </OnsToolbar>);
     }

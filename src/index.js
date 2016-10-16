@@ -37,14 +37,14 @@ class App extends React.Component {
         fetch('https://weedocare.eknoes.de/blog.json')
             .then((response) => {
                 return response.json();
-            }).then((vernisage) => {
+            }).then((vernissage) => {
             console.log("Got JSON");
             this.setState({
                 status: {state: 'fetched', msg: undefined},
-                title: vernisage.title,
-                intro: vernisage.intro,
-                entries: vernisage.entries,
-                baseurl: vernisage.baseurl
+                title: vernissage.title,
+                intro: vernissage.intro,
+                entries: vernissage.entries,
+                baseurl: vernissage.baseurl
             });
         }).catch((ex) => {
             console.log('parsing failed', ex.message);
@@ -84,7 +84,7 @@ class App extends React.Component {
     displayError(id) {
         if (id == ERR_INVALID_QR) {
             console.log("Got Invalid QR Error");
-            ons.notification.alert('This QR Code is not for use with the Digital Vernisage App!', {modifier: ons.platform.isIOS ? null : "material"});
+            ons.notification.alert('This QR Code is not for use with the Digital Vernissage App!', {modifier: ons.platform.isIOS ? null : "material"});
         } else if (id == ERR_NO_CONNECTION) {
             console.log("Got No Connection Error");
             this.setState({

@@ -1,5 +1,5 @@
-# Digital Vernisage
-Cordova / Phonegap App for a digital vernisage. Scan a QR Code and get the related information. 
+# Digital Vernissage
+Cordova / Phonegap App for a digital vernissage. Scan a QR Code and get the related information. 
 This is currently an alpha version.
 
 ## Build & Run
