@@ -53668,19 +53668,16 @@
 	        value: function render() {
 	            var _this2 = this;
 
-	            var sources = null;
+                var sources = [];
 	            this.props.sources.map(function (source) {
-	                var tag = void 0;
 	                //See https://www.broken-links.com/2010/07/08/making-html5-video-work-on-android-phones/
 	                if (_onsenui2.default.platform.isAndroid() && source.type == "video/mp4") {
-	                    tag = _react2.default.createElement("source", { src: _this2.props.baseurl + "/" + source.source });
+                        sources.push(_react2.default.createElement("source", {src: _this2.props.baseurl + "/" + source.source}));
 	                } else {
-	                    tag = _react2.default.createElement("source", { src: _this2.props.baseurl + "/" + source.source, type: source.type });
-	                }
-	                if (sources == null) {
-	                    sources = tag;
-	                } else {
-	                    sources = sources + " " + tag;
+                        sources.push(_react2.default.createElement("source", {
+                            src: _this2.props.baseurl + "/" + source.source,
+                            type: source.type
+                        }));
 	                }
 	            });
 
@@ -53688,9 +53685,8 @@
 
 	            return _react2.default.createElement(
 	                "video",
-	                { controls: true, poster: this.props.poster },
-	                sources,
-	                "Your browser does not support the video tag."
+                    {controls: "true", poster: this.props.poster},
+                    sources
 	            );
 	        }
 	    }]);
