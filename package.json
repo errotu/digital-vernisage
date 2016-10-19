@@ -3,7 +3,7 @@
   "version": "0.5.0",
   "description": "Cordova / Phonegap App for a digital vernissage. Scan a QR Code and get the related information. This is currently an alpha version.",
   "bugs": {
-    "url": "https://github.com/errotu/digital-vernissage/issues"
+    "url": "https://github.com/errotu/digital-vernisage/issues"
   },
   "author": {
     "name": "Sönke Huster",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/errotu/digital-vernissage.git"
+    "url": "https://github.com/errotu/digital-vernisage.git"
   },
   "license": "Apache-2.0",
   "main": "src/index.js",
@@ -52,8 +52,7 @@
     "prepare": "$(npm bin)/webpack && cordova prepare",
     "build": "$(npm bin)/webpack && cordova build",
     "start": "HOST=0.0.0.0 $(npm bin)/webpack-dev-server",
-    "serve": "$(npm bin)/webpack && cordova serve",
-    "test": "echo \"No tests (yet!) -- submit a PR?\" && exit 0"
+    "serve": "$(npm bin)/webpack && phonegap serve"
   },
   "keywords": [
     "react",
