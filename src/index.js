@@ -135,9 +135,9 @@ class MainNavigation extends React.Component {
 }
 
 function start() {
-    if (!ons.platform.isIOS()) {
-        ons.platform.select("android");
-    }
+    //if (!ons.platform.isIOS()) {
+    //    ons.platform.select("android");
+    //}
     ImgCache.options.debug = true;
     ImgCache.init(function () {
         console.log('ImgCache init: success!');
