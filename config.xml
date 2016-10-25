@@ -109,7 +109,7 @@
 
     <preference name="AutoHideSplashScreen" value="false"/>
     <preference name="FadeSplashScreen" value="false"/>
-    <preference name="SplashScreenDelay" value="10000"/>
+    <preference name="SplashScreenDelay" value="2000"/>
     <preference name="ShowSplashScreenSpinner" value="false"/>
     <preference name="StatusBarBackgroundColor" value="#689f38"/>
     <access launch-external="yes" origin="tel:*"/>
