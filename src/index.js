@@ -148,10 +148,6 @@ function start() {
     ons.ready(function () {
         ReactDOM.render(<MainNavigation />, document.getElementById('app'));
     });
-
-    if (typeof(navigator) !== 'undefined' && typeof(navigator.splashscreen) !== 'undefined') {
-        navigator.splashscreen.hide();
-    }
 }
 
 
