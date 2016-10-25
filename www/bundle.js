@@ -119,7 +119,7 @@
     /******/
     var hotApplyOnUpdate = true;
     /******/
-    var hotCurrentHash = "4883996b363789c5bbae"; // eslint-disable-line no-unused-vars
+    var hotCurrentHash = "e975d0c4a1b32e9054dd"; // eslint-disable-line no-unused-vars
     /******/
     var hotCurrentModuleData = {};
     /******/
@@ -60260,7 +60260,7 @@
                     _react3.default.createElement(
 	                    "div",
 	                    { className: "center" },
-                        "WeeDooCare ",
+                        "Digital ",
                         _onsenui2.default.platform.isIOS() ? _react3.default.createElement("img", {
                             src: logo,
                             style: {verticalAlign: 'middle', height: '50%'}
