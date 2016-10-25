@@ -119,7 +119,7 @@
     /******/
     var hotApplyOnUpdate = true;
     /******/
-    var hotCurrentHash = "e015081aa7ce689632a7"; // eslint-disable-line no-unused-vars
+    var hotCurrentHash = "53d8139070e57d5c5105"; // eslint-disable-line no-unused-vars
     /******/
     var hotCurrentModuleData = {};
     /******/
@@ -1253,19 +1253,19 @@
 	    if (!_onsenui2.default.platform.isIOS()) {
 	        _onsenui2.default.platform.select("android");
 	    }
-
 	    _imgcache2.default.options.debug = true;
-
 	    _imgcache2.default.init(function () {
 	        console.log('ImgCache init: success!');
 	    }, function () {
 	        console.log('ImgCache init: error! Check the log for errors');
 	    });
-        _reactDom2.default.render(_react3.default.createElement(MainNavigation, null), document.getElementById('app'));
-	}
 
+        _reactDom2.default.render(_react3.default.createElement(MainNavigation, null), document.getElementById('app'));
+        navigator.splashscreen.hide();
+    }
 	if (typeof cordova !== 'undefined') {
-	    document.addEventListener('deviceready', start, false);
+
+        document.addEventListener('deviceready', start, false);
 	} else {
 	    start();
 	}

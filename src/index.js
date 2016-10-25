@@ -129,18 +129,18 @@ function start() {
     if (!ons.platform.isIOS()) {
         ons.platform.select("android");
     }
-
     ImgCache.options.debug = true;
-
     ImgCache.init(function () {
         console.log('ImgCache init: success!');
     }, function () {
         console.log('ImgCache init: error! Check the log for errors');
     });
-    ReactDOM.render(<MainNavigation />, document.getElementById('app'));
-}
 
+    ReactDOM.render(<MainNavigation />, document.getElementById('app'));
+    navigator.splashscreen.hide();
+}
 if (typeof(cordova) !== 'undefined') {
+
     document.addEventListener('deviceready', start, false);
 } else {
     start();

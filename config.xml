@@ -107,8 +107,19 @@
         <param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer"/>
     </feature>
 
-    <preference name="AutoHideSplashScreen" value="true"/>
-    <preference name="FadeSplashScreen" value="false"/>
+    <!-- Do not auto hide splash on iOS -->
+    <preference name="AutoHideSplashScreen" value="false"/>
+    <!-- Do not auto hide splash on Android -->
+    <preference name="SplashScreenDelay" value="10000"/>
+
     <preference name="StatusBarBackgroundColor" value="#689f38"/>
-    <preference name="SplashScreenDelay" value="1000"/>
+
+
+    <access origin="tel:*" launch-external="yes"/>
+    <access origin="http:*" launch-external="yes"/>
+    <access origin="https:*" launch-external="yes"/>
+    <access origin="geo:*" launch-external="yes"/>
+    <access origin="mailto:*" launch-external="yes"/>
+    <access origin="sms:*" launch-external="yes"/>
+    <access origin="market:*" launch-external="yes"/>
 </widget>
