@@ -129,8 +129,8 @@ class MainNavigation extends React.Component {
         );
     }
 }
+
 function start() {
-    "use strict";
     if (!ons.platform.isIOS()) {
         ons.platform.select("android");
     }
@@ -144,10 +144,6 @@ function start() {
     ReactDOM.render(<MainNavigation />, document.getElementById('app'));
     navigator.splashscreen.hide();
 }
-if (typeof(cordova) !== 'undefined') {
 
-    document.addEventListener('deviceready', start, false);
-} else {
-    start();
-}
 
+document.addEventListener('deviceready', start, false);

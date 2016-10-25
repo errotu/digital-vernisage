@@ -58,7 +58,6 @@
         <icon height="152" platform="ios" src="res/icons/ios/icon-76-2x.png" width="152"/>
         <icon height="29" platform="ios" src="res/icons/ios/icon-small.png" width="29"/>
         <icon height="58" platform="ios" src="res/icons/ios/icon-small-2x.png" width="58"/>
-        <icon height="87" platform="ios" src="res/icons/ios/icon-small-3x.png" width="87"/>
         <splash height="1136" platform="ios" src="res/screens/ios/screen-iphone-portrait-568h-2x.png" width="640"/>
         <splash height="1334" platform="ios" src="res/screens/ios/screen-iphone-portrait-667h.png.png" width="750"/>
         <splash height="2208" platform="ios" src="res/screens/ios/screen-iphone-portrait-736h.png" width="1242"/>
@@ -114,8 +113,10 @@
 
     <!-- Do not auto hide splash on iOS -->
     <preference name="AutoHideSplashScreen" value="false"/>
+    <preference name="FadeSplashScreen" value="false"/>
     <!-- Do not auto hide splash on Android -->
-    <preference name="SplashScreenDelay" value="10000"/>
+    <preference name="SplashScreenDelay" value="2000"/>
+    <preference name="ShowSplashScreenSpinner" value="false"/>
 
     <preference name="StatusBarBackgroundColor" value="#689f38"/>
 
