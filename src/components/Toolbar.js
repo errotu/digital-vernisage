@@ -1,5 +1,6 @@
 import React from "react";
 import {Toolbar as OnsToolbar, BackButton, Icon} from "react-onsenui";
+var logo = require('../static/logo.png');
 
 
 export default class Toolbar extends React.Component {
@@ -13,7 +14,7 @@ export default class Toolbar extends React.Component {
             : <Icon icon="fa-info" onClick={this.handleClick.bind(this)}/>;
         return (<OnsToolbar>
             <div className='left'>{backButton}</div>
-            <div className="center">Digital Vernissage</div>
+            <div className="center"><img src={logo} style={{verticalAlign: 'middle', height: '80%'}}/> Vernissage</div>
             <div className="right">{infoButton}</div>
         </OnsToolbar>);
     }
