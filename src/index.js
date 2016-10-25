@@ -34,6 +34,10 @@ class App extends React.Component {
     }
 
     loadData() {
+        console.log("Reloading");
+        this.setState({
+            status: {state: 'fetching', msg: undefined}
+        });
         fetch('https://weedocare.eknoes.de/blog.json')
             .then((response) => {
                 return response.json();
@@ -101,7 +105,8 @@ class App extends React.Component {
     render() {
         return (<PageRoot view={this.state.view} status={this.state.status}
                           title={this.state.title} intro={this.state.intro} entries={this.state.entries}
-                          baseurl={this.state.baseurl} navigation={this.state.navigation}/>);
+                          baseurl={this.state.baseurl} navigation={this.state.navigation}
+                          loadCallback={this.loadData.bind(this)}/>);
     }
 }
 

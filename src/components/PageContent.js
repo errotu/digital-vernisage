@@ -51,6 +51,9 @@ export default class StartPageContent extends React.Component {
         return (<div className="content">
             <Intro title={"ERROR"}
                    intro={this.props.status.msg === undefined ? "Undefined error" : this.props.status.msg}/>
+            <ons-button onClick={this.props.loadCallback}>Reload
+            </ons-button>
+
         </div>);
     }
 }

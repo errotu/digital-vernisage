@@ -119,7 +119,7 @@
     /******/
     var hotApplyOnUpdate = true;
     /******/
-    var hotCurrentHash = "53d8139070e57d5c5105"; // eslint-disable-line no-unused-vars
+    var hotCurrentHash = "f52a10083b35666f6e83"; // eslint-disable-line no-unused-vars
     /******/
     var hotCurrentModuleData = {};
     /******/
@@ -1138,6 +1138,10 @@
 	        value: function loadData() {
 	            var _this2 = this;
 
+                console.log("Reloading");
+                this.setState({
+                    status: {state: 'fetching', msg: undefined}
+                });
 	            fetch('https://weedocare.eknoes.de/blog.json').then(function (response) {
 	                return response.json();
 	            }).then(function (vernissage) {
@@ -1207,9 +1211,13 @@
 	        key: "render",
 	        value: function render() {
                 return _react3.default.createElement(_PageRoot2.default, {
-                    view: this.state.view, status: this.state.status,
+                    view: this.state.view,
+                    status: this.state.status,
 	                title: this.state.title, intro: this.state.intro, entries: this.state.entries,
-	                baseurl: this.state.baseurl, navigation: this.state.navigation });
+                    baseurl: this.state.baseurl,
+                    navigation: this.state.navigation,
+                    loadCallback: this.loadData.bind(this)
+                });
 	        }
 	    }]);
 
@@ -30027,7 +30035,9 @@
                     _react3.default.createElement(_PageContent2.default, {
                         status: this.props.status, view: this.props.view, title: this.props.title,
 	                    intro: this.props.intro, entries: this.props.entries, baseurl: this.props.baseurl,
-	                    navigation: this.props.navigation })
+                        navigation: this.props.navigation,
+                        loadCallback: this.props.loadCallback
+                    })
 	            );
 	        }
 	    }]);
@@ -60373,7 +60383,13 @@
 	                { className: "content" },
                     _react3.default.createElement(_Intro2.default, {
                         title: "ERROR",
-	                    intro: this.props.status.msg === undefined ? "Undefined error" : this.props.status.msg })
+                        intro: this.props.status.msg === undefined ? "Undefined error" : this.props.status.msg
+                    }),
+                    _react3.default.createElement(
+                        "ons-button",
+                        {onClick: this.props.loadCallback},
+                        "Reload"
+                    )
 	            );
 	        }
 	    }]);
