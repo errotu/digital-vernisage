@@ -8,11 +8,11 @@ export default class Video extends React.Component {
             //See https://www.broken-links.com/2010/07/08/making-html5-video-work-on-android-phones/
             if (source.type == "video/mp4") {
                 sources.push(
-                    <source src={this.props.baseurl + "/" + source.source}/>
+                    <source src={this.props.baseurl + "/" + source.source} key="android-video"/>
                 );
             }
             sources.push(
-                <source src={this.props.baseurl + "/" + source.source} type={source.type}/>
+                <source src={this.props.baseurl + "/" + source.source} type={source.type} key={source.type}/>
             );
         });
         

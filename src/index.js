@@ -30,6 +30,9 @@ class App extends React.Component {
                 displayError: this.displayError.bind(this),
             }
         };
+    }
+
+    componentDidMount() {
         this.loadData();
     }
 
@@ -103,7 +106,8 @@ class App extends React.Component {
 
 
     render() {
-        return (<PageRoot view={this.state.view} status={this.state.status}
+        return (<PageRoot
+            view={this.state.view} status={this.state.status}
                           title={this.state.title} intro={this.state.intro} entries={this.state.entries}
                           baseurl={this.state.baseurl} navigation={this.state.navigation}
                           loadCallback={this.loadData.bind(this)}/>);
@@ -141,9 +145,19 @@ function start() {
         console.log('ImgCache init: error! Check the log for errors');
     });
 
-    ReactDOM.render(<MainNavigation />, document.getElementById('app'));
-    navigator.splashscreen.hide();
+    ons.ready(function () {
+        ReactDOM.render(<MainNavigation />, document.getElementById('app'));
+    });
+
+    if (typeof(navigator) !== 'undefined' && typeof(navigator.splashscreen) !== 'undefined') {
+        navigator.splashscreen.hide();
+    }
 }
 
 
-document.addEventListener('deviceready', start, false);
+if (typeof(cordova) !== 'undefined') {
+    document.addEventListener('deviceready', start, false);
+} else {
+    start();
+}
+
