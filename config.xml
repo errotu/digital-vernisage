@@ -112,7 +112,7 @@
     </feature>
 
     <!-- Do not auto hide splash on iOS -->
-    <preference name="AutoHideSplashScreen" value="false"/>
+    <preference name="AutoHideSplashScreen" value="true"/>
     <preference name="FadeSplashScreen" value="false"/>
     <!-- Do not auto hide splash on Android -->
     <preference name="SplashScreenDelay" value="2000"/>
