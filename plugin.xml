@@ -1,0 +1,3 @@
+<config-file target="*-Info.plist" parent="NSCameraUsageDescription">
+    <string>We need the Camera to scan QR Codes</string>
+</config-file>
