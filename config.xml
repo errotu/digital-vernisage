@@ -21,13 +21,10 @@
     <plugin name="phonegap-plugin-barcodescanner" source="npm" spec="~3.0.0">
         <param name="CAMERA_USAGE_DESCRIPTION" value="To scan barcodes"/>
     </plugin>
-    <!-- Barcodescanner Options -->
     <preference name="android-build-tool" value="gradle"/>
-
     <plugin name="cordova-plugin-splashscreen" source="npm" spec="~3.2.2"/>
     <plugin name="cordova-plugin-file" source="npm" spec="~4.3.0"/>
     <plugin name="cordova-plugin-file-transfer" source="npm" spec="~1.6.0"/>
-
     <icon src="res/icon.png"/>
     <splash src="res/splash.png"/>
     <platform name="android">
@@ -79,7 +76,6 @@
     </platform>
     <access origin="https://weedocare.eknoes.de"/>
     <access origin="*"/>
-
     <platform name="android">
         <allow-intent href="market:*"/>
         <access origin="cdvfile://*"/>
@@ -91,7 +87,6 @@
         <preference name="iosPersistentFileLocation" value="Library"/>
     </platform>
     <engine name="android" spec="~5.1.1"/>
-
     <feature name="SocialSharing">
         <param name="ios-package" value="SocialSharing"/>
     </feature>
@@ -110,22 +105,17 @@
         <param name="ios-package" value="CDVFileTransfer"/>
         <param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer"/>
     </feature>
-
-    <!-- Do not auto hide splash on iOS -->
     <preference name="AutoHideSplashScreen" value="true"/>
     <preference name="FadeSplashScreen" value="false"/>
-    <!-- Do not auto hide splash on Android -->
     <preference name="SplashScreenDelay" value="2000"/>
     <preference name="ShowSplashScreenSpinner" value="false"/>
-
     <preference name="StatusBarBackgroundColor" value="#689f38"/>
-
-
-    <access origin="tel:*" launch-external="yes"/>
-    <access origin="http:*" launch-external="yes"/>
-    <access origin="https:*" launch-external="yes"/>
-    <access origin="geo:*" launch-external="yes"/>
-    <access origin="mailto:*" launch-external="yes"/>
-    <access origin="sms:*" launch-external="yes"/>
-    <access origin="market:*" launch-external="yes"/>
+    <access launch-external="yes" origin="tel:*"/>
+    <access launch-external="yes" origin="http:*"/>
+    <access launch-external="yes" origin="https:*"/>
+    <access launch-external="yes" origin="geo:*"/>
+    <access launch-external="yes" origin="mailto:*"/>
+    <access launch-external="yes" origin="sms:*"/>
+    <access launch-external="yes" origin="market:*"/>
+    <plugin name="cordova-plugin-ios-camera-permissions" spec="~1.0.2"/>
 </widget>
