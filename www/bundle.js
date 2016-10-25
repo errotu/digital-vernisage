@@ -119,7 +119,7 @@
     /******/
     var hotApplyOnUpdate = true;
     /******/
-    var hotCurrentHash = "377b63b8b785782b01e3"; // eslint-disable-line no-unused-vars
+    var hotCurrentHash = "e015081aa7ce689632a7"; // eslint-disable-line no-unused-vars
     /******/
     var hotCurrentModuleData = {};
     /******/
@@ -2458,7 +2458,7 @@
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
 	 * @providesModule reactProdInvariant
-	 *
+     *
 	 */
 	'use strict';
 
@@ -3023,7 +3023,7 @@
 	 * LICENSE file in the root directory of this source tree. An additional grant
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
-	 *
+     *
 	 */
 
 	function makeEmptyFunction(arg) {
@@ -3270,7 +3270,7 @@
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
 	 * @providesModule getIteratorFn
-	 *
+     *
 	 */
 
 	'use strict';
@@ -3316,7 +3316,7 @@
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
 	 * @providesModule KeyEscapeUtils
-	 *
+     *
 	 */
 
 	'use strict';
@@ -8067,7 +8067,7 @@
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
 	 * @providesModule accumulateInto
-	 *
+         *
 	 */
 
 	'use strict';
@@ -8132,7 +8132,7 @@
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
 	 * @providesModule forEachAccumulated
-	 *
+     *
 	 */
 
 	'use strict';
@@ -9406,7 +9406,7 @@
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
 	 * @providesModule ReactFeatureFlags
-	 *
+     *
 	 */
 
 	'use strict';
@@ -10686,7 +10686,7 @@
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
 	 * @providesModule isTextInputElement
-	 *
+     *
 	 */
 
 	'use strict';
@@ -14165,7 +14165,7 @@
 	 * LICENSE file in the root directory of this source tree. An additional grant
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
-	 *
+     *
 	 * @typechecks static-only
 	 */
 
@@ -17702,7 +17702,7 @@
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
 	 * @providesModule ReactNodeTypes
-	 *
+         *
 	 */
 
 	'use strict';
@@ -17749,7 +17749,7 @@
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
 	 * @typechecks
-	 *
+     *
 	 */
 
 	/*eslint-disable no-self-compare */
@@ -17985,7 +17985,7 @@
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
 	 * @providesModule flattenChildren
-	 *
+         *
 	 */
 
 	'use strict';
@@ -18165,7 +18165,7 @@
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
 	 * @providesModule ReactServerUpdateQueue
-	 *
+         *
 	 */
 
 	'use strict';
@@ -20334,7 +20334,7 @@
 	 * LICENSE file in the root directory of this source tree. An additional grant
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
-	 *
+     *
 	 */
 
     var isTextNode = __webpack_require__(149);
@@ -22854,7 +22854,7 @@
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
 	 * @providesModule adler32
-	 *
+     *
 	 */
 
 	'use strict';
@@ -38213,7 +38213,7 @@
 	}(document));
 	/**
 	 * MicroEvent - to make any js object an event emitter (server or browser)
-	 *
+     *
 	 * - pure javascript - server compatible, browser compatible
 	 * - dont rely on the browser doms
 	 * - super simple - you get it immediately, no mystery, no magic involved
@@ -38286,7 +38286,7 @@
 
 	  function noop() {}
 
-	  // Polyfill for Function.prototype.bind
+        // Polyfill for Function.prototype.bind
 	  function bind(fn, thisArg) {
 	    return function () {
 	      fn.apply(thisArg, arguments);
@@ -53056,7 +53056,7 @@
 	    *
 	    *   <p>Page content</p>
 	    * </ons-page>
-	    *
+        *
 	    * @example
 	    * <script>
 	    *   myApp.handler = function(done) {
@@ -53680,7 +53680,7 @@
 	    *    A component that displays a popover next to an element. The popover can be used to display extra information about a component or a tooltip.
 	    *
 	    *    To use the element it can either be attached directly to the `<body>` element or dynamically created from a template using the `ons.createPopover(template)` utility function and the `<ons-template>` tag.
-	    *
+        *
 	    *    Another common way to use the popover is to display a menu when a button on the screen is tapped. For Material Design, popover looks exactly as a dropdown menu.
 	    *  [/en]
 	    *  [ja]ある要素を対象とするポップオーバーを表示するコンポーネントです。[/ja]
@@ -62489,11 +62489,14 @@
 	        value: function handleClick() {
 	            var _this2 = this;
 
-	            if (cordova === undefined) {
+                console.log("Clicked QR Scan Button");
+                if (typeof cordova === "undefined") {
 	                _onsenui2.default.notification.alert('Cordova is not available in `npm start`', { modifier: _onsenui2.default.platform.isIOS ? null : "material" });
 	            } else {
 	                cordova.plugins.barcodeScanner.scan(function (result) {
-	                    _this2.props.navigation.pushPage("qr-code", result.text);
+                        if (!result.cancelled) {
+                            _this2.props.navigation.pushPage("qr-code", result.text);
+                        }
 	                }, function (error) {
 	                    console.log("Error:");
 	                    console.log(error);
