@@ -119,7 +119,7 @@
     /******/
     var hotApplyOnUpdate = true;
     /******/
-    var hotCurrentHash = "e975d0c4a1b32e9054dd"; // eslint-disable-line no-unused-vars
+    var hotCurrentHash = "ec0a2ed9a3ffa9121066"; // eslint-disable-line no-unused-vars
     /******/
     var hotCurrentModuleData = {};
     /******/
@@ -62742,7 +62742,7 @@
 	                    "preferFrontCamera": false, // iOS and Android
 	                    "showFlipCameraButton": true, // iOS and Android
 	                    "prompt": "Place a barcode inside the scan area", // supported on Android only
-	                    "formats": "QR_CODE,PDF_417" // default: all but PDF_417 and RSS_EXPANDED
+                        "formats": "QR_CODE" // default: all but PDF_417 and RSS_EXPANDED
 	                });
 	            }
 	        }
