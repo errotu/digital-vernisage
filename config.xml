@@ -79,7 +79,6 @@
     <access origin="*"/>
     <platform name="android">
         <allow-intent href="market:*"/>
-        <access origin="cdvfile://*"/>
         <allow-intent href="cdvfile://*"/>
     </platform>
     <platform name="ios">
@@ -87,6 +86,10 @@
         <allow-intent href="itms-apps:*"/>
         <preference name="iosPersistentFileLocation" value="Library"/>
     </platform>
+    <allow-intent href="http://*"/>
+    <allow-intent href="https://*"/>
+    <allow-intent href="mailto://*"/>
+
     <engine name="android" spec="~5.1.1"/>
     <feature name="SocialSharing">
         <param name="ios-package" value="SocialSharing"/>
@@ -112,11 +115,4 @@
     <preference name="SplashScreenDelay" value="2000"/>
     <preference name="ShowSplashScreenSpinner" value="false"/>
     <preference name="StatusBarBackgroundColor" value="#689f38"/>
-    <access launch-external="yes" origin="tel:*"/>
-    <access launch-external="yes" origin="http:*"/>
-    <access launch-external="yes" origin="https:*"/>
-    <access launch-external="yes" origin="geo:*"/>
-    <access launch-external="yes" origin="mailto:*"/>
-    <access launch-external="yes" origin="sms:*"/>
-    <access launch-external="yes" origin="market:*"/>
 </widget>
