@@ -63,7 +63,7 @@
 /******/ 	}
 
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "e51f494c160929e2c5a7"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "252db3b1044d2ac401ac"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 
@@ -61571,14 +61571,6 @@
 
 	var _reactOnsenui = __webpack_require__(332);
 
-	var _onsenui = __webpack_require__(333);
-
-	var _onsenui2 = _interopRequireDefault(_onsenui);
-
-	var _imgcache = __webpack_require__(341);
-
-	var _imgcache2 = _interopRequireDefault(_imgcache);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -61633,19 +61625,6 @@
 	                _react3.default.createElement(
 	                    _reactOnsenui.Col,
 	                    { width: "100%" },
-	                    "Gemma Durany",
-	                    _react3.default.createElement("br", null),
-	                    "Gesch\xE4ftsf\xFChrerin | President",
-	                    _react3.default.createElement("br", null),
-	                    _react3.default.createElement(
-	                        "a",
-	                        { href: "mailto:Gemma.Durany@WeeDooCare.com" },
-	                        "Gemma.Durany@WeeDooCare.com"
-	                    )
-	                ),
-	                _react3.default.createElement(
-	                    _reactOnsenui.Col,
-	                    { width: "100%" },
 	                    _react3.default.createElement("img", { src: logo, title: "WeeDooCare-Logo", alt: "WeeDooCare-Logo" })
 	                ),
 	                _react3.default.createElement(
@@ -61653,81 +61632,23 @@
 	                    { width: "100%" },
 	                    _react3.default.createElement(
 	                        "p",
-	                        { style: { color: '#689D1C' } },
-	                        "We help companies become",
-	                        _react3.default.createElement("br", null),
-	                        "ecologically intelligent and wise"
-	                    )
-	                ),
-	                _react3.default.createElement(
-	                    _reactOnsenui.Col,
-	                    { width: "100%" },
-	                    "WeeDooCare Business Solutions GmbH",
-	                    _react3.default.createElement("br", null),
-	                    "Im Breitspiel 11 B",
-	                    _react3.default.createElement("br", null),
-	                    "D-69126 Heidelberg",
-	                    _react3.default.createElement("br", null),
-	                    "Germany"
-	                ),
-	                _react3.default.createElement(
-	                    _reactOnsenui.Col,
-	                    { width: "100%" },
-	                    _react3.default.createElement("br", null),
-	                    "Phone: ",
-	                    _react3.default.createElement(
-	                        "a",
-	                        { href: "tel:+4962217280559" },
-	                        "+49 (0) 6221 728 05 59"
+	                        null,
+	                        "We see the world as an ecosystem, and combine facts with poetry and art."
 	                    ),
-	                    _react3.default.createElement("br", null),
-	                    "Fax: +49 (0) 6221 727 86 70",
-	                    _react3.default.createElement("br", null),
-	                    "Mobile: ",
 	                    _react3.default.createElement(
-	                        "a",
-	                        { href: "tel:+4916090386853" },
-	                        "+49 (0)160 90 38 68 53"
+	                        "p",
+	                        null,
+	                        "With this Digital Vernissage we want to show our GreenArt. Unique green cartoons and art galleries to guide people for a mindset change."
 	                    ),
-	                    _react3.default.createElement("br", null),
-	                    "E-Mail: ",
 	                    _react3.default.createElement(
-	                        "a",
-	                        { href: "mailto:info@weedoocare.com" },
-	                        "Info@WeeDooCare.com"
-	                    ),
-	                    _react3.default.createElement("br", null),
-	                    _react3.default.createElement(
-	                        "a",
-	                        { href: "http://www.weedoocare.com", target: "_blank" },
-	                        "www.WeeDooCare.com"
-	                    )
-	                ),
-	                _react3.default.createElement(
-	                    _reactOnsenui.Col,
-	                    { width: "100%" },
-	                    " ",
-	                    _react3.default.createElement("br", null),
-	                    "Gesch\xE4ftsf\xFChrerin: Gemma Durany",
-	                    _react3.default.createElement("br", null),
-	                    "Amtsgericht Mannheim HRB 708677",
-	                    _react3.default.createElement("br", null),
-	                    "USt-IdNr.: DE815166869",
-	                    _react3.default.createElement("br", null)
-	                ),
-	                _react3.default.createElement(
-	                    _reactOnsenui.Col,
-	                    { width: "100%" },
-	                    _react3.default.createElement(
-	                        "ons-button",
-	                        { onClick: function onClick() {
-	                                _imgcache2.default.clearCache(function () {
-	                                    _onsenui2.default.notification.alert("Cache was cleared successfully", { modifier: _onsenui2.default.platform.isIOS ? null : "material" });
-	                                }, function () {
-	                                    _onsenui2.default.notification.alert("Could not clear cache", { modifier: _onsenui2.default.platform.isIOS ? null : "material" });
-	                                });
-	                            } },
-	                        "Clear Cache"
+	                        "p",
+	                        null,
+	                        "See more on ",
+	                        _react3.default.createElement(
+	                            "a",
+	                            { href: "https://www.weedoocare.com" },
+	                            "www.weedoocare.com"
+	                        )
 	                    )
 	                )
 	            );
