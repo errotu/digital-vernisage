@@ -15,7 +15,7 @@ export default class Toolbar extends React.Component {
             : <Icon icon="fa-info" onClick={this.handleClick.bind(this)}/>;
         return (<OnsToolbar>
             <div className='left'>{backButton}</div>
-            <div className="center">Digital {ons.platform.isIOS() ?
+            <div className="center">Digital {!ons.platform.isAndroid() ?
                 <img src={logo} style={{verticalAlign: 'middle', height: '50%'}}/> : null} Vernissage
             </div>
             <div className="right">{infoButton}</div>
