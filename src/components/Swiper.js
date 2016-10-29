@@ -1,9 +1,9 @@
 import React from 'react';
 import SingleImage from './SingleImage'
 
-
+import ons from 'onsenui';
 import {
-    CarouselItem, Carousel, Button
+    CarouselItem, Carousel, Modal, Button
 } from 'react-onsenui'
 
 export default class Swiper extends React.Component {
@@ -12,6 +12,17 @@ export default class Swiper extends React.Component {
         super();
         console.log(props);
         this.state = {index: (props.index === undefined ? 0 : props.index)};
+        if(typeof(Storage) !== "undefined") {
+            if(localStorage.gotInfo) {
+                this.state.isOpen = false;
+            } else {
+                //First app use
+                this.state.isOpen = true;
+                localStorage.gotInfo = true;
+            }
+        } else {
+            this.state.isOpen = false;
+        }
     }
 
     handleChange(e) {
@@ -19,7 +30,22 @@ export default class Swiper extends React.Component {
     }
 
     render() {
-        return (<div><Carousel id="swiper" index={this.state.index} onPostChange={this.handleChange.bind(this)} fullscreen swipeable autoScroll overscrollable>
+        let infoModal = (<Modal
+                isOpen={this.state.isOpen}>
+                <section style={{margin: '16px'}}>
+                    <p style={{opacity: 0.6}}>
+                        Tap an image to get more information.
+                    </p>
+                    <p>
+                        <Button onClick={() => this.setState({isOpen: false})}>
+                            Okay
+                        </Button>
+                    </p>
+                </section>
+            </Modal>
+        );
+
+        return (<div style={{textAlign: "center"}}><Carousel id="swiper" index={this.state.index} onPostChange={this.handleChange.bind(this)} fullscreen swipeable autoScroll overscrollable>
             {this.props.entries.map((entry, index) => {
                 return(<CarouselItem key={"swiper-" + entry.id}>
                     <div className={"container"}>
@@ -28,7 +54,8 @@ export default class Swiper extends React.Component {
                 </CarouselItem>);
             })}
         </Carousel>
-        <div style={{
+            {infoModal}
+            <div style={{
             textAlign: 'center',
                 fontSize: '20px',
                 position: 'absolute',

@@ -15,7 +15,7 @@ export const ERR_INVALID_QR = 0;
 export const ERR_NO_CONNECTION = 1;
 
 class App extends React.Component {
-    constructor() {
+    constructor(props) {
         super();
         this.state = {
             status: {state: 'fetching', msg: undefined},
