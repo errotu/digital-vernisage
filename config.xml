@@ -26,19 +26,20 @@
     <plugin name="cordova-plugin-file" source="npm" spec="~4.3.0"/>
     <plugin name="cordova-plugin-file-transfer" source="npm" spec="~1.6.0"/>
     <plugin name="cordova-plugin-ios-camera-permissions" spec="~1.0.2"/>
-    <icon src="res/icon.png"/>
+
     <splash src="res/splash.png"/>
     <platform name="android">
-        <icon qualifier="ldpi" src="res/icons/android/icon-36-ldpi.png"/>
-        <icon qualifier="mdpi" src="res/icons/android/icon-48-mdpi.png"/>
-        <icon qualifier="hdpi" src="res/icons/android/icon-72-hdpi.png"/>
-        <icon qualifier="xhdpi" src="res/icons/android/icon-96-xhdpi.png"/>
-        <icon qualifier="xxhdpi" src="res/icons/android/icon-144-xxhdpi.png"/>
-        <icon qualifier="xxxhdpi" src="res/icons/android/icon-192-xxxhdpi.png"/>
-        <splash qualifier="port-ldpi" src="res/screens/android/screen-ldpi-portrait.png"/>
-        <splash qualifier="port-mdpi" src="res/screens/android/screen-mdpi-portrait.png"/>
-        <splash qualifier="port-hdpi" src="res/screens/android/screen-hdpi-portrait.png"/>
-        <splash qualifier="port-xhdpi" src="res/screens/android/screen-xhdpi-portrait.png"/>
+        <icon platform="android" density="ldpi" src="res/icons/android/icon-36-ldpi.png"/>
+        <icon platform="android" density="mdpi" src="res/icons/android/icon-48-mdpi.png"/>
+        <icon platform="android" density="hdpi" src="res/icons/android/icon-72-hdpi.png"/>
+        <icon platform="android" density="xhdpi" src="res/icons/android/icon-96-xhdpi.png"/>
+        <icon platform="android" density="xxhdpi" src="res/icons/android/icon-144-xxhdpi.png"/>
+        <icon platform="android" density="xxxhdpi" src="res/icons/android/icon-192-xxxhdpi.png"/>
+
+        <splash density="port-ldpi" src="res/screens/android/screen-ldpi-portrait.png"/>
+        <splash density="port-mdpi" src="res/screens/android/screen-mdpi-portrait.png"/>
+        <splash density="port-hdpi" src="res/screens/android/screen-hdpi-portrait.png"/>
+        <splash density="port-xhdpi" src="res/screens/android/screen-xhdpi-portrait.png"/>
     </platform>
     <platform name="ios">
         <icon height="57" platform="ios" src="res/icons/ios/icon.png" width="57"/>
