@@ -15,7 +15,7 @@ export const ERR_INVALID_QR = 0;
 export const ERR_NO_CONNECTION = 1;
 
 class App extends React.Component {
-    constructor(props) {
+    constructor() {
         super();
         this.state = {
             status: {state: 'fetching', msg: undefined},
@@ -116,7 +116,7 @@ class App extends React.Component {
 
 class MainNavigation extends React.Component {
 
-    renderPage(route, navigator) {
+    static renderPage(route, navigator) {
         const props = route.props || {};
         props.navigator = navigator;
         props.route = route;
@@ -128,7 +128,7 @@ class MainNavigation extends React.Component {
         return (
             <Navigator
                 initialRoute={{component: App}}
-                renderPage={this.renderPage.bind(this)}
+                renderPage={MainNavigation.renderPage.bind(this)}
             />
         );
     }
@@ -148,6 +148,7 @@ function start() {
     ons.ready(function () {
         ReactDOM.render(<MainNavigation />, document.getElementById('app'));
     });
+
 }
 
 

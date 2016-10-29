@@ -63,7 +63,7 @@
 /******/ 	}
 
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "252db3b1044d2ac401ac"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "da788577d0b37a0af3e6"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 
@@ -684,7 +684,7 @@
 	var App = _wrapComponent("App")(function (_React$Component) {
 	    _inherits(App, _React$Component);
 
-	    function App(props) {
+	    function App() {
 	        _classCallCheck(this, App);
 
 	        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
@@ -808,6 +808,14 @@
 	    }
 
 	    _createClass(MainNavigation, [{
+	        key: "render",
+	        value: function render() {
+	            return _react3.default.createElement(_reactOnsenui.Navigator, {
+	                initialRoute: { component: App },
+	                renderPage: MainNavigation.renderPage.bind(this)
+	            });
+	        }
+	    }], [{
 	        key: "renderPage",
 	        value: function renderPage(route, navigator) {
 	            var props = route.props || {};
@@ -815,14 +823,6 @@
 	            props.route = route;
 	            console.log("renderPage called");
 	            return _react3.default.createElement(route.component, props);
-	        }
-	    }, {
-	        key: "render",
-	        value: function render() {
-	            return _react3.default.createElement(_reactOnsenui.Navigator, {
-	                initialRoute: { component: App },
-	                renderPage: this.renderPage.bind(this)
-	            });
 	        }
 	    }]);
 

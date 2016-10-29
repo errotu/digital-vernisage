@@ -18,6 +18,7 @@
     <plugin name="cordova-plugin-device-orientation" source="npm" spec="~1.0.2"/>
     <plugin name="cordova-plugin-dialogs" source="npm" spec="~1.2.0"/>
     <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.2"/>
+    <plugin name="cordova-plugin-statusbar" source="npm" spec="~1.2.2"/>
     <plugin name="phonegap-plugin-barcodescanner" source="npm" spec="~3.0.0">
         <param name="CAMERA_USAGE_DESCRIPTION" value="To scan barcodes"/>
     </plugin>
@@ -115,5 +116,5 @@
     <preference name="FadeSplashScreen" value="false"/>
     <preference name="SplashScreenDelay" value="2000"/>
     <preference name="ShowSplashScreenSpinner" value="false"/>
-    <preference name="StatusBarBackgroundColor" value="#689f38"/>
+    <preference name="StatusBarBackgroundColor" value="#7cb342"/>
 </widget>
