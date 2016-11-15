@@ -14,7 +14,7 @@ export default class Contact extends React.Component {
                 <p>With this Digital Vernissage we want to show our GreenArt. Unique green cartoons and art galleries to
                     guide people for a mindset change.</p>
 
-                <p>See more on <a href="https://www.weedoocare.com">www.weedoocare.com</a></p></Col>
+                <p>See more on <a href="http://www.weedoocare.com">www.weedoocare.com</a></p></Col>
         </Row>);
     }
 }
