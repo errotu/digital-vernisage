@@ -3,6 +3,7 @@ import Intro from "./Intro";
 import OverviewGrid from "./OverviewGrid";
 import Swiper from "./Swiper";
 import Detail from "./Detail";
+import About from "./About";
 import Contact from "./Contact";
 import {ProgressCircular} from "react-onsenui";
 
@@ -33,10 +34,15 @@ export default class StartPageContent extends React.Component {
         } else if (this.props.view.page == "detail" && this.props.view.index !== undefined && this.props.view.index <= this.props.entries.length) {
             let entry = this.props.entries[this.props.view.index];
             if (entry.video !== undefined) {
-                console.log("Has Video!");
             }
             return (
                 <Detail entry={this.props.entries[this.props.view.index]} baseurl={this.props.baseurl}/>
+            );
+        } else if (this.props.view.page == "about") {
+            return (
+                <div className="content">
+                    <About />
+                </div>
             );
         } else if (this.props.view.page == "contact") {
             return (
@@ -45,8 +51,6 @@ export default class StartPageContent extends React.Component {
                 </div>
             );
         }
-
-        console.log(this.props);
 
         return (<div className="content">
             <Intro title={"ERROR"}

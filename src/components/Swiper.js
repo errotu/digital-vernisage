@@ -10,7 +10,6 @@ export default class Swiper extends React.Component {
 
     constructor(props) {
         super();
-        console.log(props);
         this.state = {index: (props.index === undefined ? 0 : props.index)};
         if(typeof(Storage) !== "undefined") {
             if(localStorage.gotInfo) {

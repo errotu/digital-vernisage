@@ -15,8 +15,6 @@ export default class Video extends React.Component {
                 <source src={this.props.baseurl + "/" + source.source} type={source.type} key={source.type}/>
             );
         });
-        
-        console.log("Added Video");
 
         return (
             <video controls="true" poster={this.props.poster}>{sources}</video> );

@@ -1,5 +1,5 @@
 import React from "react";
-import {Toolbar as OnsToolbar, BackButton, Icon} from "react-onsenui";
+import {Toolbar as OnsToolbar, BackButton, Icon, ToolbarButton} from "react-onsenui";
 import ons from "onsenui";
 var logo = require('../static/logo_square.png');
 
@@ -7,18 +7,17 @@ var logo = require('../static/logo_square.png');
 export default class Toolbar extends React.Component {
 
     render() {
-        const backButton = this.props.backButton === true ?
+        const toolbarLeftBtn = this.props.backButton === true ?
             <BackButton onClick={this.props.navigation.popPage}>Back</BackButton>
-            : null;
-        const infoButton = this.props.view.page == "contact" ?
-            null
-            : <Icon icon="fa-info" onClick={this.handleClick.bind(this)}/>;
+            : <ToolbarButton onClick={this.props.navigation.openMenu}>
+                <Icon icon='ion-navicon, material:md-menu' />
+            </ToolbarButton>
+            ;
         return (<OnsToolbar>
-            <div className='left'>{backButton}</div>
+            <div className='left'>{toolbarLeftBtn}</div>
             <div className="center">Digital {!ons.platform.isAndroid() ?
                 <img src={logo} style={{verticalAlign: 'middle', height: '50%'}}/> : null} Vernissage
             </div>
-            <div className="right">{infoButton}</div>
         </OnsToolbar>);
     }
 

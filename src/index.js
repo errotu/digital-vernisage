@@ -3,7 +3,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import PageRoot from "./components/PageRoot";
 import "whatwg-fetch";
-import {Navigator} from "react-onsenui";
+import {Navigator, Splitter, SplitterContent, Page, SplitterSide, List, ListItem} from "react-onsenui";
 import ons from "onsenui";
 import ImgCache from "imgcache.js/js/imgcache";
 
@@ -14,21 +14,47 @@ require('./css/theme.styl');
 export const ERR_INVALID_QR = 0;
 export const ERR_NO_CONNECTION = 1;
 
-class App extends React.Component {
+/*class App extends React.Component {
     constructor(props) {
         super();
         this.state = {
+        };
+        if(props.page) {
+            this.state.view.page = props.page;
+            console.log("Got Page:" + props.page);
+        }
+    }
+
+
+
+
+    render() {
+        return (<PageRoot
+            view={this.state.view} status={this.state.status}
+                          title={this.state.title} intro={this.state.intro} entries={this.state.entries}
+                          baseurl={this.state.baseurl} navigation={this.props.navigation}
+                          loadCallback={this.loadData.bind(this)}/>);
+    }
+}*/
+
+class MainNavigation extends React.Component {
+
+    constructor() {
+        super();
+        this.state = {
+            isOpen: false,
             status: {state: 'fetching', msg: undefined},
             title: null,
             intro: null,
             baseurl: null,
             entries: [],
-            view: {page: "overview", index: null},
             navigation: {
                 pushPage: this.pushPage.bind(this),
                 popPage: this.popPage.bind(this),
+                openMenu: this.open.bind(this),
                 displayError: this.displayError.bind(this),
             }
+
         };
     }
 
@@ -59,6 +85,68 @@ class App extends React.Component {
         });
     }
 
+
+    renderPage(route, navigator) {
+        console.log("Rendering Page");
+        const props = route.props || {};
+        props.navigator = navigator;
+        props.route = route;
+        props.menuCallback = this.open.bind(this);
+        props.navigation = {
+            pushPage: this.pushPage.bind(this),
+            popPage: this.popPage.bind(this),
+            openMenu: this.open.bind(this),
+            displayError: this.displayError.bind(this),
+        };
+        props.loadCallback = this.loadData.bind(this);
+        props.status = this.state.status;
+        props.title = this.state.title;
+        props.intro = this.state.intro;
+        props.entries = this.state.entries;
+        props.baseurl = this.state.baseurl;
+
+
+        return React.createElement(route.component, props);
+    }
+
+    open() {
+        this.setState({
+            isOpen: true
+        });
+    }
+
+    openPage(argument) {
+        let page;
+        switch(argument) {
+            case "vernissage":
+                page = {component: PageRoot, props: {view: {
+                    page: "overview",
+                    index: undefined
+                }}};
+                break;
+            case "about":
+                page = {component: PageRoot, props: {view: {
+                    page: "about",
+                    index: undefined
+                }}};
+                break;
+            case "blog":
+                window.open("http://weedoocare.tumblr.com/", "_system");
+                return;
+            case "contact":
+                page = {component: PageRoot, props: {view: {
+                    page: "contact",
+                    index: undefined
+                }}};
+                break;
+        }
+        this.navigator.replacePage(page, {animation: "none"});
+        this.setState({
+            isOpen: false
+        });
+
+    }
+
     pushPage(view, index) {
         if (view == 'qr-code' && index !== undefined && index.length > 0) {
             let success = false;
@@ -74,16 +162,16 @@ class App extends React.Component {
             }
         } else {
             console.log("Pushing " + view + " to " + index);
-            this.props.navigator.pushPage({
-                component: PageRoot,
-                props: {
-                    navigation: this.state.navigation,
-                    view: {page: view, index: index},
-                    status: this.state.status,
-                    entries: this.state.entries,
-                    baseurl: this.state.baseurl,
+            this.setState({
+                view: {
+                    page: view, index: index
                 }
             });
+            this.navigator.pushPage({ component: PageRoot, props: {
+                view: {
+                    page: view, index: index
+                }
+            }});
         }
 
     }
@@ -101,35 +189,45 @@ class App extends React.Component {
     }
 
     popPage() {
-        this.props.navigator.popPage();
+        this.navigator.popPage();
     }
 
-
-    render() {
-        return (<PageRoot
-            view={this.state.view} status={this.state.status}
-                          title={this.state.title} intro={this.state.intro} entries={this.state.entries}
-                          baseurl={this.state.baseurl} navigation={this.state.navigation}
-                          loadCallback={this.loadData.bind(this)}/>);
-    }
-}
-
-class MainNavigation extends React.Component {
-
-    static renderPage(route, navigator) {
-        const props = route.props || {};
-        props.navigator = navigator;
-        props.route = route;
-        console.log("renderPage called");
-        return React.createElement(route.component, props);
-    }
 
     render() {
         return (
-            <Navigator
-                initialRoute={{component: App}}
-                renderPage={MainNavigation.renderPage.bind(this)}
-            />
+        <Splitter>
+            <SplitterSide
+                style={{
+                    boxShadow: '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)'
+                }}
+                side='left'
+                width={200}
+                collapse={true}
+                isSwipeable={true}
+                isOpen={this.state.isOpen}
+            >
+                <Page>
+                    <List
+                        dataSource={[{title: 'Vernissage', callback: this.openPage.bind(this, 'vernissage')},
+                            {title: 'About this App', callback: this.openPage.bind(this, 'about')},
+                            {title: 'Our Blog', callback: this.openPage.bind(this, 'blog')},
+                            {title: 'Contact', callback: this.openPage.bind(this, 'contact')}]}
+                        renderRow={(item) => (
+                            <ListItem key={item.title} onClick={item.callback} tappable>{item.title}</ListItem>
+                        )}
+                    />
+                </Page>
+            </SplitterSide>
+            <SplitterContent>
+                <Navigator
+                    initialRoute={{component: PageRoot, props: { view: {page: "overview", index: undefined},
+                    }}}
+                    renderPage={this.renderPage.bind(this)}
+                    ref={(navigator) => this.navigator = navigator}
+                />
+            </SplitterContent>
+        </Splitter>
+
         );
     }
 }

@@ -9,7 +9,7 @@ export default class PageRoot extends React.Component {
     render() {
         return (<Page key={this.props.view.page + this.props.view.index}
                       renderToolbar={() => <Toolbar view={this.props.view} navigation={this.props.navigation}
-                                                    backButton={this.props.view.page !== "overview"}/>}
+                                                    backButton={this.props.view.index !== undefined}/>}
                       renderFixed={() => (this.props.status.state != "error" && this.props.status.state != "fetching") ?
                           <QRButton
                               navigation={this.props.navigation}/> : null}>

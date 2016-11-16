@@ -35,9 +35,6 @@ export default class SingleImage extends React.Component {
                         },
                         () => {
                             console.log("Error");
-                        },
-                        () => {
-                            console.log("Progress");
                         });
                 }
             };
