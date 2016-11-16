@@ -249,6 +249,9 @@ function start() {
     ons.ready(function () {
         ReactDOM.render(<MainNavigation />, document.getElementById('app'));
     });
+    if(typeof(cordova) !== undefined) {
+        window.open = cordova.InAppBrowser.open;
+    }
 
 }
 
