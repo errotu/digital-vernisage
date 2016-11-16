@@ -42,6 +42,7 @@ class MainNavigation extends React.Component {
     constructor() {
         super();
         this.state = {
+            view: {page: "overview", index: undefined},
             isOpen: false,
             status: {state: 'fetching', msg: undefined},
             title: null,
@@ -116,34 +117,36 @@ class MainNavigation extends React.Component {
     }
 
     openPage(argument) {
-        let page;
+        let pageProps;
         switch(argument) {
             case "vernissage":
-                page = {component: PageRoot, props: {view: {
+                pageProps = { view: {
                     page: "overview",
                     index: undefined
-                }}};
+                }};
                 break;
             case "about":
-                page = {component: PageRoot, props: {view: {
+                pageProps = { view: {
                     page: "about",
                     index: undefined
-                }}};
+                }};
                 break;
             case "blog":
                 window.open("http://weedoocare.tumblr.com/", "_system");
                 return;
             case "contact":
-                page = {component: PageRoot, props: {view: {
+                pageProps = { view: {
                     page: "contact",
                     index: undefined
-                }}};
+                }};
                 break;
         }
-        this.navigator.replacePage(page, {animation: "none"});
-        this.setState({
-            isOpen: false
-        });
+        if(pageProps.view.page !== this.state.view.page) {
+            this.navigator.replacePage({component: PageRoot, props: pageProps}, {animation: "none"});
+        }
+        pageProps.isOpen = false;
+        this.setState(pageProps);
+
 
     }
 
