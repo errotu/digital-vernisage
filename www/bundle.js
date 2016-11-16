@@ -63,7 +63,7 @@
 /******/ 	}
 
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "72ea8884e18c469f6cda"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "6c2c620b9f08fff32744"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 
@@ -613,6 +613,8 @@
 
 	var _index6 = _interopRequireDefault(_index5);
 
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	__webpack_require__(327);
@@ -710,6 +712,7 @@
 	        var _this = _possibleConstructorReturn(this, (MainNavigation.__proto__ || Object.getPrototypeOf(MainNavigation)).call(this));
 
 	        _this.state = {
+	            view: { page: "overview", index: undefined },
 	            isOpen: false,
 	            status: { state: 'fetching', msg: undefined },
 	            title: null,
@@ -790,34 +793,35 @@
 	    }, {
 	        key: "openPage",
 	        value: function openPage(argument) {
-	            var page = void 0;
+	            var pageProps = void 0;
 	            switch (argument) {
 	                case "vernissage":
-	                    page = { component: _PageRoot2.default, props: { view: {
-	                                page: "overview",
-	                                index: undefined
-	                            } } };
+	                    pageProps = { view: {
+	                            page: "overview",
+	                            index: undefined
+	                        } };
 	                    break;
 	                case "about":
-	                    page = { component: _PageRoot2.default, props: { view: {
-	                                page: "about",
-	                                index: undefined
-	                            } } };
+	                    pageProps = { view: {
+	                            page: "about",
+	                            index: undefined
+	                        } };
 	                    break;
 	                case "blog":
 	                    window.open("http://weedoocare.tumblr.com/", "_system");
 	                    return;
 	                case "contact":
-	                    page = { component: _PageRoot2.default, props: { view: {
-	                                page: "contact",
-	                                index: undefined
-	                            } } };
+	                    pageProps = { view: {
+	                            page: "contact",
+	                            index: undefined
+	                        } };
 	                    break;
 	            }
-	            this.navigator.replacePage(page, { animation: "none" });
-	            this.setState({
-	                isOpen: false
-	            });
+	            if (pageProps.view.page !== this.state.view.page) {
+	                this.navigator.replacePage({ component: _PageRoot2.default, props: pageProps }, { animation: "none" });
+	            }
+	            pageProps.isOpen = false;
+	            this.setState(pageProps);
 	        }
 	    }, {
 	        key: "pushPage",
@@ -936,6 +940,9 @@
 	    _onsenui2.default.ready(function () {
 	        _reactDom2.default.render(_react3.default.createElement(MainNavigation, null), document.getElementById('app'));
 	    });
+	    if ((typeof cordova === "undefined" ? "undefined" : _typeof(cordova)) !== undefined) {
+	        window.open = cordova.InAppBrowser.open;
+	    }
 	}
 
 	if (typeof cordova !== 'undefined') {
@@ -29358,7 +29365,6 @@
 	        value: function render() {
 	            var _this2 = this;
 
-	            console.log(this.props.view);
 	            return _react3.default.createElement(
 	                _reactOnsenui.Page,
 	                { key: this.props.view.page + this.props.view.index,
@@ -59900,9 +59906,7 @@
 	                );
 	            } else if (this.props.view.page == "detail" && this.props.view.index !== undefined && this.props.view.index <= this.props.entries.length) {
 	                var entry = this.props.entries[this.props.view.index];
-	                if (entry.video !== undefined) {
-	                    console.log("Has Video!");
-	                }
+	                if (entry.video !== undefined) {}
 	                return _react3.default.createElement(_Detail2.default, { entry: this.props.entries[this.props.view.index], baseurl: this.props.baseurl });
 	            } else if (this.props.view.page == "about") {
 	                return _react3.default.createElement(
@@ -59917,8 +59921,6 @@
 	                    _react3.default.createElement(_Contact2.default, null)
 	                );
 	            }
-
-	            console.log(this.props);
 
 	            return _react3.default.createElement(
 	                "div",
@@ -60252,8 +60254,6 @@
 	                                _imgcache2.default.isCached(path, callback);
 	                            }, function () {
 	                                console.log("Error");
-	                            }, function () {
-	                                console.log("Progress");
 	                            });
 	                        }
 	                    };
@@ -61667,8 +61667,6 @@
 	                }
 	                sources.push(_react3.default.createElement("source", { src: _this2.props.baseurl + "/" + source.source, type: source.type, key: source.type }));
 	            });
-
-	            console.log("Added Video");
 
 	            return _react3.default.createElement(
 	                "video",
