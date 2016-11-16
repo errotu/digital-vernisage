@@ -18,6 +18,7 @@
     <plugin name="phonegap-plugin-barcodescanner" source="npm" spec="~6.0.3">
         <param name="CAMERA_USAGE_DESCRIPTION" value="To scan barcodes"/>
     </plugin>
+    <plugin name="phonegap-plugin-inappbrowser" source="npm" spec="~1.5.0"/>
     <preference name="android-build-tool" value="gradle"/>
     <plugin name="cordova-plugin-splashscreen" source="npm" spec="~4.0.0"/>
     <plugin name="cordova-plugin-file" source="npm" spec="~4.3.0"/>
