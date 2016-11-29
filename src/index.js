@@ -68,7 +68,7 @@ class MainNavigation extends React.Component {
         this.setState({
             status: {state: 'fetching', msg: undefined}
         });
-        fetch('https://weedocare.eknoes.de/blog.json')
+        fetch('https://media.weedoocare.com/DigitalVernissage/blog.json')
             .then((response) => {
                 return response.json();
             }).then((vernissage) => {
