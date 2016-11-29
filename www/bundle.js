@@ -744,7 +744,7 @@
 	            this.setState({
 	                status: { state: 'fetching', msg: undefined }
 	            });
-	            fetch('https://weedocare.eknoes.de/blog.json').then(function (response) {
+	            fetch('https://media.weedoocare.com/DigitalVernissage/blog.json').then(function (response) {
 	                return response.json();
 	            }).then(function (vernissage) {
 	                console.log("Got JSON");
