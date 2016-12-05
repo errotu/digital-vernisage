@@ -63,7 +63,7 @@
 /******/ 	}
 
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "4a4c12218f02be0396d7"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "5ae77792647fee485e4b"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 
@@ -61506,10 +61506,14 @@
 	                        _react3.default.createElement(_SingleImage2.default, { alt: entry.title,
 	                            src: this.props.baseurl + "/" + entry.source,
 	                            clickable: true })
-	                    ),
+	                    )
+	                ),
+	                _react3.default.createElement(
+	                    _reactOnsenui.Row,
+	                    null,
 	                    _react3.default.createElement(
 	                        _reactOnsenui.Col,
-	                        { witdh: "100%" },
+	                        { witdh: "100%", style: { textAlign: "center" } },
 	                        _react3.default.createElement(
 	                            "p",
 	                            null,

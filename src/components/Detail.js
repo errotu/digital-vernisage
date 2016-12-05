@@ -26,7 +26,9 @@ export default class StartPageContent extends React.Component {
                     <Col width="100%"><SingleImage alt={entry.title}
                                                    src={this.props.baseurl + "/" + entry.source}
                                                     clickable={true}/></Col>
-                    <Col witdh="100%"><p><i>Tap the image to view in Fullscreen</i></p></Col>
+                </Row>
+                <Row>
+                    <Col witdh="100%" style={{textAlign: "center"}}><p><i>Tap the image to open in Fullscreen</i></p></Col>
                 </Row>
             </div>
         );
