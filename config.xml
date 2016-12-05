@@ -74,7 +74,7 @@
         <icon height="50" platform="windows" src="res/icons/windows/storelogo.png" width="50"/>
         <splash height="300" platform="windows" src="res/screens/windows/splashscreen.png" width="620"/>
     </platform>
-    <access origin="https://weedocare.eknoes.de"/>
+    <access origin="https://media.weedoocare.com"/>
     <access origin="*"/>
     <platform name="android">
         <allow-intent href="market:*"/>
