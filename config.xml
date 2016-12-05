@@ -24,6 +24,7 @@
     <plugin name="cordova-plugin-file" source="npm" spec="~4.3.0"/>
     <plugin name="cordova-plugin-file-transfer" source="npm" spec="~1.6.0"/>
     <plugin name="cordova-plugin-ios-camera-permissions" spec="~1.0.3"/>
+    <plugin name="cordova-open" spec="~1.0.12"/>
 
     <splash src="res/splash.png"/>
     <platform name="android">

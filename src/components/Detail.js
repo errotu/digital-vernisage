@@ -24,9 +24,12 @@ export default class StartPageContent extends React.Component {
                                                                    poster={this.props.baseurl + "/" + entry.source}/></Col> : ""}
 
                     <Col width="100%"><SingleImage alt={entry.title}
-                                                   src={this.props.baseurl + "/" + entry.source}/></Col>
+                                                   src={this.props.baseurl + "/" + entry.source}
+                                                    clickable={true}/></Col>
+                    <Col witdh="100%"><p><i>Tap the image to view in Fullscreen</i></p></Col>
                 </Row>
             </div>
         );
     }
+
 }

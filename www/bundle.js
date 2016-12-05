@@ -63,7 +63,7 @@
 /******/ 	}
 
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "9442e65c8d606a213cfa"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "09218c625304eb508578"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 
@@ -60226,6 +60226,20 @@
 	            alt: props.alt,
 	            cached: false
 	        };
+	        if (props.clickable) {
+	            _this.state.onClick = function () {
+	                console.log("click!");
+	                function error(code) {
+	                    if (code === 1) {
+	                        alert('No file handler found');
+	                    } else {
+	                        alert('Undefined error');
+	                    }
+	                }
+
+	                cordova.plugins.disusered.open(_this.state.src, success, error);
+	            };
+	        }
 	        return _this;
 	    }
 
@@ -61486,7 +61500,17 @@
 	                        _reactOnsenui.Col,
 	                        { width: "100%" },
 	                        _react3.default.createElement(_SingleImage2.default, { alt: entry.title,
-	                            src: this.props.baseurl + "/" + entry.source })
+	                            src: this.props.baseurl + "/" + entry.source,
+	                            clickable: true })
+	                    ),
+	                    _react3.default.createElement(
+	                        _reactOnsenui.Col,
+	                        { witdh: "100%" },
+	                        _react3.default.createElement(
+	                            "p",
+	                            null,
+	                            "Tap the image to view in Fullscreen"
+	                        )
 	                    )
 	                )
 	            );

@@ -11,6 +11,18 @@ export default class SingleImage extends React.Component {
             alt: props.alt,
             cached: false
         };
+        if (props.clickable) {
+            this.state.onClick = () => {console.log("click!");
+                function error(code) {
+                    if (code === 1) {
+                        alert('No file handler found');
+                    } else {
+                        alert('Undefined error');
+                    }
+                }
+
+                cordova.plugins.disusered.open(this.state.src, success, error);};
+        }
     }
 
     render() {
