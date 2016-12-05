@@ -63,7 +63,7 @@
 /******/ 	}
 
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "09218c625304eb508578"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "4a4c12218f02be0396d7"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 
@@ -60237,6 +60237,10 @@
 	                    }
 	                }
 
+	                function success() {
+	                    console.log("Success opening image!");
+	                }
+
 	                cordova.plugins.disusered.open(_this.state.src, success, error);
 	            };
 	        }
@@ -61509,7 +61513,11 @@
 	                        _react3.default.createElement(
 	                            "p",
 	                            null,
-	                            "Tap the image to view in Fullscreen"
+	                            _react3.default.createElement(
+	                                "i",
+	                                null,
+	                                "Tap the image to view in Fullscreen"
+	                            )
 	                        )
 	                    )
 	                )

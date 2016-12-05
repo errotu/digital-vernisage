@@ -21,6 +21,10 @@ export default class SingleImage extends React.Component {
                     }
                 }
 
+                function success() {
+                    console.log("Success opening image!");
+                }
+
                 cordova.plugins.disusered.open(this.state.src, success, error);};
         }
     }
