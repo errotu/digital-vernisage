@@ -63,7 +63,7 @@
 /******/ 	}
 
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "5ae77792647fee485e4b"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "931f9ac9d9da36b3e504"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 
@@ -61520,7 +61520,7 @@
 	                            _react3.default.createElement(
 	                                "i",
 	                                null,
-	                                "Tap the image to view in Fullscreen"
+	                                "Tap the image to open in Fullscreen mode"
 	                            )
 	                        )
 	                    )

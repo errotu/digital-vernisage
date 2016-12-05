@@ -28,7 +28,7 @@ export default class StartPageContent extends React.Component {
                                                     clickable={true}/></Col>
                 </Row>
                 <Row>
-                    <Col witdh="100%" style={{textAlign: "center"}}><p><i>Tap the image to open in Fullscreen</i></p></Col>
+                    <Col witdh="100%" style={{textAlign: "center"}}><p><i>Tap the image to open in Fullscreen mode</i></p></Col>
                 </Row>
             </div>
         );
