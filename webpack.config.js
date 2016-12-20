@@ -65,7 +65,7 @@ if (ENV === 'development') {
         },
         plugins: [
             new webpack.HotModuleReplacementPlugin(),
-            new CopyWebpackPlugin([{from: PATHS.src + 'index.html', to: PATHS.build}]),
+            new CopyWebpackPlugin([{from: PATHS.src + '/index.html', to: PATHS.build}]),
         ],
     });
 } else {

@@ -14,35 +14,11 @@ require('./css/theme.styl');
 export const ERR_INVALID_QR = 0;
 export const ERR_NO_CONNECTION = 1;
 
-/*class App extends React.Component {
-    constructor(props) {
-        super();
-        this.state = {
-        };
-        if(props.page) {
-            this.state.view.page = props.page;
-            console.log("Got Page:" + props.page);
-        }
-    }
-
-
-
-
-    render() {
-        return (<PageRoot
-            view={this.state.view} status={this.state.status}
-                          title={this.state.title} intro={this.state.intro} entries={this.state.entries}
-                          baseurl={this.state.baseurl} navigation={this.props.navigation}
-                          loadCallback={this.loadData.bind(this)}/>);
-    }
-}*/
-
 class MainNavigation extends React.Component {
 
     constructor() {
         super();
         this.state = {
-            view: {page: "overview", index: undefined},
             isOpen: false,
             status: {state: 'fetching', msg: undefined},
             title: null,
@@ -141,11 +117,9 @@ class MainNavigation extends React.Component {
                 }};
                 break;
         }
-        if(pageProps.view.page !== this.state.view.page) {
-            this.navigator.replacePage({component: PageRoot, props: pageProps}, {animation: "none"});
-        }
-        pageProps.isOpen = false;
-        this.setState(pageProps);
+
+        this.navigator.replacePage({component: PageRoot, props: pageProps}, {animation: "none"});
+        this.setState({isOpen: false});
 
 
     }
@@ -165,11 +139,6 @@ class MainNavigation extends React.Component {
             }
         } else {
             console.log("Pushing " + view + " to " + index);
-            this.setState({
-                view: {
-                    page: view, index: index
-                }
-            });
             this.navigator.pushPage({ component: PageRoot, props: {
                 view: {
                     page: view, index: index
