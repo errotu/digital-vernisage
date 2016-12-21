@@ -18,12 +18,12 @@ To run the App on your Android device connect it via USB.
 
 Sind wir wirklich offen für neue Ideen oder nur für solche innerhalb des aktuellen Systems? Interessante Ideen erfordern oft, dass das System geändert wird... Wie wäre es mit 'JA, UND...' statt 'JA, ABER...'?
 
-![https://weedocare.eknoes.de/#innovation](resources/innovation_qr.png)
+<img src="resources/innovation_qr.png" alt="https://weedocare.eknoes.de/#innovation" width="200px" height="200px"/>
 
 Die Selbsterkenntnis: Sehen!
 
-![https://weedocare.eknoes.de/#sehen](resources/sehen_qr.png)
+<img src="resources/sehen_qr.png" alt="https://weedocare.eknoes.de/#sehen" width="200px" height="200px"/>
 
 Sitzen,  sehen,  zuhören,  achten.  Vielleicht  mal  handeln.
 
-![https://weedocare.eknoes.de/#sitzen](resources/sitzen_qr.png)
+<img src="resources/sitzen_qr.png" alt="https://weedocare.eknoes.de/#sitzen" width="200px" height="200px"/>
