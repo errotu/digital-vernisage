@@ -19,13 +19,18 @@ export default class StartPageContent extends React.Component {
                         <Col width="100%"><b>Audio</b><br /><AudioPlayer
                             src={this.props.baseurl + "/" + entry.mp3}/></Col> : ""}
                     {entry.video !== undefined ?
-                        <Col width="100%"><b>Video</b><br /><Video sources={entry.video}
-                                                                   baseurl={this.props.baseurl}
-                                                                   poster={this.props.baseurl + "/" + entry.source}/></Col> : ""}
-
-                    <Col width="100%"><SingleImage alt={entry.title}
-                                                   src={this.props.baseurl + "/" + entry.source}
-                                                    clickable={true}/></Col>
+                        <Col width="100%">
+                        <b>Video</b><br />
+                            <Video sources={entry.video}
+                               baseurl={this.props.baseurl}
+                               poster={this.props.baseurl + "/" + entry.source}/>
+                        </Col>
+                        :
+                        <Col width="100%">
+                            <SingleImage alt={entry.title}
+                                src={this.props.baseurl + "/" + entry.source}
+                                clickable={true}/>
+                        </Col> }
                 </Row>
                 <Row>
                     <Col witdh="100%" style={{textAlign: "center"}}><p><i>Tap the image to open in Fullscreen mode</i></p></Col>

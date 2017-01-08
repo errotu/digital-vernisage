@@ -1,63 +1,64 @@
 {
-  "name": "digital-vernissage",
-  "version": "0.5.0",
-  "description": "Cordova / Phonegap App for a digital vernissage. Scan a QR Code and get the related information. This is currently an alpha version.",
-  "bugs": {
-    "url": "https://github.com/errotu/digital-vernissage/issues"
-  },
-  "author": {
-    "name": "Sönke Huster",
-    "email": "projekte@eknoes.de"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/errotu/digital-vernissage.git"
-  },
-  "license": "Apache-2.0",
-  "main": "src/index.js",
-  "dependencies": {
-    "babel-core": "^6.4.5",
-    "babel-loader": "^6.2.1",
-    "babel-preset-es2015": "^6.3.13",
-    "babel-preset-react": "^6.3.13",
-    "classnames": "^2.2.3",
-    "imgcache.js": "^1.0.0",
-    "react": "^15.3.0",
-    "react-addons-css-transition-group": "^15.3.0",
-    "react-dom": "^15.3.0",
-    "react-tappable": "^0.8.3",
-    "webpack": "^1.12.12",
-    "webpack-dev-server": "^1.14.1",
-    "whatwg-fetch": "^2.0.1"
-  },
-  "devDependencies": {
-    "babel-preset-react-hmre": "^1.0.1",
-    "copy-webpack-plugin": "^4.0.0",
-    "css-loader": "^0.26.1",
-    "elementtree": "^0.1.6",
-    "onsenui": "^2.0.0",
-    "react-onsenui": "^1.0.0",
-    "replace": "^0.3.0",
-    "style-loader": "^0.13.1",
-    "stylus-loader": "^2.3.1",
-    "webpack-merge": "^1.1.2",
-    "file-loader": "^0.9.0",
-    "script-loader": "^0.7.0",
-    "stylus": "^0.54.5",
-    "url-loader": "^0.5.7"
-  },
-  "scripts": {
-    "android": "$(npm bin)/webpack && cordova run android",
-    "ios": "$(npm bin)/webpack && cordova run ios",
-    "prepare": "$(npm bin)/webpack && cordova prepare",
-    "build": "$(npm bin)/webpack && cordova build",
-    "start": "HOST=0.0.0.0 $(npm bin)/webpack-dev-server",
-    "serve": "$(npm bin)/webpack && phonegap serve"
-  },
-  "keywords": [
-    "react",
-    "onsenui2",
-    "cordova",
-    "phonegap"
-  ]
+    "name": "digital-vernissage",
+    "version": "0.5.0",
+    "description": "Cordova / Phonegap App for a digital vernissage. Scan a QR Code and get the related information. This is currently an alpha version.",
+    "bugs": {
+        "url": "https://github.com/errotu/digital-vernissage/issues"
+    },
+    "author": {
+        "name": "Sönke Huster",
+        "email": "projekte@eknoes.de"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/errotu/digital-vernissage.git"
+    },
+    "license": "Apache-2.0",
+    "main": "src/index.js",
+    "dependencies": {
+        "babel-core": "^6.4.5",
+        "babel-loader": "^6.2.1",
+        "babel-preset-es2015": "^6.3.13",
+        "babel-preset-react": "^6.3.13",
+        "classnames": "^2.2.3",
+        "imgcache.js": "^1.0.0",
+        "react": "^15.3.0",
+        "react-addons-css-transition-group": "^15.3.0",
+        "react-dom": "^15.3.0",
+        "react-tappable": "^0.8.3",
+        "webpack": "^1.12.12",
+        "webpack-dev-server": "^1.14.1",
+        "whatwg-fetch": "^2.0.1"
+    },
+    "devDependencies": {
+        "babel-preset-react-hmre": "^1.0.1",
+        "copy-webpack-plugin": "^4.0.0",
+        "css-loader": "^0.26.1",
+        "elementtree": "^0.1.6",
+        "file-loader": "^0.9.0",
+        "onsenui": "^2.0.0",
+        "react-onsenui": "^1.0.0",
+        "replace": "^0.3.0",
+        "script-loader": "^0.7.0",
+        "style-loader": "^0.13.1",
+        "stylus": "^0.54.5",
+        "stylus-loader": "^2.3.1",
+        "url-loader": "^0.5.7",
+        "webpack-auto-inject-version": "^0.2.11",
+        "webpack-merge": "^1.1.2"
+    },
+    "scripts": {
+        "android": "$(npm bin)/webpack --patch && cordova run android",
+        "ios": "$(npm bin)/webpack --patch && cordova run ios",
+        "prepare": "$(npm bin)/webpack --patch && cordova prepare",
+        "build": "$(npm bin)/webpack --patch && cordova build",
+        "start": "$(npm bin)/webpack && HOST=0.0.0.0 $(npm bin)/webpack-dev-server",
+        "serve": "$(npm bin)/webpack && phonegap serve"
+    },
+    "keywords": [
+        "react",
+        "onsenui2",
+        "cordova",
+        "phonegap"
+    ]
 }

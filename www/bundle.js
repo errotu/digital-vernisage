@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "97d8a328dbe88ed8b1b0"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "9446267e3121a6693a29"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -682,6 +682,15 @@
 	var ERR_INVALID_QR = exports.ERR_INVALID_QR = 0;
 	var ERR_NO_CONNECTION = exports.ERR_NO_CONNECTION = 1;
 
+	/*
+	TODO: Multi-Sprache
+	TODO: Bild nicht im Video +
+	TODO: Versionsnummer in About
+	TODO: "Tap to detail" nur einmal am Tag
+	TODO: Pull-to-refresh
+	TODO: QR-Code auf App-Store weiterleiten
+	 */
+
 	var MainNavigation = _wrapComponent("MainNavigation")(function (_React$Component) {
 	    _inherits(MainNavigation, _React$Component);
 
@@ -705,6 +714,7 @@
 	            }
 
 	        };
+
 	        return _this;
 	    }
 
@@ -63529,8 +63539,7 @@
 	                        _react3.default.createElement(_Video2.default, { sources: entry.video,
 	                            baseurl: this.props.baseurl,
 	                            poster: this.props.baseurl + "/" + entry.source })
-	                    ) : "",
-	                    _react3.default.createElement(
+	                    ) : _react3.default.createElement(
 	                        _reactOnsenui.Col,
 	                        { width: "100%" },
 	                        _react3.default.createElement(_SingleImage2.default, { alt: entry.title,
@@ -63826,6 +63835,7 @@
 	    _createClass(About, [{
 	        key: "render",
 	        value: function render() {
+	            var version = ("0.5.0");
 	            return _react3.default.createElement(
 	                _reactOnsenui.Row,
 	                { className: "about-page" },
@@ -63856,6 +63866,16 @@
 	                            { href: "http://www.weedoocare.com" },
 	                            "www.weedoocare.com"
 	                        )
+	                    )
+	                ),
+	                _react3.default.createElement(
+	                    _reactOnsenui.Col,
+	                    { width: "100%" },
+	                    _react3.default.createElement(
+	                        "p",
+	                        null,
+	                        "App-Version: ",
+	                        version
 	                    )
 	                )
 	            );

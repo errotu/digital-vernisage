@@ -5,6 +5,7 @@ var logo = require('../static/logo.png');
 export default class About extends React.Component {
 
     render() {
+        let version = __VERSION__;
         return (<Row className="about-page">
             <Col width="100%">
                 <img src={logo} title="WeeDooCare-Logo" alt="WeeDooCare-Logo"/>
@@ -15,6 +16,9 @@ export default class About extends React.Component {
                     guide people for a mindset change.</p>
 
                 <p>See more on <a href="http://www.weedoocare.com">www.weedoocare.com</a></p></Col>
+            <Col width="100%">
+                <p>App-Version: {version}</p>
+            </Col>
         </Row>);
     }
 }

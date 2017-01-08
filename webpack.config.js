@@ -2,8 +2,11 @@ const merge = require('webpack-merge');
 const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const WebpackAutoInject = require('webpack-auto-inject-version');
 
 const ENV = require('./env');
+const readFileSync = require("fs").readFileSync;
+
 const PATHS = {
     src: path.join(__dirname, 'src'),
     build: path.join(__dirname, 'www'),
@@ -40,6 +43,10 @@ const common = {
     },
     plugins: [
         new CopyWebpackPlugin([{from: PATHS.src + '/index.html'}], {            copyUnmodified: true}),
+        new WebpackAutoInject({injectByTag: false, injectAsComment: false}), //Just use auto increment
+        new webpack.DefinePlugin({
+            __VERSION__: JSON.stringify(JSON.parse(readFileSync(path.normalize('package.json'), 'utf8')).version)
+        })
     ]
 };
 
@@ -65,7 +72,6 @@ if (ENV === 'development') {
         },
         plugins: [
             new webpack.HotModuleReplacementPlugin(),
-            new CopyWebpackPlugin([{from: PATHS.src + '/index.html', to: PATHS.build}]),
         ],
     });
 } else {
