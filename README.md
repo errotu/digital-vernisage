@@ -15,18 +15,15 @@ To run the App on your Android device connect it via USB.
     npm run android
     
 ## Sample QR Codes
-Take care of the world, you have only this one!
 
-![https://weedocare.eknoes.de/#water](resources/water.png)
+Sind wir wirklich offen für neue Ideen oder nur für solche innerhalb des aktuellen Systems? Interessante Ideen erfordern oft, dass das System geändert wird... Wie wäre es mit 'JA, UND...' statt 'JA, ABER...'?
 
-Being a Zenmaster or being Shakespeare?
+<img src="resources/innovation_qr.png" alt="https://weedocare.eknoes.de/#innovation" width="200px" height="200px"/>
 
-![https://weedocare.eknoes.de/#zenmaster](resources/zenmaster.png)
+Die Selbsterkenntnis: Sehen!
 
-Impressive, this example of how much water is used for one glass of wine, isn't it?
+<img src="resources/sehen_qr.png" alt="https://weedocare.eknoes.de/#sehen" width="200px" height="200px"/>
 
-![https://weedocare.eknoes.de/#winevswater](resources/winevswater.png)
+Sitzen,  sehen,  zuhören,  achten.  Vielleicht  mal  handeln.
 
-Sometimes, both opinions have their point.
-
-![https://weedocare.eknoes.de/#youhaveapoint](resources/youhaveapoint.png)
+<img src="resources/sitzen_qr.png" alt="https://weedocare.eknoes.de/#sitzen" width="200px" height="200px"/>
