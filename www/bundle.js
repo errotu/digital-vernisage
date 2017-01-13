@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "261fe30f6bf301711199"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "a7dca17ea38e27b6402d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -714,15 +714,13 @@
 	            }
 	        };
 
-	        if (false) {
-	            navigator.globalization.getPreferredLanguage(function (language) {
-	                _this.state.language = language;
-	                console.log("Language is: " + language);
-	            }, function (error) {
-	                console.log("Language error: " + error);
-	            });
-	            console.log("Use navigator.globalization");
-	        } else if (typeof navigator.language !== "undefined") {
+	        if (typeof Storage !== "undefined") {
+	            if (localStorage.language) {
+	                _this.state.language = localStorage.language;
+	            }
+	        }
+
+	        if (!_this.state.language && typeof navigator.language !== "undefined") {
 	            _this.state.language = navigator.language.split("-")[0].split("_")[0];
 	            console.log("Use navigator.language");
 	            console.log("Language is: " + _this.state.language);
@@ -822,6 +820,9 @@
 	                onChange: function onChange(target) {
 	                    console.log(target.currentTarget.value);
 	                    _this3.setState({ language: target.currentTarget.value });
+	                    if (typeof Storage !== "undefined") {
+	                        localStorage.language = target.currentTarget.value;
+	                    }
 	                }
 	            };
 

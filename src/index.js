@@ -27,6 +27,7 @@ class MainNavigation extends React.Component {
 
     constructor() {
         super();
+
         this.state = {
             fallback: 'de',
             possibleLanguages: ['de', 'en'],
@@ -44,15 +45,13 @@ class MainNavigation extends React.Component {
             }
         };
 
-        if (false && typeof(navigator.globalization) !== "undefined") {
-            navigator.globalization.getPreferredLanguage((language) => {
-                this.state.language = language;
-                console.log("Language is: " + language);
-            }, (error) => {
-                console.log("Language error: " + error);
-            });
-            console.log("Use navigator.globalization");
-        } else if (typeof(navigator.language) !== "undefined") {
+        if(typeof(Storage) !== "undefined") {
+            if(localStorage.language) {
+                this.state.language = localStorage.language;
+            }
+        }
+
+        if(!this.state.language && typeof(navigator.language) !== "undefined") {
             this.state.language = navigator.language.split("-")[0].split("_")[0];
             console.log("Use navigator.language");
             console.log("Language is: " + this.state.language);
@@ -147,6 +146,10 @@ class MainNavigation extends React.Component {
             onChange: (target) => {
                 console.log(target.currentTarget.value);
                 this.setState({language: target.currentTarget.value});
+                if(typeof(Storage) !== "undefined") {
+                    localStorage.language = target.currentTarget.value;
+                }
+
             }
         };
 
