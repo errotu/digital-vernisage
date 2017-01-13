@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "a7dca17ea38e27b6402d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "3aa691b6bb230ddbc96c"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -681,7 +681,7 @@
 	var ERR_NO_CONNECTION = exports.ERR_NO_CONNECTION = 1;
 
 	/*
-	 TODO: Multi-Sprache
+	 Multi-Sprache ✓
 	 Bild nicht im Video ✓
 	 Versionsnummer in About ✓
 	 TODO: "Tap to detail" nur einmal am Tag
@@ -63903,7 +63903,7 @@
 	    _createClass(About, [{
 	        key: "render",
 	        value: function render() {
-	            var version = ("0.5.0");
+	            var version = ("0.6.0");
 	            return _react3.default.createElement(
 	                _reactOnsenui.Row,
 	                { className: "about-page" },

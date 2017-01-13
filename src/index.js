@@ -15,7 +15,7 @@ export const ERR_INVALID_QR = 0;
 export const ERR_NO_CONNECTION = 1;
 
 /*
- TODO: Multi-Sprache
+ Multi-Sprache ✓
  Bild nicht im Video ✓
  Versionsnummer in About ✓
  TODO: "Tap to detail" nur einmal am Tag
