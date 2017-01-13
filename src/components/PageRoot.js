@@ -17,6 +17,7 @@ export default class PageRoot extends React.Component {
                          intro={this.props.intro} entries={this.props.entries} baseurl={this.props.baseurl}
                          navigation={this.props.navigation}
                          loadCallback={this.props.loadCallback}
+                         language={this.props.language}
             />
         </Page>);
     }

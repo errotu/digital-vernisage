@@ -48,10 +48,10 @@
         "webpack-merge": "^1.1.2"
     },
     "scripts": {
-        "android": "$(npm bin)/webpack --patch && cordova run android",
-        "ios": "$(npm bin)/webpack --patch && cordova run ios",
-        "prepare": "$(npm bin)/webpack --patch && cordova prepare",
-        "build": "$(npm bin)/webpack --patch && cordova build",
+        "android": "$(npm bin)/webpack && cordova run android",
+        "ios": "$(npm bin)/webpack && cordova run ios",
+        "prepare": "$(npm bin)/webpack && cordova prepare",
+        "build": "$(npm bin)/webpack && cordova build",
         "start": "$(npm bin)/webpack && HOST=0.0.0.0 $(npm bin)/webpack-dev-server",
         "serve": "$(npm bin)/webpack && phonegap serve"
     },

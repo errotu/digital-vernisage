@@ -1,17 +1,30 @@
 {
   "baseurl": "https://media.weedoocare.com/DigitalVernissage/",
-  "languages": ["de_DE", "en_US"],
-  "fallback_language": ["en_US"],
-  "title": {"de_DE": "Willkommen zur WeeDooCare Welt",
-            "en_US": "Welcome to the WeeDooCare World"},
-  "intro": {"de_DE": "Willkommen zu unserer digitalen Vernisage",
-            "en_US": "Welcome to our digital vernisage"},
+  "languages": [
+    "de",
+    "en"
+  ],
+  "fallback_language": "de",
+  "title": {
+    "de": "Willkommen zur WeeDooCare Welt",
+    "en": "Welcome to the WeeDooCare World"
+  },
+  "intro": {
+    "de": "Willkommen zu unserer digitalen Vernisage",
+    "en": "Welcome to our digital vernisage"
+  },
   "entries": [
     {
       "id": 10,
       "type": "img",
-      "title": "More  Innovation  and  Less  method...",
-      "text": "Sind wir wirklich offen fÃ¼r neue Ideen oder nur fÃ¼r solche innerhalb des aktuellen Systems? Interessante Ideen erfordern oft, dass das System geÃ¤ndert wird... Wie wÃ¤re es mit 'JA, UND...' statt 'JA, ABER...'?",
+      "title": {
+        "en_EN": "More  Innovation  and  Less  method...",
+        "de": "Mehr Innovation und weniger Verfahren..."
+      },
+      "text": {
+        "de": "Sind wir wirklich offen fÃ¼r neue Ideen oder nur fÃ¼r solche innerhalb des aktuellen Systems? Interessante Ideen erfordern oft, dass das System geÃ¤ndert wird... Wie wÃ¤re es mit 'JA, UND...' statt 'JA, ABER...'?",
+        "en_EN": "Are we really open for new ideas?"
+      },
       "thumb": "img/innovation_thumb.png",
       "source": "img/innovation.png",
       "url": "https://media.weedoocare.com/DigitalVernissage/#innovation"
@@ -19,90 +32,17 @@
     {
       "id": 9,
       "type": "img",
-      "title": "Wie sieht die neue Welt aus? Radikal anders...",
-      "text": "Kleinere LÃ¤nder, kleinere Unternehmen, kleinere Einheiten die miteinander kooperieren. Lokale, dezentralisierte Wirtschaft. Selbstbestimmte und selbstversorgende Gemeinschaften. Ganzheitliches Denken und agieren. Expertise ohne dumme Spezialisierung. Einfacher Lebensstil. Weniger Konsum und materielle GÃ¼ter. Mehr immaterielle Dienstleistungen. Kultur des Daseins.",
+      "title": {
+        "de": "Wie sieht die neue Welt aus? Radikal anders...",
+        "en_EN": "How does the new world look like? Extreme different..."
+      },
+      "text": {
+        "de": "Kleinere LÃ¤nder, kleinere Unternehmen, kleinere Einheiten die miteinander kooperieren",
+        "en_EN": "Smaller countries, smaller companies, smaller units that cooperate"
+      },
       "thumb": "img/neuewelt_thumb.png",
       "source": "img/neuewelt.png",
       "url": "https://media.weedoocare.com/DigitalVernissage/#neuewelt"
-    },
-    {
-      "id": 8,
-      "type": "img",
-      "title": "The Voice of The INDUSTRY!",
-      "text": "Ein Kratzer!!! Du musst ein neues HÃ¤uschen.",
-      "thumb": "img/kratzer_thumb.png",
-      "source": "img/kratzer.png",
-      "url": "https://media.weedoocare.com/DigitalVernissage/#kratzer"
-    },
-    {
-      "id": 7,
-      "type": "img",
-      "title": "Die ersten Schritte: Elizaâ€™s Green Cookies ab 2011",
-      "text": "",
-      "thumb": "img/ersteschritte_thumb.png",
-      "source": "img/ersteschritte.png",
-      "url": "https://media.weedoocare.com/DigitalVernissage/#ersteschritte"
-    },
-    {
-      "id": 6,
-      "type": "img",
-      "title": "Fakten und Poesie, Technik und Nutzloses...",
-      "text": "Der Philosoph: Oder die Philosophin! Gemeint ist die Idee der philosophischenImpulsgeber in den verschiedenen Bereichen des Unternehmens...",
-      "thumb": "img/poesie_thumb.png",
-      "source": "img/poesie.png",
-      "url": "https://media.weedoocare.com/DigitalVernissage/#poesie"
-    },
-    {
-      "id": 5,
-      "type": "img",
-      "title": "Ein philosophisches Unternehmen wird geboren...",
-      "text": "Unser Leitstern: Unternehmen unterstÃ¼tzen, ganzheitlich zudenken, mit Vorsorge und Voraussicht zuagieren und Ã¶kologisch intelligent zu werden.",
-      "thumb": "img/unternehmen_thumb.png",
-      "source": "img/unternehmen.png",
-      "url": "https://media.weedoocare.com/DigitalVernissage/#unternehmen"
-    },
-    {
-      "id": 4,
-      "type": "img",
-      "title": "Die Selbsterkenntnis: Sehen!",
-      "text": "Wo war ich all die Jahre? Blind, benommen und nicht prÃ¤sent... Gefangen in meinem bequemen Hamsterrad...",
-      "thumb": "img/sehen_thumb.png",
-      "source": "img/sehen.png",
-      "url": "https://media.weedoocare.com/DigitalVernissage/#sehen"
-    },
-    {
-      "id": 3,
-      "type": "img",
-      "title": "In der Unterwelt...",
-      "text": "In der Unterwelt sind wir blind und gefÃ¼hllos. Wir vergÃ¶ttern die glitzernden Teile, ohne das Ganze zu sehen. Wir zerteilen, eichen, messen, analysieren und vermehren, ohne zu verstehen. Wir suchen nach Mehr, GrÃ¶sser und Schneller, gerade da, wo nichts ist. Wir nehmen nicht wahr. Wir bewundern nicht. Wir flÃ¼chten, rauben, erobern und bekÃ¤mpfen. Wir vergessen, wer wir sind.",
-      "thumb": "img/unterwelt_thumb.png",
-      "source": "img/unterwelt.png",
-      "url": "https://media.weedoocare.com/DigitalVernissage/#unterwelt"
-    },
-    {
-      "id": 2,
-      "type": "img",
-      "title": "TrÃ¤ume des XXI Jahrhunderts",
-      "text": "Auf der Suche nach neuen Welten und alten Werten, wo weniger mehr ist, Fakten und Poesie miteinander harmonisieren, Langsamkeit zur Weisheit fÃ¼hrt, Achtsamkeit die Regel ist und Dankbarkeit das Zentrum des Daseins darstellt.",
-      "thumb": "img/traume_thumb.png",
-      "source": "img/traume.png",
-      "url": "https://media.weedoocare.com/DigitalVernissage/#traume"
-    },
-    {
-      "id": 1,
-      "type": "img",
-      "title": "Sitzen,  sehen,  zuhÃ¶ren,  achten.  Vielleicht  mal  handeln.",
-      "text": "",
-      "thumb": "img/sitzen_thumb.png",
-      "source": "img/sitzen.png",
-      "tags": "water;prduction;meat",
-      "url": "https://media.weedoocare.com/DigitalVernissage/#sitzen",
-      "video": [
-        {
-          "source": "video/ImaProcess_signed.mp4",
-          "type": "video/mp4"
-        }
-      ]
     }
   ]
 }

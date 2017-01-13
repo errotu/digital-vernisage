@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "9446267e3121a6693a29"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "261fe30f6bf301711199"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -615,8 +615,6 @@
 
 	var _index6 = _interopRequireDefault(_index5);
 
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	__webpack_require__(333);
@@ -683,12 +681,12 @@
 	var ERR_NO_CONNECTION = exports.ERR_NO_CONNECTION = 1;
 
 	/*
-	TODO: Multi-Sprache
-	TODO: Bild nicht im Video +
-	TODO: Versionsnummer in About
-	TODO: "Tap to detail" nur einmal am Tag
-	TODO: Pull-to-refresh
-	TODO: QR-Code auf App-Store weiterleiten
+	 TODO: Multi-Sprache
+	 Bild nicht im Video ✓
+	 Versionsnummer in About ✓
+	 TODO: "Tap to detail" nur einmal am Tag
+	 TODO: Pull-to-refresh
+	 TODO: QR-Code auf App-Store weiterleiten
 	 */
 
 	var MainNavigation = _wrapComponent("MainNavigation")(function (_React$Component) {
@@ -700,6 +698,8 @@
 	        var _this = _possibleConstructorReturn(this, (MainNavigation.__proto__ || Object.getPrototypeOf(MainNavigation)).call(this));
 
 	        _this.state = {
+	            fallback: 'de',
+	            possibleLanguages: ['de', 'en'],
 	            isOpen: false,
 	            status: { state: 'fetching', msg: undefined },
 	            title: null,
@@ -712,8 +712,25 @@
 	                openMenu: _this.open.bind(_this),
 	                displayError: _this.displayError.bind(_this)
 	            }
-
 	        };
+
+	        if (false) {
+	            navigator.globalization.getPreferredLanguage(function (language) {
+	                _this.state.language = language;
+	                console.log("Language is: " + language);
+	            }, function (error) {
+	                console.log("Language error: " + error);
+	            });
+	            console.log("Use navigator.globalization");
+	        } else if (typeof navigator.language !== "undefined") {
+	            _this.state.language = navigator.language.split("-")[0].split("_")[0];
+	            console.log("Use navigator.language");
+	            console.log("Language is: " + _this.state.language);
+	        } else {
+	            _this.state.language = "en";
+	            console.log("Use fallback");
+	            console.log("Language is: " + _this.state.language);
+	        }
 
 	        return _this;
 	    }
@@ -732,11 +749,14 @@
 	            this.setState({
 	                status: { state: 'fetching', msg: undefined }
 	            });
-	            fetch('https://media.weedoocare.com/DigitalVernissage/blog.json').then(function (response) {
+	            fetch('https://media.weedoocare.com/DigitalVernissage/sample.json').then(function (response) {
 	                return response.json();
 	            }).then(function (vernissage) {
 	                console.log("Got JSON");
+
 	                _this2.setState({
+	                    fallback: vernissage.fallback_language,
+	                    possibleLanguages: vernissage.languages,
 	                    status: { state: 'fetched', msg: undefined },
 	                    title: vernissage.title,
 	                    intro: vernissage.intro,
@@ -751,6 +771,8 @@
 	    }, {
 	        key: "renderPage",
 	        value: function renderPage(route, navigator) {
+	            var _this3 = this;
+
 	            console.log("Rendering Page");
 	            var props = route.props || {};
 	            props.navigator = navigator;
@@ -764,10 +786,44 @@
 	            };
 	            props.loadCallback = this.loadData.bind(this);
 	            props.status = this.state.status;
-	            props.title = this.state.title;
-	            props.intro = this.state.intro;
-	            props.entries = this.state.entries;
+
+	            if (this.state.title != null) {
+	                props.title = this.state.title[this.state.language];
+	            }
+	            if (this.state.intro != null) {
+	                props.intro = this.state.intro[this.state.language];
+	            }
+
+	            var localEntries = [];
+	            this.state.entries.forEach(function (entry) {
+	                console.log("Calculate entries");
+	                var localEntry = JSON.parse(JSON.stringify(entry));
+	                console.log(entry);
+	                if (_this3.state.language in entry.title) {
+	                    localEntry.title = entry.title[_this3.state.language];
+	                } else {
+	                    localEntry.title = entry.title[_this3.state.fallback];
+	                }
+
+	                if (_this3.state.language in entry.text) {
+	                    localEntry.text = entry.text[_this3.state.language];
+	                } else {
+	                    localEntry.text = entry.text[_this3.state.fallback];
+	                }
+	                localEntries.push(localEntry);
+	            });
+
+	            props.entries = localEntries;
 	            props.baseurl = this.state.baseurl;
+
+	            props.language = {
+	                inUse: this.state.language,
+	                possible: this.state.possibleLanguages,
+	                onChange: function onChange(target) {
+	                    console.log(target.currentTarget.value);
+	                    _this3.setState({ language: target.currentTarget.value });
+	                }
+	            };
 
 	            return _react3.default.createElement(route.component, props);
 	        }
@@ -784,25 +840,31 @@
 	            var pageProps = void 0;
 	            switch (argument) {
 	                case "vernissage":
-	                    pageProps = { view: {
+	                    pageProps = {
+	                        view: {
 	                            page: "overview",
 	                            index: undefined
-	                        } };
+	                        }
+	                    };
 	                    break;
 	                case "about":
-	                    pageProps = { view: {
+	                    pageProps = {
+	                        view: {
 	                            page: "about",
 	                            index: undefined
-	                        } };
+	                        }
+	                    };
 	                    break;
 	                case "blog":
 	                    window.open("http://weedoocare.tumblr.com/", "_system");
 	                    return;
 	                case "contact":
-	                    pageProps = { view: {
+	                    pageProps = {
+	                        view: {
 	                            page: "contact",
 	                            index: undefined
-	                        } };
+	                        }
+	                    };
 	                    break;
 	            }
 
@@ -812,13 +874,13 @@
 	    }, {
 	        key: "pushPage",
 	        value: function pushPage(view, index) {
-	            var _this3 = this;
+	            var _this4 = this;
 
 	            if (view == 'qr-code' && index !== undefined && index.length > 0) {
 	                var success = false;
 	                this.state.entries.map(function (entry, entryIndex) {
 	                    if (entry.url === index) {
-	                        _this3.pushPage("detail", entryIndex);
+	                        _this4.pushPage("detail", entryIndex);
 	                        success = true;
 	                    }
 	                });
@@ -828,11 +890,13 @@
 	                }
 	            } else {
 	                console.log("Pushing " + view + " to " + index);
-	                this.navigator.pushPage({ component: _PageRoot2.default, props: {
+	                this.navigator.pushPage({
+	                    component: _PageRoot2.default, props: {
 	                        view: {
 	                            page: view, index: index
 	                        }
-	                    } });
+	                    }
+	                });
 	            }
 	        }
 	    }, {
@@ -856,7 +920,7 @@
 	    }, {
 	        key: "render",
 	        value: function render() {
-	            var _this4 = this;
+	            var _this5 = this;
 
 	            return _react3.default.createElement(
 	                _reactOnsenui.Splitter,
@@ -892,11 +956,14 @@
 	                    _reactOnsenui.SplitterContent,
 	                    null,
 	                    _react3.default.createElement(_reactOnsenui.Navigator, {
-	                        initialRoute: { component: _PageRoot2.default, props: { view: { page: "overview", index: undefined }
-	                            } },
+	                        initialRoute: {
+	                            component: _PageRoot2.default, props: {
+	                                view: { page: "overview", index: undefined }
+	                            }
+	                        },
 	                        renderPage: this.renderPage.bind(this),
 	                        ref: function ref(navigator) {
-	                            return _this4.navigator = navigator;
+	                            return _this5.navigator = navigator;
 	                        }
 	                    })
 	                )
@@ -921,7 +988,7 @@
 	    _onsenui2.default.ready(function () {
 	        _reactDom2.default.render(_react3.default.createElement(MainNavigation, null), document.getElementById('app'));
 	    });
-	    if ((typeof cordova === "undefined" ? "undefined" : _typeof(cordova)) !== undefined) {
+	    if (typeof cordova !== "undefined") {
 	        window.open = cordova.InAppBrowser.open;
 	    }
 	}
@@ -29400,7 +29467,8 @@
 	                _react3.default.createElement(_PageContent2.default, { status: this.props.status, view: this.props.view, title: this.props.title,
 	                    intro: this.props.intro, entries: this.props.entries, baseurl: this.props.baseurl,
 	                    navigation: this.props.navigation,
-	                    loadCallback: this.props.loadCallback
+	                    loadCallback: this.props.loadCallback,
+	                    language: this.props.language
 	                })
 	            );
 	        }
@@ -61945,14 +62013,12 @@
 	                        index: this.props.view.index })
 	                );
 	            } else if (this.props.view.page == "detail" && this.props.view.index !== undefined && this.props.view.index <= this.props.entries.length) {
-	                var entry = this.props.entries[this.props.view.index];
-	                if (entry.video !== undefined) {}
 	                return _react3.default.createElement(_Detail2.default, { entry: this.props.entries[this.props.view.index], baseurl: this.props.baseurl });
 	            } else if (this.props.view.page == "about") {
 	                return _react3.default.createElement(
 	                    "div",
 	                    { className: "content" },
-	                    _react3.default.createElement(_About2.default, null)
+	                    _react3.default.createElement(_About2.default, { language: this.props.language })
 	                );
 	            } else if (this.props.view.page == "contact") {
 	                return _react3.default.createElement(
@@ -63504,6 +63570,7 @@
 	        key: "render",
 	        value: function render() {
 	            var entry = this.props.entry;
+	            console.log(entry);
 	            return _react3.default.createElement(
 	                "div",
 	                { className: "content" },
@@ -63513,7 +63580,7 @@
 	                    _react3.default.createElement(
 	                        _reactOnsenui.Col,
 	                        { width: "100%" },
-	                        _react3.default.createElement(_Intro2.default, { title: entry.title, intro: entry.suggestion })
+	                        _react3.default.createElement(_Intro2.default, { title: entry.title, intro: entry.text })
 	                    ),
 	                    entry.mp3 !== undefined ? _react3.default.createElement(
 	                        _reactOnsenui.Col,
@@ -63876,6 +63943,37 @@
 	                        null,
 	                        "App-Version: ",
 	                        version
+	                    )
+	                ),
+	                _react3.default.createElement(
+	                    _reactOnsenui.Col,
+	                    { width: "100%" },
+	                    _react3.default.createElement(
+	                        "p",
+	                        null,
+	                        "Preferred language: ",
+	                        this.props.language.inUse
+	                    ),
+	                    _react3.default.createElement(
+	                        "p",
+	                        null,
+	                        _react3.default.createElement(
+	                            "b",
+	                            null,
+	                            "Change language:"
+	                        ),
+	                        _react3.default.createElement("br", null),
+	                        _react3.default.createElement(
+	                            "select",
+	                            { defaultValue: this.props.language.inUse, onChange: this.props.language.onChange },
+	                            this.props.language.possible.map(function (lang, key) {
+	                                return _react3.default.createElement(
+	                                    "option",
+	                                    null,
+	                                    lang
+	                                );
+	                            })
+	                        )
 	                    )
 	                )
 	            );

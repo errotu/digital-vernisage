@@ -32,16 +32,13 @@ export default class StartPageContent extends React.Component {
             </div>);
 
         } else if (this.props.view.page == "detail" && this.props.view.index !== undefined && this.props.view.index <= this.props.entries.length) {
-            let entry = this.props.entries[this.props.view.index];
-            if (entry.video !== undefined) {
-            }
             return (
                 <Detail entry={this.props.entries[this.props.view.index]} baseurl={this.props.baseurl}/>
             );
         } else if (this.props.view.page == "about") {
             return (
                 <div className="content">
-                    <About />
+                    <About language={this.props.language}/>
                 </div>
             );
         } else if (this.props.view.page == "contact") {

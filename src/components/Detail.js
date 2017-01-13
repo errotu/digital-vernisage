@@ -9,11 +9,12 @@ export default class StartPageContent extends React.Component {
 
     render() {
         let entry = this.props.entry;
+        console.log(entry)
         return (
             <div className="content">
                 <Row>
                     <Col width="100%">
-                        <Intro title={entry.title} intro={entry.suggestion}/>
+                        <Intro title={entry.title} intro={entry.text}/>
                     </Col>
                     {entry.mp3 !== undefined ?
                         <Col width="100%"><b>Audio</b><br /><AudioPlayer
