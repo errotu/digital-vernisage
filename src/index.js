@@ -13,6 +13,7 @@ require('./css/theme.styl');
 
 export const ERR_INVALID_QR = 0;
 export const ERR_NO_CONNECTION = 1;
+export const ERR_INVALID_JSON = 2;
 
 /*
  Multi-Sprache ✓
@@ -29,12 +30,10 @@ class MainNavigation extends React.Component {
         super();
 
         this.state = {
-            fallback: 'de',
-            possibleLanguages: ['de', 'en'],
             isOpen: false,
             status: {state: 'fetching', msg: undefined},
-            title: null,
-            intro: null,
+            title: "Welcome to our digital Vernisage",
+            intro: "Content is loading",
             baseurl: null,
             entries: [],
             navigation: {
@@ -42,26 +41,88 @@ class MainNavigation extends React.Component {
                 popPage: this.popPage.bind(this),
                 openMenu: this.open.bind(this),
                 displayError: this.displayError.bind(this),
+            },
+            language: {
+                fallback: 'de',
+                possible: ['de', 'en'],
+                onChange: this.onLanguageChange.bind(this)
             }
         };
 
         if(typeof(Storage) !== "undefined") {
             if(localStorage.language) {
-                this.state.language = localStorage.language;
+                this.state.language.inUse = localStorage.language;
+                console.log("Use stored language: " + localStorage.language);
+                return;
             }
         }
 
-        if(!this.state.language && typeof(navigator.language) !== "undefined") {
-            this.state.language = navigator.language.split("-")[0].split("_")[0];
+        if(!this.state.language.inUse && typeof(navigator.language) !== "undefined") {
+            this.state.language.inUse = navigator.language.split("-")[0].split("_")[0];
             console.log("Use navigator.language");
-            console.log("Language is: " + this.state.language);
+            console.log("Language is: " + this.state.language.inUse);
         } else {
-            this.state.language = "en";
+            this.state.language.inUse = this.state.language.fallback;
             console.log("Use fallback");
-            console.log("Language is: " + this.state.language);
+            console.log("Language is: " + this.state.language.inUse);
         }
 
 
+    }
+
+    onLanguageChange(changeEvent) {
+        if(typeof(changeEvent) === "undefined") {
+            console.log("Event is undefined");
+            return;
+        }
+        let newLang = changeEvent.target.id;
+        console.log("Choose language: " + newLang);
+        this.setState({language: {
+                inUse: newLang,
+                fallback: this.state.language.fallback,
+                possible: this.state.language.possible,
+                onChange: this.onLanguageChange.bind(this)
+            }
+        });
+        if (typeof(Storage) !== "undefined") {
+            localStorage.language = newLang;
+        }
+
+        this.calculateLocalizedEntries();
+    }
+
+    calculateLocalizedEntries() {
+        let localizedEntries = [];
+        console.log("Calculate entries");
+        this.state.entries.forEach((entry) => {
+            let localEntry = JSON.parse(JSON.stringify(entry));
+            localEntry.title = this.getTranslated(entry.title);
+            localEntry.text = this.getTranslated(entry.text);
+            localizedEntries.push(localEntry);
+        });
+
+        this.setState({localEntries: localizedEntries});
+    }
+
+    getTranslated(entry) {
+        let localEntry;
+        if(typeof(entry) !== "object") {
+            console.log("entry not object");
+            return "";
+        }
+
+        let prefLang = this.state.language.inUse;
+        let fallback = this.state.language.fallback;
+
+        if (prefLang in entry) {
+            localEntry = entry[prefLang];
+        } else if (fallback in entry) {
+            localEntry = entry[fallback];
+        } else {
+            localEntry = entry[0];
+        }
+
+        return localEntry;
     }
 
     componentDidMount() {
@@ -80,17 +141,27 @@ class MainNavigation extends React.Component {
             console.log("Got JSON");
 
             this.setState({
-                fallback: vernissage.fallback_language,
-                possibleLanguages: vernissage.languages,
                 status: {state: 'fetched', msg: undefined},
                 title: vernissage.title,
                 intro: vernissage.intro,
                 entries: vernissage.entries,
-                baseurl: vernissage.baseurl
+                baseurl: vernissage.baseurl,
+                language: {
+                    inUse: this.state.language.inUse,
+                    fallback: vernissage.fallback_language,
+                    possible: vernissage.languages,
+                    onChange: this.onLanguageChange.bind(this)
+                }
             });
+
+            this.calculateLocalizedEntries();
         }).catch((ex) => {
-            console.log('parsing failed', ex.message);
-            this.displayError(ERR_NO_CONNECTION);
+            console.log(ex.message);
+            if(ex.message.indexOf("NetworkError") !== -1) {
+                this.displayError(ERR_NO_CONNECTION);
+            } else {
+                this.displayError(ERR_INVALID_JSON);
+            }
         });
     }
 
@@ -111,47 +182,12 @@ class MainNavigation extends React.Component {
         props.status = this.state.status;
 
 
-        if (this.state.title != null) {
-            props.title = this.state.title[this.state.language];
-        }
-        if (this.state.intro != null) {
-            props.intro = this.state.intro[this.state.language];
-        }
+        props.title = this.getTranslated(this.state.title || {});
+        props.intro = this.getTranslated(this.state.intro || {});
 
-        let localEntries = [];
-        this.state.entries.forEach((entry) => {
-            console.log("Calculate entries");
-            let localEntry = JSON.parse(JSON.stringify(entry));
-            console.log(entry);
-            if (this.state.language in entry.title) {
-                localEntry.title = entry.title[this.state.language];
-            } else {
-                localEntry.title = entry.title[this.state.fallback];
-            }
-
-            if (this.state.language in entry.text) {
-                localEntry.text = entry.text[this.state.language];
-            } else {
-                localEntry.text = entry.text[this.state.fallback];
-            }
-            localEntries.push(localEntry);
-        });
-
-        props.entries = localEntries;
+        props.entries = this.state.localEntries || [];
         props.baseurl = this.state.baseurl;
-
-        props.language = {
-            inUse: this.state.language,
-            possible: this.state.possibleLanguages,
-            onChange: (target) => {
-                console.log(target.currentTarget.value);
-                this.setState({language: target.currentTarget.value});
-                if(typeof(Storage) !== "undefined") {
-                    localStorage.language = target.currentTarget.value;
-                }
-
-            }
-        };
+        props.language = this.state.language;
 
         return React.createElement(route.component, props);
     }
@@ -234,6 +270,11 @@ class MainNavigation extends React.Component {
             console.log("Got No Connection Error");
             this.setState({
                 status: {state: 'error', msg: 'No connection.'},
+            });
+        } else if (id == ERR_INVALID_JSON) {
+            console.log("Got JSON Error");
+            this.setState({
+                status: {state: 'error', msg: 'There is a server-side problem. Parsing Vernisage data is not possible.'},
             });
         }
     }

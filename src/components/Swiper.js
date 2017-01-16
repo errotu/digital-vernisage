@@ -33,11 +33,15 @@ export default class Swiper extends React.Component {
     }
 
     render() {
+        let infoText = {
+            'de': 'Tippen sie auf ein Bild, um weitere Informationen zu erhalten',
+            'en': 'Tap an image to get more information'
+        };
         let infoModal = (<Modal
                 isOpen={this.state.isOpen}>
                 <section style={{margin: '16px'}}>
                     <p style={{opacity: 0.6}}>
-                        Tap an image to get more information.
+                        {infoText[this.props.language.inUse]}
                     </p>
                     <p>
                         <Button onClick={() => this.setState({isOpen: false})}>

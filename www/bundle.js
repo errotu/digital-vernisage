@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "82eb0f971a0c3529740b"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "a8e68d30d5bf8f815a71"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -597,7 +597,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.ERR_NO_CONNECTION = exports.ERR_INVALID_QR = undefined;
+	exports.ERR_INVALID_JSON = exports.ERR_NO_CONNECTION = exports.ERR_INVALID_QR = undefined;
 
 	var _index = __webpack_require__(3);
 
@@ -614,6 +614,8 @@
 	var _index5 = __webpack_require__(186);
 
 	var _index6 = _interopRequireDefault(_index5);
+
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -679,12 +681,13 @@
 
 	var ERR_INVALID_QR = exports.ERR_INVALID_QR = 0;
 	var ERR_NO_CONNECTION = exports.ERR_NO_CONNECTION = 1;
+	var ERR_INVALID_JSON = exports.ERR_INVALID_JSON = 2;
 
 	/*
 	 Multi-Sprache ✓
 	 Bild nicht im Video ✓
 	 Versionsnummer in About ✓
-	 TODO: "Tap to detail" nur einmal am Tag
+	 "Tap to detail" nur einmal am Tag ✓
 	 TODO: Pull-to-refresh
 	 TODO: QR-Code auf App-Store weiterleiten
 	 */
@@ -698,12 +701,10 @@
 	        var _this = _possibleConstructorReturn(this, (MainNavigation.__proto__ || Object.getPrototypeOf(MainNavigation)).call(this));
 
 	        _this.state = {
-	            fallback: 'de',
-	            possibleLanguages: ['de', 'en'],
 	            isOpen: false,
 	            status: { state: 'fetching', msg: undefined },
-	            title: null,
-	            intro: null,
+	            title: "Welcome to our digital Vernisage",
+	            intro: "Content is loading",
 	            baseurl: null,
 	            entries: [],
 	            navigation: {
@@ -711,29 +712,96 @@
 	                popPage: _this.popPage.bind(_this),
 	                openMenu: _this.open.bind(_this),
 	                displayError: _this.displayError.bind(_this)
+	            },
+	            language: {
+	                fallback: 'de',
+	                possible: ['de', 'en'],
+	                onChange: _this.onLanguageChange.bind(_this)
 	            }
 	        };
 
 	        if (typeof Storage !== "undefined") {
 	            if (localStorage.language) {
-	                _this.state.language = localStorage.language;
+	                _this.state.language.inUse = localStorage.language;
+	                console.log("Use stored language: " + localStorage.language);
+	                return _possibleConstructorReturn(_this);
 	            }
 	        }
 
-	        if (!_this.state.language && typeof navigator.language !== "undefined") {
-	            _this.state.language = navigator.language.split("-")[0].split("_")[0];
+	        if (!_this.state.language.inUse && typeof navigator.language !== "undefined") {
+	            _this.state.language.inUse = navigator.language.split("-")[0].split("_")[0];
 	            console.log("Use navigator.language");
-	            console.log("Language is: " + _this.state.language);
+	            console.log("Language is: " + _this.state.language.inUse);
 	        } else {
-	            _this.state.language = "en";
+	            _this.state.language.inUse = _this.state.language.fallback;
 	            console.log("Use fallback");
-	            console.log("Language is: " + _this.state.language);
+	            console.log("Language is: " + _this.state.language.inUse);
 	        }
 
 	        return _this;
 	    }
 
 	    _createClass(MainNavigation, [{
+	        key: "onLanguageChange",
+	        value: function onLanguageChange(changeEvent) {
+	            if (typeof changeEvent === "undefined") {
+	                console.log("Event is undefined");
+	                return;
+	            }
+	            var newLang = changeEvent.target.id;
+	            console.log("Choose language: " + newLang);
+	            this.setState({ language: {
+	                    inUse: newLang,
+	                    fallback: this.state.language.fallback,
+	                    possible: this.state.language.possible,
+	                    onChange: this.onLanguageChange.bind(this)
+	                }
+	            });
+	            if (typeof Storage !== "undefined") {
+	                localStorage.language = newLang;
+	            }
+
+	            this.calculateLocalizedEntries();
+	        }
+	    }, {
+	        key: "calculateLocalizedEntries",
+	        value: function calculateLocalizedEntries() {
+	            var _this2 = this;
+
+	            var localizedEntries = [];
+	            console.log("Calculate entries");
+	            this.state.entries.forEach(function (entry) {
+	                var localEntry = JSON.parse(JSON.stringify(entry));
+	                localEntry.title = _this2.getTranslated(entry.title);
+	                localEntry.text = _this2.getTranslated(entry.text);
+	                localizedEntries.push(localEntry);
+	            });
+
+	            this.setState({ localEntries: localizedEntries });
+	        }
+	    }, {
+	        key: "getTranslated",
+	        value: function getTranslated(entry) {
+	            var localEntry = void 0;
+	            if ((typeof entry === "undefined" ? "undefined" : _typeof(entry)) !== "object") {
+	                console.log("entry not object");
+	                return "";
+	            }
+
+	            var prefLang = this.state.language.inUse;
+	            var fallback = this.state.language.fallback;
+
+	            if (prefLang in entry) {
+	                localEntry = entry[prefLang];
+	            } else if (fallback in entry) {
+	                localEntry = entry[fallback];
+	            } else {
+	                localEntry = entry[0];
+	            }
+
+	            return localEntry;
+	        }
+	    }, {
 	        key: "componentDidMount",
 	        value: function componentDidMount() {
 	            this.loadData();
@@ -741,7 +809,7 @@
 	    }, {
 	        key: "loadData",
 	        value: function loadData() {
-	            var _this2 = this;
+	            var _this3 = this;
 
 	            console.log("Reloading");
 	            this.setState({
@@ -752,25 +820,33 @@
 	            }).then(function (vernissage) {
 	                console.log("Got JSON");
 
-	                _this2.setState({
-	                    fallback: vernissage.fallback_language,
-	                    possibleLanguages: vernissage.languages,
+	                _this3.setState({
 	                    status: { state: 'fetched', msg: undefined },
 	                    title: vernissage.title,
 	                    intro: vernissage.intro,
 	                    entries: vernissage.entries,
-	                    baseurl: vernissage.baseurl
+	                    baseurl: vernissage.baseurl,
+	                    language: {
+	                        inUse: _this3.state.language.inUse,
+	                        fallback: vernissage.fallback_language,
+	                        possible: vernissage.languages,
+	                        onChange: _this3.onLanguageChange.bind(_this3)
+	                    }
 	                });
+
+	                _this3.calculateLocalizedEntries();
 	            }).catch(function (ex) {
-	                console.log('parsing failed', ex.message);
-	                _this2.displayError(ERR_NO_CONNECTION);
+	                console.log(ex.message);
+	                if (ex.message.indexOf("NetworkError") !== -1) {
+	                    _this3.displayError(ERR_NO_CONNECTION);
+	                } else {
+	                    _this3.displayError(ERR_INVALID_JSON);
+	                }
 	            });
 	        }
 	    }, {
 	        key: "renderPage",
 	        value: function renderPage(route, navigator) {
-	            var _this3 = this;
-
 	            console.log("Rendering Page");
 	            var props = route.props || {};
 	            props.navigator = navigator;
@@ -785,46 +861,12 @@
 	            props.loadCallback = this.loadData.bind(this);
 	            props.status = this.state.status;
 
-	            if (this.state.title != null) {
-	                props.title = this.state.title[this.state.language];
-	            }
-	            if (this.state.intro != null) {
-	                props.intro = this.state.intro[this.state.language];
-	            }
+	            props.title = this.getTranslated(this.state.title || {});
+	            props.intro = this.getTranslated(this.state.intro || {});
 
-	            var localEntries = [];
-	            this.state.entries.forEach(function (entry) {
-	                console.log("Calculate entries");
-	                var localEntry = JSON.parse(JSON.stringify(entry));
-	                console.log(entry);
-	                if (_this3.state.language in entry.title) {
-	                    localEntry.title = entry.title[_this3.state.language];
-	                } else {
-	                    localEntry.title = entry.title[_this3.state.fallback];
-	                }
-
-	                if (_this3.state.language in entry.text) {
-	                    localEntry.text = entry.text[_this3.state.language];
-	                } else {
-	                    localEntry.text = entry.text[_this3.state.fallback];
-	                }
-	                localEntries.push(localEntry);
-	            });
-
-	            props.entries = localEntries;
+	            props.entries = this.state.localEntries || [];
 	            props.baseurl = this.state.baseurl;
-
-	            props.language = {
-	                inUse: this.state.language,
-	                possible: this.state.possibleLanguages,
-	                onChange: function onChange(target) {
-	                    console.log(target.currentTarget.value);
-	                    _this3.setState({ language: target.currentTarget.value });
-	                    if (typeof Storage !== "undefined") {
-	                        localStorage.language = target.currentTarget.value;
-	                    }
-	                }
-	            };
+	            props.language = this.state.language;
 
 	            return _react3.default.createElement(route.component, props);
 	        }
@@ -910,6 +952,11 @@
 	                console.log("Got No Connection Error");
 	                this.setState({
 	                    status: { state: 'error', msg: 'No connection.' }
+	                });
+	            } else if (id == ERR_INVALID_JSON) {
+	                console.log("Got JSON Error");
+	                this.setState({
+	                    status: { state: 'error', msg: 'There is a server-side problem. Parsing Vernisage data is not possible.' }
 	                });
 	            }
 	        }
@@ -62011,10 +62058,11 @@
 	                    _react3.default.createElement(_Swiper2.default, { entries: this.props.entries,
 	                        baseurl: this.props.baseurl,
 	                        navigation: this.props.navigation,
-	                        index: this.props.view.index })
+	                        index: this.props.view.index,
+	                        language: this.props.language })
 	                );
 	            } else if (this.props.view.page == "detail" && this.props.view.index !== undefined && this.props.view.index <= this.props.entries.length) {
-	                return _react3.default.createElement(_Detail2.default, { entry: this.props.entries[this.props.view.index], baseurl: this.props.baseurl });
+	                return _react3.default.createElement(_Detail2.default, { entry: this.props.entries[this.props.view.index], baseurl: this.props.baseurl, language: this.props.language });
 	            } else if (this.props.view.page == "about") {
 	                return _react3.default.createElement(
 	                    "div",
@@ -63399,6 +63447,10 @@
 	        value: function render() {
 	            var _this2 = this;
 
+	            var infoText = {
+	                'de': 'Tippen sie auf ein Bild, um weitere Informationen zu erhalten',
+	                'en': 'Tap an image to get more information'
+	            };
 	            var infoModal = _react3.default.createElement(
 	                _reactOnsenui.Modal,
 	                {
@@ -63409,7 +63461,7 @@
 	                    _react3.default.createElement(
 	                        'p',
 	                        { style: { opacity: 0.6 } },
-	                        'Tap an image to get more information.'
+	                        infoText[this.props.language.inUse]
 	                    ),
 	                    _react3.default.createElement(
 	                        'p',
@@ -63574,8 +63626,11 @@
 	    _createClass(StartPageContent, [{
 	        key: "render",
 	        value: function render() {
+	            var infoText = {
+	                'de': 'Tippen sie auf das Bild, um es in der Vollbildansicht zu öffnen',
+	                'en': 'Tap the image to open fullscreen'
+	            };
 	            var entry = this.props.entry;
-	            console.log(entry);
 	            return _react3.default.createElement(
 	                "div",
 	                { className: "content" },
@@ -63631,7 +63686,7 @@
 	                            _react3.default.createElement(
 	                                "i",
 	                                null,
-	                                "Tap the image to open in Fullscreen mode"
+	                                infoText[this.props.language.inUse]
 	                            )
 	                        )
 	                    )
@@ -63907,7 +63962,7 @@
 	    _createClass(About, [{
 	        key: "render",
 	        value: function render() {
-	            var version = ("0.6.0");
+	            var version = ("0.6.2");
 	            return _react3.default.createElement(
 	                _reactOnsenui.Row,
 	                { className: "about-page" },
@@ -63953,33 +64008,40 @@
 	                _react3.default.createElement(
 	                    _reactOnsenui.Col,
 	                    { width: "100%" },
-	                    _react3.default.createElement(
-	                        "p",
-	                        null,
-	                        "Preferred language: ",
-	                        this.props.language.inUse
-	                    ),
-	                    _react3.default.createElement(
-	                        "p",
-	                        null,
-	                        _react3.default.createElement(
-	                            "b",
-	                            null,
-	                            "Change language:"
-	                        ),
-	                        _react3.default.createElement("br", null),
-	                        _react3.default.createElement(
-	                            "select",
-	                            { defaultValue: this.props.language.inUse, onChange: this.props.language.onChange },
-	                            this.props.language.possible.map(function (lang, key) {
-	                                return _react3.default.createElement(
-	                                    "option",
-	                                    null,
-	                                    lang
-	                                );
-	                            })
-	                        )
-	                    )
+	                    _react3.default.createElement(_reactOnsenui.List, {
+	                        dataSource: this.props.language.possible,
+	                        renderHeader: function renderHeader() {
+	                            return _react3.default.createElement(
+	                                _reactOnsenui.ListHeader,
+	                                null,
+	                                "Change language"
+	                            );
+	                        },
+	                        renderRow: this.renderLanguageRow.bind(this)
+	                    })
+	                )
+	            );
+	        }
+	    }, {
+	        key: "renderLanguageRow",
+	        value: function renderLanguageRow(language) {
+	            return _react3.default.createElement(
+	                _reactOnsenui.ListItem,
+	                { key: language, tappable: true },
+	                _react3.default.createElement(
+	                    "label",
+	                    { className: "left" },
+	                    _react3.default.createElement(_reactOnsenui.Input, {
+	                        inputId: "" + language,
+	                        checked: language === this.props.language.inUse,
+	                        onChange: this.props.language.onChange,
+	                        type: "radio"
+	                    })
+	                ),
+	                _react3.default.createElement(
+	                    "label",
+	                    { htmlFor: "" + language, className: "center" },
+	                    language
 	                )
 	            );
 	        }

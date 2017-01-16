@@ -1,5 +1,5 @@
 import React from "react";
-import {Col, Row} from "react-onsenui";
+import {Col, Row, ListItem, Input, List, ListHeader} from "react-onsenui";
 let logo = require('../static/logo.png');
 
 export default class About extends React.Component {
@@ -20,16 +20,33 @@ export default class About extends React.Component {
                 <p>App-Version: {version}</p>
             </Col>
             <Col width="100%">
-                <p>Preferred language: {this.props.language.inUse}</p>
-                <p><b>Change language:</b><br />
-                    <select defaultValue={this.props.language.inUse} onChange={this.props.language.onChange}>
-                        {this.props.language.possible.map((lang, key) => {
-                            return(<option>{lang}</option>);
-                        })}
-                    </select>
-                </p>
+                <List
+                    dataSource={this.props.language.possible}
+                    renderHeader={() => <ListHeader>Change language</ListHeader>}
+                    renderRow={this.renderLanguageRow.bind(this)}
+                />
+
             </Col>
 
         </Row>);
     }
+
+    renderLanguageRow(language) {
+        return (
+            <ListItem key={language} tappable>
+                <label className='left'>
+                    <Input
+                        inputId={`${language}`}
+                        checked={language === this.props.language.inUse}
+                        onChange={this.props.language.onChange}
+                        type='radio'
+                    />
+                </label>
+                <label htmlFor={`${language}`} className='center'>
+                    {language}
+                </label>
+            </ListItem>
+        )
+    }
+
 }

@@ -8,8 +8,11 @@ import {Row, Col} from "react-onsenui";
 export default class StartPageContent extends React.Component {
 
     render() {
+        let infoText = {
+            'de': 'Tippen sie auf das Bild, um es in der Vollbildansicht zu öffnen',
+            'en': 'Tap the image to open fullscreen'
+        };
         let entry = this.props.entry;
-        console.log(entry)
         return (
             <div className="content">
                 <Row>
@@ -34,7 +37,8 @@ export default class StartPageContent extends React.Component {
                         </Col> }
                 </Row>
                 <Row>
-                    <Col witdh="100%" style={{textAlign: "center"}}><p><i>Tap the image to open in Fullscreen mode</i></p></Col>
+                    <Col witdh="100%" style={{textAlign: "center"}}><p><i>{infoText[this.props.language.inUse]}
+                    </i></p></Col>
                 </Row>
             </div>
         );

@@ -28,12 +28,13 @@ export default class StartPageContent extends React.Component {
                 <Swiper entries={this.props.entries}
                         baseurl={this.props.baseurl}
                         navigation={this.props.navigation}
-                        index={this.props.view.index}/>
+                        index={this.props.view.index}
+                        language={this.props.language}/>
             </div>);
 
         } else if (this.props.view.page == "detail" && this.props.view.index !== undefined && this.props.view.index <= this.props.entries.length) {
             return (
-                <Detail entry={this.props.entries[this.props.view.index]} baseurl={this.props.baseurl}/>
+                <Detail entry={this.props.entries[this.props.view.index]} baseurl={this.props.baseurl}  language={this.props.language}/>
             );
         } else if (this.props.view.page == "about") {
             return (
