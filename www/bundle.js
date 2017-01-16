@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "b017a832d1f2c9182a9a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "8b651f153ea4f4391582"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -688,7 +688,7 @@
 	 Bild nicht im Video ✓
 	 Versionsnummer in About ✓
 	 "Tap to detail" nur einmal am Tag ✓
-	 TODO: Pull-to-refresh
+	 Pull-to-refresh ✓
 	 TODO: QR-Code auf App-Store weiterleiten
 	 */
 
@@ -838,9 +838,7 @@
 	                _this3.calculateLocalizedEntries();
 
 	                if (typeof doneCallback !== "undefined") {
-	                    setTimeout(function () {
-	                        doneCallback();
-	                    }, 500);
+	                    doneCallback();
 	                }
 	            }).catch(function (ex) {
 	                console.log(ex.message);
@@ -63985,7 +63983,7 @@
 	    _createClass(About, [{
 	        key: "render",
 	        value: function render() {
-	            var version = ("0.6.2");
+	            var version = ("1.0.0");
 	            return _react3.default.createElement(
 	                _reactOnsenui.Row,
 	                { className: "about-page" },
