@@ -18,7 +18,7 @@ export const ERR_NO_CONNECTION = 1;
  Multi-Sprache ✓
  Bild nicht im Video ✓
  Versionsnummer in About ✓
- TODO: "Tap to detail" nur einmal am Tag
+ "Tap to detail" nur einmal am Tag ✓
  TODO: Pull-to-refresh
  TODO: QR-Code auf App-Store weiterleiten
  */

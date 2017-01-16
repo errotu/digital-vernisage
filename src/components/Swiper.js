@@ -11,13 +11,17 @@ export default class Swiper extends React.Component {
     constructor(props) {
         super();
         this.state = {index: (props.index === undefined ? 0 : props.index)};
+
         if(typeof(Storage) !== "undefined") {
-            if(localStorage.gotInfo) {
+            let date = new Date();
+            let currentDate = date.getDate().toString() + date.getMonth().toString();
+
+            if(localStorage.gotInfoToday == currentDate) {
                 this.state.isOpen = false;
             } else {
-                //First app use
+                //First app use today
                 this.state.isOpen = true;
-                localStorage.gotInfo = true;
+                localStorage.gotInfoToday = currentDate;
             }
         } else {
             this.state.isOpen = false;

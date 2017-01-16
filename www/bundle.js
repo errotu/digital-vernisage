@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "3aa691b6bb230ddbc96c"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "82eb0f971a0c3529740b"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -63371,13 +63371,17 @@
 	        var _this = _possibleConstructorReturn(this, (Swiper.__proto__ || Object.getPrototypeOf(Swiper)).call(this));
 
 	        _this.state = { index: props.index === undefined ? 0 : props.index };
+
 	        if (typeof Storage !== "undefined") {
-	            if (localStorage.gotInfo) {
+	            var date = new Date();
+	            var currentDate = date.getDate().toString() + date.getMonth().toString();
+
+	            if (localStorage.gotInfoToday == currentDate) {
 	                _this.state.isOpen = false;
 	            } else {
-	                //First app use
+	                //First app use today
 	                _this.state.isOpen = true;
-	                localStorage.gotInfo = true;
+	                localStorage.gotInfoToday = currentDate;
 	            }
 	        } else {
 	            _this.state.isOpen = false;
