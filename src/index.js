@@ -20,7 +20,7 @@ export const ERR_INVALID_JSON = 2;
  Bild nicht im Video ✓
  Versionsnummer in About ✓
  "Tap to detail" nur einmal am Tag ✓
- TODO: Pull-to-refresh
+ Pull-to-refresh ✓
  TODO: QR-Code auf App-Store weiterleiten
  */
 
@@ -46,7 +46,8 @@ class MainNavigation extends React.Component {
                 fallback: 'de',
                 possible: ['de', 'en'],
                 onChange: this.onLanguageChange.bind(this)
-            }
+            },
+            refresh: this.loadData.bind(this)
         };
 
         if(typeof(Storage) !== "undefined") {
@@ -129,7 +130,7 @@ class MainNavigation extends React.Component {
         this.loadData();
     }
 
-    loadData() {
+    loadData(doneCallback) {
         console.log("Reloading");
         this.setState({
             status: {state: 'fetching', msg: undefined}
@@ -155,8 +156,16 @@ class MainNavigation extends React.Component {
             });
 
             this.calculateLocalizedEntries();
+
+            if(typeof(doneCallback) !== "undefined") {
+                doneCallback();
+            }
         }).catch((ex) => {
             console.log(ex.message);
+            if(typeof(doneCallback) !== "undefined") {
+                doneCallback();
+            }
+
             if(ex.message.indexOf("NetworkError") !== -1) {
                 this.displayError(ERR_NO_CONNECTION);
             } else {
@@ -189,6 +198,7 @@ class MainNavigation extends React.Component {
         props.baseurl = this.state.baseurl;
         props.language = this.state.language;
 
+        props.refresh = this.loadData.bind(this);
         return React.createElement(route.component, props);
     }
 

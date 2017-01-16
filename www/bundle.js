@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "a8e68d30d5bf8f815a71"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b017a832d1f2c9182a9a"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -717,7 +717,8 @@
 	                fallback: 'de',
 	                possible: ['de', 'en'],
 	                onChange: _this.onLanguageChange.bind(_this)
-	            }
+	            },
+	            refresh: _this.loadData.bind(_this)
 	        };
 
 	        if (typeof Storage !== "undefined") {
@@ -808,7 +809,7 @@
 	        }
 	    }, {
 	        key: "loadData",
-	        value: function loadData() {
+	        value: function loadData(doneCallback) {
 	            var _this3 = this;
 
 	            console.log("Reloading");
@@ -835,8 +836,18 @@
 	                });
 
 	                _this3.calculateLocalizedEntries();
+
+	                if (typeof doneCallback !== "undefined") {
+	                    setTimeout(function () {
+	                        doneCallback();
+	                    }, 500);
+	                }
 	            }).catch(function (ex) {
 	                console.log(ex.message);
+	                if (typeof doneCallback !== "undefined") {
+	                    doneCallback();
+	                }
+
 	                if (ex.message.indexOf("NetworkError") !== -1) {
 	                    _this3.displayError(ERR_NO_CONNECTION);
 	                } else {
@@ -868,6 +879,7 @@
 	            props.baseurl = this.state.baseurl;
 	            props.language = this.state.language;
 
+	            props.refresh = this.loadData.bind(this);
 	            return _react3.default.createElement(route.component, props);
 	        }
 	    }, {
@@ -29516,7 +29528,8 @@
 	                    intro: this.props.intro, entries: this.props.entries, baseurl: this.props.baseurl,
 	                    navigation: this.props.navigation,
 	                    loadCallback: this.props.loadCallback,
-	                    language: this.props.language
+	                    language: this.props.language,
+	                    refresh: this.props.refresh
 	                })
 	            );
 	        }
@@ -62046,6 +62059,16 @@
 	                    return _react3.default.createElement(
 	                        "div",
 	                        { className: "content" },
+	                        _react3.default.createElement(
+	                            _reactOnsenui.PullHook,
+	                            {
+	                                onLoad: this.props.refresh,
+	                                onChange: function onChange() {
+	                                    return true;
+	                                }
+	                            },
+	                            "Refreshing"
+	                        ),
 	                        _react3.default.createElement(_Intro2.default, { title: this.props.title, intro: this.props.intro }),
 	                        _react3.default.createElement(_OverviewGrid2.default, { entries: this.props.entries, baseurl: this.props.baseurl,
 	                            navigation: this.props.navigation })

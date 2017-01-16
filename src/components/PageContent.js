@@ -5,7 +5,7 @@ import Swiper from "./Swiper";
 import Detail from "./Detail";
 import About from "./About";
 import Contact from "./Contact";
-import {ProgressCircular} from "react-onsenui";
+import {ProgressCircular, PullHook} from "react-onsenui";
 
 export default class StartPageContent extends React.Component {
 
@@ -18,6 +18,12 @@ export default class StartPageContent extends React.Component {
                 </div>);
             } else if (this.props.status.state == "fetched") {
                 return (<div className="content">
+                    <PullHook
+                        onLoad={this.props.refresh}
+                        onChange={() => {return true}}
+                    >
+                        Refreshing
+                    </PullHook>
                     <Intro title={this.props.title} intro={this.props.intro}/>
                     <OverviewGrid entries={this.props.entries} baseurl={this.props.baseurl}
                                   navigation={this.props.navigation}/>
