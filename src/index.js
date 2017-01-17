@@ -137,27 +137,29 @@ class MainNavigation extends React.Component {
             .then((response) => {
                 return response.json();
             }).then((vernissage) => {
-            console.log("Got JSON");
+            setTimeout(function(){
+                console.log("Got JSON");
 
-            this.setState({
-                status: {state: 'fetched', msg: undefined},
-                title: vernissage.title,
-                intro: vernissage.intro,
-                entries: vernissage.entries,
-                baseurl: vernissage.baseurl,
-                language: {
-                    inUse: this.state.language.inUse,
-                    fallback: vernissage.fallback_language,
-                    possible: vernissage.languages,
-                    onChange: this.onLanguageChange.bind(this)
+                this.setState({
+                    status: {state: 'fetched', msg: undefined},
+                    title: vernissage.title,
+                    intro: vernissage.intro,
+                    entries: vernissage.entries,
+                    baseurl: vernissage.baseurl,
+                    language: {
+                        inUse: this.state.language.inUse,
+                        fallback: vernissage.fallback_language,
+                        possible: vernissage.languages,
+                        onChange: this.onLanguageChange.bind(this)
+                    }
+                });
+
+                this.calculateLocalizedEntries();
+
+                if(typeof(doneCallback) !== "undefined") {
+                    doneCallback();
                 }
-            });
-
-            this.calculateLocalizedEntries();
-
-            if(typeof(doneCallback) !== "undefined") {
-                doneCallback();
-            }
+            }.bind(this), 800);
         }).catch((ex) => {
             console.log(ex.message);
             if(typeof(doneCallback) !== "undefined") {

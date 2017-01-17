@@ -22,7 +22,8 @@ export default class StartPageContent extends React.Component {
                         onLoad={this.props.refresh}
                         onChange={() => {return true}}
                     >
-                        Refreshing
+                        <ProgressCircular indeterminate />
+                        Pull to refresh
                     </PullHook>
                     <Intro title={this.props.title} intro={this.props.intro}/>
                     <OverviewGrid entries={this.props.entries} baseurl={this.props.baseurl}

@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "0e5a95f3e2876b7927d4"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "ae1a244417e27482223a"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -818,27 +818,29 @@
 	            fetch('https://media.weedoocare.com/DigitalVernissage/sample.json').then(function (response) {
 	                return response.json();
 	            }).then(function (vernissage) {
-	                console.log("Got JSON");
+	                setTimeout(function () {
+	                    console.log("Got JSON");
 
-	                _this3.setState({
-	                    status: { state: 'fetched', msg: undefined },
-	                    title: vernissage.title,
-	                    intro: vernissage.intro,
-	                    entries: vernissage.entries,
-	                    baseurl: vernissage.baseurl,
-	                    language: {
-	                        inUse: _this3.state.language.inUse,
-	                        fallback: vernissage.fallback_language,
-	                        possible: vernissage.languages,
-	                        onChange: _this3.onLanguageChange.bind(_this3)
+	                    this.setState({
+	                        status: { state: 'fetched', msg: undefined },
+	                        title: vernissage.title,
+	                        intro: vernissage.intro,
+	                        entries: vernissage.entries,
+	                        baseurl: vernissage.baseurl,
+	                        language: {
+	                            inUse: this.state.language.inUse,
+	                            fallback: vernissage.fallback_language,
+	                            possible: vernissage.languages,
+	                            onChange: this.onLanguageChange.bind(this)
+	                        }
+	                    });
+
+	                    this.calculateLocalizedEntries();
+
+	                    if (typeof doneCallback !== "undefined") {
+	                        doneCallback();
 	                    }
-	                });
-
-	                _this3.calculateLocalizedEntries();
-
-	                if (typeof doneCallback !== "undefined") {
-	                    doneCallback();
-	                }
+	                }.bind(_this3), 800);
 	            }).catch(function (ex) {
 	                console.log(ex.message);
 	                if (typeof doneCallback !== "undefined") {
@@ -62099,7 +62101,8 @@
 	                                    return true;
 	                                }
 	                            },
-	                            "Refreshing"
+	                            _react3.default.createElement(_reactOnsenui.ProgressCircular, { indeterminate: true }),
+	                            "Pull to refresh"
 	                        ),
 	                        _react3.default.createElement(_Intro2.default, { title: this.props.title, intro: this.props.intro }),
 	                        _react3.default.createElement(_OverviewGrid2.default, { entries: this.props.entries, baseurl: this.props.baseurl,
@@ -64017,7 +64020,7 @@
 	    _createClass(About, [{
 	        key: "render",
 	        value: function render() {
-	            var version = ("1.0.3");
+	            var version = ("1.0.4");
 	            return _react3.default.createElement(
 	                _reactOnsenui.Row,
 	                { className: "about-page" },
