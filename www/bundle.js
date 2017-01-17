@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "161707715f2d90f70be3"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "0e5a95f3e2876b7927d4"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -882,6 +882,7 @@
 	    }, {
 	        key: "open",
 	        value: function open() {
+	            console.log("open menu");
 	            this.setState({
 	                menuIsOpen: true
 	            });
@@ -992,7 +993,7 @@
 	                        width: 200,
 	                        collapse: true,
 	                        isSwipeable: true,
-	                        menuIsOpen: this.state.menuIsOpen
+	                        isOpen: this.state.menuIsOpen
 	                    },
 	                    _react3.default.createElement(
 	                        _reactOnsenui.Page,
@@ -64016,7 +64017,7 @@
 	    _createClass(About, [{
 	        key: "render",
 	        value: function render() {
-	            var version = ("1.0.2");
+	            var version = ("1.0.3");
 	            return _react3.default.createElement(
 	                _reactOnsenui.Row,
 	                { className: "about-page" },

@@ -201,6 +201,7 @@ class MainNavigation extends React.Component {
     }
 
     open() {
+        console.log("open menu");
         this.setState({
             menuIsOpen: true
         });
@@ -303,7 +304,7 @@ class MainNavigation extends React.Component {
                     width={200}
                     collapse={true}
                     isSwipeable={true}
-                    menuIsOpen={this.state.menuIsOpen}
+                    isOpen={this.state.menuIsOpen}
                 >
                     <Page>
                         <List
