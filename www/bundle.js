@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "8b651f153ea4f4391582"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "7e4d75b0099d037c0419"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -1007,6 +1007,17 @@
 	                                    item.title
 	                                );
 	                            }
+	                        }),
+	                        _react3.default.createElement(_reactOnsenui.List, {
+	                            dataSource: this.state.language.possible,
+	                            renderHeader: function renderHeader() {
+	                                return _react3.default.createElement(
+	                                    _reactOnsenui.ListHeader,
+	                                    null,
+	                                    "Change language"
+	                                );
+	                            },
+	                            renderRow: this.renderLanguageRow.bind(this)
 	                        })
 	                    )
 	                ),
@@ -1024,6 +1035,29 @@
 	                            return _this5.navigator = navigator;
 	                        }
 	                    })
+	                )
+	            );
+	        }
+	    }, {
+	        key: "renderLanguageRow",
+	        value: function renderLanguageRow(language) {
+	            return _react3.default.createElement(
+	                _reactOnsenui.ListItem,
+	                { key: language, tappable: true },
+	                _react3.default.createElement(
+	                    "label",
+	                    { className: "left" },
+	                    _react3.default.createElement(_reactOnsenui.Input, {
+	                        inputId: "" + language,
+	                        checked: language === this.state.language.inUse,
+	                        onChange: this.state.language.onChange,
+	                        type: "radio"
+	                    })
+	                ),
+	                _react3.default.createElement(
+	                    "label",
+	                    { htmlFor: "" + language, className: "center" },
+	                    language
 	                )
 	            );
 	        }
@@ -64025,44 +64059,6 @@
 	                        "App-Version: ",
 	                        version
 	                    )
-	                ),
-	                _react3.default.createElement(
-	                    _reactOnsenui.Col,
-	                    { width: "100%" },
-	                    _react3.default.createElement(_reactOnsenui.List, {
-	                        dataSource: this.props.language.possible,
-	                        renderHeader: function renderHeader() {
-	                            return _react3.default.createElement(
-	                                _reactOnsenui.ListHeader,
-	                                null,
-	                                "Change language"
-	                            );
-	                        },
-	                        renderRow: this.renderLanguageRow.bind(this)
-	                    })
-	                )
-	            );
-	        }
-	    }, {
-	        key: "renderLanguageRow",
-	        value: function renderLanguageRow(language) {
-	            return _react3.default.createElement(
-	                _reactOnsenui.ListItem,
-	                { key: language, tappable: true },
-	                _react3.default.createElement(
-	                    "label",
-	                    { className: "left" },
-	                    _react3.default.createElement(_reactOnsenui.Input, {
-	                        inputId: "" + language,
-	                        checked: language === this.props.language.inUse,
-	                        onChange: this.props.language.onChange,
-	                        type: "radio"
-	                    })
-	                ),
-	                _react3.default.createElement(
-	                    "label",
-	                    { htmlFor: "" + language, className: "center" },
-	                    language
 	                )
 	            );
 	        }

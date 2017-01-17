@@ -19,34 +19,7 @@ export default class About extends React.Component {
             <Col width="100%">
                 <p>App-Version: {version}</p>
             </Col>
-            <Col width="100%">
-                <List
-                    dataSource={this.props.language.possible}
-                    renderHeader={() => <ListHeader>Change language</ListHeader>}
-                    renderRow={this.renderLanguageRow.bind(this)}
-                />
-
-            </Col>
-
         </Row>);
-    }
-
-    renderLanguageRow(language) {
-        return (
-            <ListItem key={language} tappable>
-                <label className='left'>
-                    <Input
-                        inputId={`${language}`}
-                        checked={language === this.props.language.inUse}
-                        onChange={this.props.language.onChange}
-                        type='radio'
-                    />
-                </label>
-                <label htmlFor={`${language}`} className='center'>
-                    {language}
-                </label>
-            </ListItem>
-        )
     }
 
 }

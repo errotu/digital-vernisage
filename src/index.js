@@ -3,7 +3,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import PageRoot from "./components/PageRoot";
 import "whatwg-fetch";
-import {Navigator, Splitter, SplitterContent, Page, SplitterSide, List, ListItem} from "react-onsenui";
+import {Navigator, Splitter, SplitterContent, Page, SplitterSide, List, ListItem, Input, ListHeader} from "react-onsenui";
 import ons from "onsenui";
 import ImgCache from "imgcache.js/js/imgcache";
 
@@ -317,6 +317,11 @@ class MainNavigation extends React.Component {
                                 <ListItem key={item.title} onClick={item.callback} tappable>{item.title}</ListItem>
                             )}
                         />
+                        <List
+                            dataSource={this.state.language.possible}
+                            renderHeader={() => <ListHeader>Change language</ListHeader>}
+                            renderRow={this.renderLanguageRow.bind(this)}
+                        />
                     </Page>
                 </SplitterSide>
                 <SplitterContent>
@@ -334,6 +339,25 @@ class MainNavigation extends React.Component {
 
         );
     }
+
+    renderLanguageRow(language) {
+        return (
+            <ListItem key={language} tappable>
+                <label className='left'>
+                    <Input
+                        inputId={`${language}`}
+                        checked={language === this.state.language.inUse}
+                        onChange={this.state.language.onChange}
+                        type='radio'
+                    />
+                </label>
+                <label htmlFor={`${language}`} className='center'>
+                    {language}
+                </label>
+            </ListItem>
+        )
+    }
+
 }
 
 function start() {
