@@ -20,10 +20,7 @@ Sind wir wirklich offen für neue Ideen oder nur für solche innerhalb des aktue
 
 <img src="resources/innovation_qr.png" alt="https://weedocare.eknoes.de/#innovation" width="200px" height="200px"/>
 
-Die Selbsterkenntnis: Sehen!
 
-<img src="resources/sehen_qr.png" alt="https://weedocare.eknoes.de/#sehen" width="200px" height="200px"/>
+Wie sieht die neue Welt aus? Radikal anders...
 
-Sitzen,  sehen,  zuhören,  achten.  Vielleicht  mal  handeln.
-
-<img src="resources/sitzen_qr.png" alt="https://weedocare.eknoes.de/#sitzen" width="200px" height="200px"/>
+<img src="resources/neuewelt_qr.png" alt="https://weedocare.eknoes.de/#neuewelt" width="200px" height="200px"/>
