@@ -21,7 +21,7 @@ export const ERR_INVALID_JSON = 2;
  Versionsnummer in About ✓
  "Tap to detail" nur einmal am Tag ✓
  Pull-to-refresh ✓
- TODO: QR-Code auf App-Store weiterleiten
+ QR-Code auf App-Store weiterleiten ✓
  */
 
 class MainNavigation extends React.Component {
@@ -30,7 +30,7 @@ class MainNavigation extends React.Component {
         super();
 
         this.state = {
-            isOpen: false,
+            menuIsOpen: false,
             status: {state: 'fetching', msg: undefined},
             title: "Welcome to our digital Vernisage",
             intro: "Content is loading",
@@ -67,8 +67,6 @@ class MainNavigation extends React.Component {
             console.log("Use fallback");
             console.log("Language is: " + this.state.language.inUse);
         }
-
-
     }
 
     onLanguageChange(changeEvent) {
@@ -204,7 +202,7 @@ class MainNavigation extends React.Component {
 
     open() {
         this.setState({
-            isOpen: true
+            menuIsOpen: true
         });
     }
 
@@ -241,7 +239,7 @@ class MainNavigation extends React.Component {
         }
 
         this.navigator.replacePage({component: PageRoot, props: pageProps}, {animation: "none"});
-        this.setState({isOpen: false});
+        this.setState({menuIsOpen: false});
 
 
     }
@@ -305,7 +303,7 @@ class MainNavigation extends React.Component {
                     width={200}
                     collapse={true}
                     isSwipeable={true}
-                    isOpen={this.state.isOpen}
+                    menuIsOpen={this.state.menuIsOpen}
                 >
                     <Page>
                         <List

@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "9c60e3114cf2b186ca2f"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "161707715f2d90f70be3"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -689,7 +689,7 @@
 	 Versionsnummer in About ✓
 	 "Tap to detail" nur einmal am Tag ✓
 	 Pull-to-refresh ✓
-	 TODO: QR-Code auf App-Store weiterleiten
+	 QR-Code auf App-Store weiterleiten ✓
 	 */
 
 	var MainNavigation = _wrapComponent("MainNavigation")(function (_React$Component) {
@@ -701,7 +701,7 @@
 	        var _this = _possibleConstructorReturn(this, (MainNavigation.__proto__ || Object.getPrototypeOf(MainNavigation)).call(this));
 
 	        _this.state = {
-	            isOpen: false,
+	            menuIsOpen: false,
 	            status: { state: 'fetching', msg: undefined },
 	            title: "Welcome to our digital Vernisage",
 	            intro: "Content is loading",
@@ -738,7 +738,6 @@
 	            console.log("Use fallback");
 	            console.log("Language is: " + _this.state.language.inUse);
 	        }
-
 	        return _this;
 	    }
 
@@ -884,7 +883,7 @@
 	        key: "open",
 	        value: function open() {
 	            this.setState({
-	                isOpen: true
+	                menuIsOpen: true
 	            });
 	        }
 	    }, {
@@ -922,7 +921,7 @@
 	            }
 
 	            this.navigator.replacePage({ component: _PageRoot2.default, props: pageProps }, { animation: "none" });
-	            this.setState({ isOpen: false });
+	            this.setState({ menuIsOpen: false });
 	        }
 	    }, {
 	        key: "pushPage",
@@ -993,7 +992,7 @@
 	                        width: 200,
 	                        collapse: true,
 	                        isSwipeable: true,
-	                        isOpen: this.state.isOpen
+	                        menuIsOpen: this.state.menuIsOpen
 	                    },
 	                    _react3.default.createElement(
 	                        _reactOnsenui.Page,
@@ -64017,7 +64016,7 @@
 	    _createClass(About, [{
 	        key: "render",
 	        value: function render() {
-	            var version = ("1.0.1");
+	            var version = ("1.0.2");
 	            return _react3.default.createElement(
 	                _reactOnsenui.Row,
 	                { className: "about-page" },
