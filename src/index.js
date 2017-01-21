@@ -188,7 +188,7 @@ class MainNavigation extends React.Component {
 
     renderPage(route, navigator) {
         console.log("Rendering Page");
-        console.log("Menu is " + this.state.menuIsOpen ? "open" : "closed");
+        console.log(this.state.intro);
         const props = route.props || {};
         props.navigator = navigator;
         props.route = route;
