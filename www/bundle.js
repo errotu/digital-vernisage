@@ -65,7 +65,8 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "ae1a244417e27482223a"; // eslint-disable-line no-unused-vars
+    /******/
+    var hotCurrentHash = "34b20cda60f2e5fa8272"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -813,9 +814,10 @@
 
 	            console.log("Reloading");
 	            this.setState({
-	                status: { state: 'fetching', msg: undefined }
+                    status: {state: 'fetching', msg: undefined},
+                    menuIsOpen: false
 	            });
-	            fetch('https://media.weedoocare.com/DigitalVernissage/sample.json').then(function (response) {
+                fetch('https://media.weedoocare.com/DigitalVernissage/blog.json').then(function (response) {
 	                return response.json();
 	            }).then(function (vernissage) {
 	                setTimeout(function () {
@@ -837,13 +839,13 @@
 
 	                    this.calculateLocalizedEntries();
 
-	                    if (typeof doneCallback !== "undefined") {
+                        if (typeof doneCallback === "function") {
 	                        doneCallback();
 	                    }
 	                }.bind(_this3), 800);
 	            }).catch(function (ex) {
 	                console.log(ex.message);
-	                if (typeof doneCallback !== "undefined") {
+                    if (typeof doneCallback === "function") {
 	                    doneCallback();
 	                }
 
@@ -858,6 +860,7 @@
 	        key: "renderPage",
 	        value: function renderPage(route, navigator) {
 	            console.log("Rendering Page");
+                console.log(true ? "open" : "closed");
 	            var props = route.props || {};
 	            props.navigator = navigator;
 	            props.route = route;
@@ -2162,17 +2165,6 @@
 	  }
 	};
 
-	var fiveArgumentPooler = function (a1, a2, a3, a4, a5) {
-	  var Klass = this;
-	  if (Klass.instancePool.length) {
-	    var instance = Klass.instancePool.pop();
-	    Klass.call(instance, a1, a2, a3, a4, a5);
-	    return instance;
-	  } else {
-	    return new Klass(a1, a2, a3, a4, a5);
-	  }
-	};
-
 	var standardReleaser = function (instance) {
 	  var Klass = this;
 	  !(instance instanceof Klass) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'Trying to release an instance into a pool of a different type.') : _prodInvariant('25') : void 0;
@@ -2212,8 +2204,7 @@
 	  oneArgumentPooler: oneArgumentPooler,
 	  twoArgumentPooler: twoArgumentPooler,
 	  threeArgumentPooler: threeArgumentPooler,
-	  fourArgumentPooler: fourArgumentPooler,
-	  fiveArgumentPooler: fiveArgumentPooler
+        fourArgumentPooler: fourArgumentPooler
 	};
 
 	module.exports = PooledClass;
@@ -2289,12 +2280,19 @@
 	 * will remain to ensure logic does not differ in production.
 	 */
 
-	function invariant(condition, format, a, b, c, d, e, f) {
-	  if (process.env.NODE_ENV !== 'production') {
+    var validateFormat = function validateFormat(format) {
+    };
+
+            if (process.env.NODE_ENV !== 'production') {
+                validateFormat = function validateFormat(format) {
 	    if (format === undefined) {
 	      throw new Error('invariant requires an error message argument');
 	    }
-	  }
+                };
+            }
+
+            function invariant(condition, format, a, b, c, d, e, f) {
+                validateFormat(format);
 
 	  if (!condition) {
 	    var error;
@@ -4547,7 +4545,14 @@
 	    // We warn in this case but don't throw. We expect the element creation to
 	    // succeed and there will likely be errors in render.
 	    if (!validType) {
-	      process.env.NODE_ENV !== 'production' ? warning(false, 'React.createElement: type should not be null, undefined, boolean, or ' + 'number. It should be a string (for DOM elements) or a ReactClass ' + '(for composite components).%s', getDeclarationErrorAddendum()) : void 0;
+            if (typeof type !== 'function' && typeof type !== 'string') {
+                var info = '';
+                if (type === undefined || typeof type === 'object' && type !== null && Object.keys(type).length === 0) {
+                    info += ' You likely forgot to export your component from the file ' + 'it\'s defined in.';
+                }
+                info += getDeclarationErrorAddendum();
+                process.env.NODE_ENV !== 'production' ? warning(false, 'React.createElement: type is invalid -- expected a string (for ' + 'built-in components) or a class/function (for composite ' + 'components) but got: %s.%s', type == null ? type : typeof type, info) : void 0;
+            }
 	    }
 
 	    var element = ReactElement.createElement.apply(this, arguments);
@@ -5518,7 +5523,7 @@
 
 	'use strict';
 
-	module.exports = '15.4.1';
+        module.exports = '15.4.2';
 
 /***/ },
 /* 34 */
@@ -5716,6 +5721,13 @@
 
 	var internalInstanceKey = '__reactInternalInstance$' + Math.random().toString(36).slice(2);
 
+            /**
+             * Check if a given node should be cached.
+             */
+            function shouldPrecacheNode(node, nodeID) {
+                return node.nodeType === 1 && node.getAttribute(ATTR_NAME) === String(nodeID) || node.nodeType === 8 && node.nodeValue === ' react-text: ' + nodeID + ' ' || node.nodeType === 8 && node.nodeValue === ' react-empty: ' + nodeID + ' ';
+            }
+
 	/**
 	 * Drill down (through composites and empty components) until we get a host or
 	 * host text component.
@@ -5781,7 +5793,7 @@
 	    }
 	    // We assume the child nodes are in the same order as the child instances.
 	    for (; childNode !== null; childNode = childNode.nextSibling) {
-	      if (childNode.nodeType === 1 && childNode.getAttribute(ATTR_NAME) === String(childID) || childNode.nodeType === 8 && childNode.nodeValue === ' react-text: ' + childID + ' ' || childNode.nodeType === 8 && childNode.nodeValue === ' react-empty: ' + childID + ' ') {
+            if (shouldPrecacheNode(childNode, childID)) {
 	        precacheNode(childInst, childNode);
 	        continue outer;
 	      }
@@ -8022,17 +8034,6 @@
 	  }
 	};
 
-	var fiveArgumentPooler = function (a1, a2, a3, a4, a5) {
-	  var Klass = this;
-	  if (Klass.instancePool.length) {
-	    var instance = Klass.instancePool.pop();
-	    Klass.call(instance, a1, a2, a3, a4, a5);
-	    return instance;
-	  } else {
-	    return new Klass(a1, a2, a3, a4, a5);
-	  }
-	};
-
 	var standardReleaser = function (instance) {
 	  var Klass = this;
 	  !(instance instanceof Klass) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'Trying to release an instance into a pool of a different type.') : _prodInvariant('25') : void 0;
@@ -8072,8 +8073,7 @@
 	  oneArgumentPooler: oneArgumentPooler,
 	  twoArgumentPooler: twoArgumentPooler,
 	  threeArgumentPooler: threeArgumentPooler,
-	  fourArgumentPooler: fourArgumentPooler,
-	  fiveArgumentPooler: fiveArgumentPooler
+        fourArgumentPooler: fourArgumentPooler
 	};
 
 	module.exports = PooledClass;
@@ -12891,12 +12891,18 @@
 	    } else {
 	      var contentToUse = CONTENT_TYPES[typeof props.children] ? props.children : null;
 	      var childrenToUse = contentToUse != null ? null : props.children;
-	      if (contentToUse != null) {
-	        // TODO: Validate that text is allowed as a child of this node
-	        if (process.env.NODE_ENV !== 'production') {
-	          setAndValidateContentChildDev.call(this, contentToUse);
-	        }
-	        DOMLazyTree.queueText(lazyTree, contentToUse);
+            // TODO: Validate that text is allowed as a child of this node
+            if (contentToUse != null) {
+                // Avoid setting textContent when the text is empty. In IE11 setting
+                // textContent on a text area will cause the placeholder to not
+                // show within the textarea until it has been focused and blurred again.
+                // https://github.com/facebook/react/issues/6731#issuecomment-254874553
+                if (contentToUse !== '') {
+                    if (process.env.NODE_ENV !== 'production') {
+                        setAndValidateContentChildDev.call(this, contentToUse);
+                    }
+                    DOMLazyTree.queueText(lazyTree, contentToUse);
+                }
 	      } else if (childrenToUse != null) {
 	        var mountImages = this.mountChildren(childrenToUse, transaction, context);
 	        for (var i = 0; i < mountImages.length; i++) {
@@ -14816,7 +14822,17 @@
 	      }
 	    } else {
 	      if (props.value == null && props.defaultValue != null) {
-	        node.defaultValue = '' + props.defaultValue;
+              // In Chrome, assigning defaultValue to certain input types triggers input validation.
+              // For number inputs, the display value loses trailing decimal points. For email inputs,
+              // Chrome raises "The specified value <x> is not a valid email address".
+              //
+              // Here we check to see if the defaultValue has actually changed, avoiding these problems
+              // when the user is inputting text
+              //
+              // https://github.com/facebook/react/issues/7253
+              if (node.defaultValue !== '' + props.defaultValue) {
+                  node.defaultValue = '' + props.defaultValue;
+              }
 	      }
 	      if (props.checked == null && props.defaultChecked != null) {
 	        node.defaultChecked = !!props.defaultChecked;
@@ -15563,9 +15579,15 @@
 	    // This is in postMount because we need access to the DOM node, which is not
 	    // available until after the component has mounted.
 	    var node = ReactDOMComponentTree.getNodeFromInstance(inst);
+          var textContent = node.textContent;
 
-	    // Warning: node.value may be the empty string at this point (IE11) if placeholder is set.
-	    node.value = node.textContent; // Detach value from defaultValue
+          // Only set node.value if textContent is equal to the expected
+          // initial value. In IE10/IE11 there is a bug where the placeholder attribute
+          // will populate textContent as well.
+          // https://developer.microsoft.com/microsoft-edge/platform/issues/101525/
+          if (textContent === inst._wrapperState.initialValue) {
+              node.value = textContent;
+          }
 	  }
 	};
 
@@ -16367,7 +16389,17 @@
 	    instance = ReactEmptyComponent.create(instantiateReactComponent);
 	  } else if (typeof node === 'object') {
 	    var element = node;
-	    !(element && (typeof element.type === 'function' || typeof element.type === 'string')) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s', element.type == null ? element.type : typeof element.type, getDeclarationErrorAddendum(element._owner)) : _prodInvariant('130', element.type == null ? element.type : typeof element.type, getDeclarationErrorAddendum(element._owner)) : void 0;
+          var type = element.type;
+          if (typeof type !== 'function' && typeof type !== 'string') {
+              var info = '';
+              if (process.env.NODE_ENV !== 'production') {
+                  if (type === undefined || typeof type === 'object' && type !== null && Object.keys(type).length === 0) {
+                      info += ' You likely forgot to export your component from the file ' + 'it\'s defined in.';
+                  }
+              }
+              info += getDeclarationErrorAddendum(element._owner);
+              true ? process.env.NODE_ENV !== 'production' ? invariant(false, 'Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s', type == null ? type : typeof type, info) : _prodInvariant('130', type == null ? type : typeof type, info) : void 0;
+          }
 
 	    // Special case string values
 	    if (typeof element.type === 'string') {
@@ -16657,7 +16689,7 @@
 	      // Since plain JS classes are defined without any special initialization
 	      // logic, we can not catch common errors early. Therefore, we have to
 	      // catch them here, at initialization time, instead.
-	      process.env.NODE_ENV !== 'production' ? warning(!inst.getInitialState || inst.getInitialState.isReactClassApproved, 'getInitialState was defined on %s, a plain JavaScript class. ' + 'This is only supported for classes created using React.createClass. ' + 'Did you mean to define a state property instead?', this.getName() || 'a component') : void 0;
+            process.env.NODE_ENV !== 'production' ? warning(!inst.getInitialState || inst.getInitialState.isReactClassApproved || inst.state, 'getInitialState was defined on %s, a plain JavaScript class. ' + 'This is only supported for classes created using React.createClass. ' + 'Did you mean to define a state property instead?', this.getName() || 'a component') : void 0;
 	      process.env.NODE_ENV !== 'production' ? warning(!inst.getDefaultProps || inst.getDefaultProps.isReactClassApproved, 'getDefaultProps was defined on %s, a plain JavaScript class. ' + 'This is only supported for classes created using React.createClass. ' + 'Use a static property to define defaultProps instead.', this.getName() || 'a component') : void 0;
 	      process.env.NODE_ENV !== 'production' ? warning(!inst.propTypes, 'propTypes was defined as an instance property on %s. Use a static ' + 'property to define propTypes instead.', this.getName() || 'a component') : void 0;
 	      process.env.NODE_ENV !== 'production' ? warning(!inst.contextTypes, 'contextTypes was defined as an instance property on %s. Use a ' + 'static property to define contextTypes instead.', this.getName() || 'a component') : void 0;
@@ -17661,14 +17693,11 @@
 
 	'use strict';
 
-	var _prodInvariant = __webpack_require__(38),
-	    _assign = __webpack_require__(7);
+            var _prodInvariant = __webpack_require__(38);
 
 	var invariant = __webpack_require__(11);
 
 	var genericComponentClass = null;
-	// This registry keeps track of wrapper classes around host tags.
-	var tagToComponentClass = {};
 	var textComponentClass = null;
 
 	var ReactHostComponentInjection = {
@@ -17681,11 +17710,6 @@
 	  // rendered as props.
 	  injectTextComponentClass: function (componentClass) {
 	    textComponentClass = componentClass;
-	  },
-	  // This accepts a keyed object with classes as values. Each key represents a
-	  // tag. That particular tag will use this class instead of the generic one.
-	  injectComponentClasses: function (componentClasses) {
-	    _assign(tagToComponentClass, componentClasses);
 	  }
 	};
 
@@ -22540,7 +22564,7 @@
 
 	'use strict';
 
-	module.exports = '15.4.1';
+        module.exports = '15.4.2';
 
 /***/ },
 /* 175 */
@@ -61955,7 +61979,8 @@
 	                    "Digital ",
 	                    !_onsenui2.default.platform.isAndroid() ? _react3.default.createElement("img", { src: logo, style: { verticalAlign: 'middle', height: '50%' } }) : null,
 	                    " Vernissage"
-	                )
+                    ),
+                    _react3.default.createElement("div", {className: "right"})
 	            );
 	        }
 	    }, {
@@ -62506,7 +62531,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! imgcache.js
-	   Copyright 2012-2015 Christophe BENOIT
+         Copyright 2012-2017 Christophe BENOIT
 
 	   Licensed under the Apache License, Version 2.0 (the "License");
 	   you may not use this file except in compliance with the License.
@@ -62525,7 +62550,7 @@
 	/*global console,LocalFileSystem,device,FileTransfer,define,module*/
 
 	var ImgCache = {
-	        version: '1.0rc1',
+            version: '1.1.0',
 	        // options to override before using the library (but after loading this script!)
 	        options: {
 	            debug: false,                           /* call the log method ? */
@@ -62535,12 +62560,17 @@
 	            usePersistentCache: true,               /* false = use temporary cache storage */
 	            cacheClearSize: 0,                      /* size in MB that triggers cache clear on init, 0 to disable */
 	            headers: {},                            /* HTTP headers for the download requests -- e.g: headers: { 'Accept': 'application/jpg' } */
-	            skipURIencoding: false                  /* enable if URIs are already encoded (skips call to sanitizeURI) */
+                withCredentials: false, /* indicates whether or not cross-site Access-Control requests should be made using credentials */
+                skipURIencoding: false, /* enable if URIs are already encoded (skips call to sanitizeURI) */
+                cordovaFilesystemRoot: null, /* if specified, use one of the Cordova File plugin's app directories for storage */
+                timeout: 0                              /* timeout delay in ms for xhr request */
 	        },
 	        overridables: {
 	            hash: function (s) {
 	                /* tiny-sha1 r4 (11/2011) - MIT License - http://code.google.com/p/tiny-sha1/ */
+                    /* jshint ignore:start */
 	                function U(a,b,c){while(0<c--)a.push(b)}function L(a,b){return(a<<b)|(a>>>(32-b))}function P(a,b,c){return a^b^c}function A(a,b){var c=(b&0xFFFF)+(a&0xFFFF),d=(b>>>16)+(a>>>16)+(c>>>16);return((d&0xFFFF)<<16)|(c&0xFFFF)}var B="0123456789abcdef";return(function(a){var c=[],d=a.length*4,e;for(var i=0;i<d;i++){e=a[i>>2]>>((3-(i%4))*8);c.push(B.charAt((e>>4)&0xF)+B.charAt(e&0xF))}return c.join('')}((function(a,b){var c,d,e,f,g,h=a.length,v=0x67452301,w=0xefcdab89,x=0x98badcfe,y=0x10325476,z=0xc3d2e1f0,M=[];U(M,0x5a827999,20);U(M,0x6ed9eba1,20);U(M,0x8f1bbcdc,20);U(M,0xca62c1d6,20);a[b>>5]|=0x80<<(24-(b%32));a[(((b+65)>>9)<<4)+15]=b;for(var i=0;i<h;i+=16){c=v;d=w;e=x;f=y;g=z;for(var j=0,O=[];j<80;j++){O[j]=j<16?a[j+i]:L(O[j-3]^O[j-8]^O[j-14]^O[j-16],1);var k=(function(a,b,c,d,e){var f=(e&0xFFFF)+(a&0xFFFF)+(b&0xFFFF)+(c&0xFFFF)+(d&0xFFFF),g=(e>>>16)+(a>>>16)+(b>>>16)+(c>>>16)+(d>>>16)+(f>>>16);return((g&0xFFFF)<<16)|(f&0xFFFF)})(j<20?(function(t,a,b){return(t&a)^(~t&b)}(d,e,f)):j<40?P(d,e,f):j<60?(function(t,a,b){return(t&a)^(t&b)^(a&b)}(d,e,f)):P(d,e,f),g,M[j],O[j],L(c,5));g=f;f=e;e=L(d,30);d=c;c=k}v=A(v,c);w=A(w,d);x=A(x,e);y=A(y,f);z=A(z,g)}return[v,w,x,y,z]}((function(t){var a=[],b=255,c=t.length*8;for(var i=0;i<c;i+=8){a[i>>5]|=(t.charCodeAt(i/8)&b)<<(24-(i%32))}return a}(s)).slice(),s.length*8))));
+                    /* jshint ignore:end */
 	            },
 	            log: function (str, level) {
 	                    'use strict';
@@ -62552,8 +62582,6 @@
 	                    }
 	            }
 	        },
-	        jQuery: (window.jQuery || window.Zepto) ? true : false,        /* using jQuery if it's available otherwise the DOM API */
-	        jQueryLite: (typeof window.angular !== 'undefined' && window.angular.element) ? true : false,    /* is AngularJS jQueryLite available */
 	        ready: false,
 	        attributes: {}
 	    },
@@ -62573,6 +62601,9 @@
 	        if (ImgCache.options.skipURIencoding) {
 	            return uri;
 	        } else {
+                if (uri.length >= 2 && uri[0] === '"' && uri[uri.length - 1] === '"') {
+                    uri = uri.substr(1, uri.length - 2);
+                }
 	            var encodedURI = encodeURI(uri);
 	            /*
 	            TODO: The following bit of code will have to be checked first (#30)
@@ -62619,7 +62650,7 @@
 	    };
 
 	    // returns extension from filename (without leading '.')
-	    Helpers.FileGetExtension = function (filename) {
+        Helpers.fileGetExtension = function (filename) {
 	        if (!filename) {
 	            return '';
 	        }
@@ -62632,6 +62663,20 @@
 	        return ext;
 	    };
 
+        Helpers.appendPaths = function (path1, path2) {
+            if (!path2) {
+                path2 = '';
+            }
+            if (!path1 || path1 === '') {
+                return (path2.length > 0 && path2[0] == '/' ? '' : '/') + path2;
+            }
+            return path1 + ( ((path1[path1.length - 1] == '/') || (path2.length > 0 && path2[0] == '/')) ? '' : '/' ) + path2;
+        };
+
+        Helpers.hasJqueryOrJqueryLite = function () {
+            return (ImgCache.jQuery || ImgCache.jQueryLite);
+        };
+
 	    Helpers.isCordova = function () {
 	        return (typeof cordova !== 'undefined' || typeof phonegap !== 'undefined');
 	    };
@@ -62641,11 +62686,11 @@
 	    };
 
 	    Helpers.isCordovaWindowsPhone = function () {
-	        return (Helpers.isCordova() && device && device.platform && device.platform.toLowerCase().indexOf('win32nt') >= 0);
+            return (Helpers.isCordova() && device && device.platform && ((device.platform.toLowerCase().indexOf('win32nt') >= 0) || (device.platform.toLowerCase().indexOf('windows') >= 0)));
 	    };
 
 	    Helpers.isCordovaIOS = function () {
-	        return (Helpers.isCordova() && device && device.platform && device.platform.toLowerCase() == "ios");
+            return (Helpers.isCordova() && device && device.platform && device.platform.toLowerCase() === 'ios');
 	    };
 
 	    // special case for #93
@@ -62667,6 +62712,9 @@
 	    Helpers.EntryToURL = function (entry) {
 	        if (Helpers.isCordovaAndroidOlderThan4() && typeof entry.toNativeURL === 'function') {
 	            return entry.toNativeURL();
+            } else if (typeof entry.toInternalURL === 'function') {
+                // Fix for #97
+                return entry.toInternalURL();
 	        } else {
 	            return entry.toURL();
 	        }
@@ -62741,28 +62789,28 @@
 	    };
 
 	    DomHelpers.removeAttribute = function (element, attrName) {
-	        if (ImgCache.jQuery || ImgCache.jQueryLite) {
+            if (Helpers.hasJqueryOrJqueryLite()) {
 	            element.removeAttr(attrName);
 	        } else {
 	            element.removeAttribute(attrName);
 	        }
 	    };
 	    DomHelpers.setAttribute = function (element, attrName, value) {
-	        if (ImgCache.jQuery || ImgCache.jQueryLite) {
+            if (Helpers.hasJqueryOrJqueryLite()) {
 	            element.attr(attrName, value);
 	        } else {
 	            element.setAttribute(attrName, value);
 	        }
 	    };
 	    DomHelpers.getAttribute = function (element, attrName) {
-	        if (ImgCache.jQuery || ImgCache.jQueryLite) {
+            if (Helpers.hasJqueryOrJqueryLite()) {
 	            return element.attr(attrName);
 	        } else {
 	            return element.getAttribute(attrName);
 	        }
 	    };
 	    DomHelpers.getBackgroundImage = function (element) {
-	        if (ImgCache.jQuery || ImgCache.jQueryLite) {
+            if (Helpers.hasJqueryOrJqueryLite()) {
 	            return element.attr('data-old-background') ? "url(" + element.attr('data-old-background') + ")" : element.css('background-image');
 	        } else {
 	            var style = window.getComputedStyle(element, null);
@@ -62773,7 +62821,7 @@
 	        }
 	    };
 	    DomHelpers.setBackgroundImage = function (element, styleValue) {
-	        if (ImgCache.jQuery || ImgCache.jQueryLite) {
+            if (Helpers.hasJqueryOrJqueryLite()) {
 	            element.css('background-image', styleValue);
 	        } else {
 	            element.style.backgroundImage = styleValue;
@@ -62815,19 +62863,19 @@
 
 	    Private.setCurrentSize = function (curSize) {
 	        ImgCache.overridables.log('current size: ' + curSize, LOG_LEVEL_INFO);
-	        if (Private.hasLocalStorage()){
+            if (Private.hasLocalStorage()) {
 	            localStorage.setItem('imgcache:' + ImgCache.options.localCacheFolder, curSize);
 	        }
 	    };
 
 	    Private.getCachedFilePath = function (img_src) {
-	        return ImgCache.options.localCacheFolder + '/' + Private.getCachedFileName(img_src);
+            return Helpers.appendPaths(ImgCache.options.localCacheFolder, Private.getCachedFileName(img_src));
 	    };
 
 	    // used for FileTransfer.download only
 	    Private.getCachedFileFullPath = function (img_src) {
 	        var local_root = Helpers.EntryGetPath(ImgCache.attributes.dirEntry);
-	        return (local_root ? local_root + '/' : '/') + Private.getCachedFileName(img_src);
+            return Helpers.appendPaths(local_root, Private.getCachedFileName(img_src));
 	    };
 
 	    Private.getCachedFileName = function (img_src) {
@@ -62836,7 +62884,7 @@
 	            return;
 	        }
 	        var hash = ImgCache.overridables.hash(img_src);
-	        var ext = Helpers.FileGetExtension(Helpers.URIGetFileName(img_src));
+            var ext = Helpers.fileGetExtension(Helpers.URIGetFileName(img_src));
 	        return hash + (ext ? ('.' + ext) : '');
 	    };
 
@@ -62872,7 +62920,7 @@
 	                dirEntry.getFile('.nomedia', {create: true, exclusive: false}, _androidNoMediaFileCreated, _fail);
 	            } else if (!Helpers.isCordovaWindowsPhone()) {
 	                // #73 - iOS: the directory should not be backed up in iCloud
-	                if (dirEntry.setMetadata) {
+                    if (Helpers.isCordovaIOS() && dirEntry.setMetadata) {
 	                    dirEntry.setMetadata(function () {
 	                            /* success*/
 	                            ImgCache.overridables.log('com.apple.MobileBackup metadata set', LOG_LEVEL_INFO);
@@ -62932,6 +62980,12 @@
 	        if (isOnProgressAvailable) {
 	            xhr.onprogress = on_progress;
 	        }
+
+            if (ImgCache.options.withCredentials) {
+                xhr.withCredentials = true;
+            }
+
+            xhr.timeout = ImgCache.options.timeout
 	        xhr.responseType = 'blob';
 	        for (var key in headers) {
 	            xhr.setRequestHeader(key, headers[key]);
@@ -62960,10 +63014,9 @@
 	        if (!backgroundImageProperty) {
 	            return;
 	        }
-	        var regexp = /\((.+)\)/;
+            var regexp = /url\s?\((.+)\)/;
 	        var img_src = regexp.exec(backgroundImageProperty)[1];
-
-	        return img_src.replace(/(['"])/g, "");
+            return img_src.replace(/(['"])/g, '');
 	    };
 
 	    Private.loadCachedFile = function ($element, img_src, set_path_callback, success_callback, error_callback) {
@@ -63037,6 +63090,11 @@
 	        IMGCACHE_READY_TRIGGERED_EVENT = 'ImgCacheReady';
 
 	    ImgCache.init = function (success_callback, error_callback) {
+            ImgCache.jQuery = (window.jQuery || window.Zepto) ? true : false;
+            /* using jQuery if it's available otherwise the DOM API */
+            ImgCache.jQueryLite = (typeof window.angular !== 'undefined' && window.angular.element) ? true : false;
+            /* is AngularJS jQueryLite available */
+
 	        ImgCache.attributes.init_callback = success_callback;
 
 	        ImgCache.overridables.log('ImgCache initialising', LOG_LEVEL_INFO);
@@ -63067,12 +63125,26 @@
 	            ImgCache.overridables.log('Failed to initialise LocalFileSystem ' + error.code, LOG_LEVEL_ERROR);
 	            if (error_callback) { error_callback(); }
 	        };
-	        if (Helpers.isCordova()) {
+            if (Helpers.isCordova() && window.requestFileSystem) {
 	            // PHONEGAP
-	            window.requestFileSystem(Helpers.getCordovaStorageType(ImgCache.options.usePersistentCache), 0, _gotFS, _fail);
+                if (ImgCache.options.cordovaFilesystemRoot) {
+                    try {
+                        window.resolveLocalFileSystemURL(
+                            ImgCache.options.cordovaFilesystemRoot,
+                            function (dirEntry) {
+                                _gotFS({root: dirEntry});
+                            },
+                            _fail
+                        );
+                    } catch (e) {
+                        _fail({code: e.message})
+                    }
+                } else {
+                    window.requestFileSystem(Helpers.getCordovaStorageType(ImgCache.options.usePersistentCache), 0, _gotFS, _fail);
+                }
 	        } else {
 	            //CHROME
-	            window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
+                var savedFS = window.requestFileSystem || window.webkitRequestFileSystem;
 	            window.storageInfo = window.storageInfo || (ImgCache.options.usePersistentCache ? navigator.webkitPersistentStorage : navigator.webkitTemporaryStorage);
 	            if (!window.storageInfo) {
 	                ImgCache.overridables.log('Your browser does not support the html5 File API', LOG_LEVEL_WARNING);
@@ -63086,7 +63158,7 @@
 	                function () {
 	                    /* success*/
 	                    var persistence = (ImgCache.options.usePersistentCache ? window.storageInfo.PERSISTENT : window.storageInfo.TEMPORARY);
-	                    window.requestFileSystem(persistence, quota_size, _gotFS, _fail);
+                        savedFS(persistence, quota_size, _gotFS, _fail);
 	                },
 	                function (error) {
 	                    /* error*/
@@ -63127,7 +63199,7 @@
 	            filePath,
 	            function (entry) {
 	                entry.getMetadata(function (metadata) {
-	                    if (metadata && metadata.hasOwnProperty('size')) {
+                        if (metadata && ('size' in metadata)) {
 	                        ImgCache.overridables.log('Cached file size: ' + metadata.size, LOG_LEVEL_INFO);
 	                        Private.setCurrentSize(ImgCache.getCurrentSize() + parseInt(metadata.size, 10));
 	                    } else {
@@ -63153,7 +63225,9 @@
 	                    );
 	                }
 
-	                if (success_callback) { success_callback(); }
+                    if (success_callback) {
+                        success_callback(entry.toURL());
+                    }
 	            },
 	            function (error) {
 	                if (error.source) { ImgCache.overridables.log('Download error source: ' + error.source, LOG_LEVEL_ERROR); }
@@ -63174,6 +63248,7 @@
 	            return;
 	        }
 
+            var original_img_src = img_src;
 	        img_src = Helpers.sanitizeURI(img_src);
 
 	        var path = Private.getCachedFilePath(img_src);
@@ -63186,11 +63261,14 @@
 	        }
 
 	        // try to get the file entry: if it fails, there's no such file in the cache
+            // if it fails, we send the original path, not the sanitized one.
 	        ImgCache.attributes.filesystem.root.getFile(
 	            path,
 	            { create: false },
 	            function (file_entry) { response_callback(img_src, file_entry); },
-	            function () { response_callback(img_src, null); }
+                function () {
+                    response_callback(original_img_src, null);
+                }
 	        );
 	    };
 
@@ -64020,7 +64098,7 @@
 	    _createClass(About, [{
 	        key: "render",
 	        value: function render() {
-	            var version = ("1.0.4");
+                var version = ("1.0.6");
 	            return _react3.default.createElement(
 	                _reactOnsenui.Row,
 	                { className: "about-page" },
@@ -64629,9 +64707,7 @@
 	    options = options || {}
 	    var body = options.body
 
-	    if (typeof input === 'string') {
-	      this.url = input
-	    } else {
+          if (input instanceof Request) {
 	      if (input.bodyUsed) {
 	        throw new TypeError('Already read')
 	      }
@@ -64646,6 +64722,8 @@
 	        body = input._bodyInit
 	        input.bodyUsed = true
 	      }
+          } else {
+              this.url = String(input)
 	    }
 
 	    this.credentials = options.credentials || this.credentials || 'omit'
@@ -64681,7 +64759,7 @@
 
 	  function parseHeaders(rawHeaders) {
 	    var headers = new Headers()
-	    rawHeaders.split('\r\n').forEach(function(line) {
+          rawHeaders.split(/\r?\n/).forEach(function (line) {
 	      var parts = line.split(':')
 	      var key = parts.shift().trim()
 	      if (key) {

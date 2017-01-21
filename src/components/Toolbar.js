@@ -1,7 +1,7 @@
 import React from "react";
 import {Toolbar as OnsToolbar, BackButton, Icon, ToolbarButton} from "react-onsenui";
 import ons from "onsenui";
-var logo = require('../static/logo_square.png');
+const logo = require('../static/logo_square.png');
 
 
 export default class Toolbar extends React.Component {
@@ -18,6 +18,7 @@ export default class Toolbar extends React.Component {
             <div className="center">Digital {!ons.platform.isAndroid() ?
                 <img src={logo} style={{verticalAlign: 'middle', height: '50%'}}/> : null} Vernissage
             </div>
+            <div className="right"></div>
         </OnsToolbar>);
     }
 

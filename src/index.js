@@ -3,7 +3,17 @@ import React from "react";
 import ReactDOM from "react-dom";
 import PageRoot from "./components/PageRoot";
 import "whatwg-fetch";
-import {Navigator, Splitter, SplitterContent, Page, SplitterSide, List, ListItem, Input, ListHeader} from "react-onsenui";
+import {
+    Navigator,
+    Splitter,
+    SplitterContent,
+    Page,
+    SplitterSide,
+    List,
+    ListItem,
+    Input,
+    ListHeader
+} from "react-onsenui";
 import ons from "onsenui";
 import ImgCache from "imgcache.js/js/imgcache";
 
@@ -131,9 +141,10 @@ class MainNavigation extends React.Component {
     loadData(doneCallback) {
         console.log("Reloading");
         this.setState({
-            status: {state: 'fetching', msg: undefined}
+            status: {state: 'fetching', msg: undefined},
+            menuIsOpen: false
         });
-        fetch('https://media.weedoocare.com/DigitalVernissage/sample.json')
+        fetch('https://media.weedoocare.com/DigitalVernissage/blog.json')
             .then((response) => {
                 return response.json();
             }).then((vernissage) => {
@@ -156,13 +167,13 @@ class MainNavigation extends React.Component {
 
                 this.calculateLocalizedEntries();
 
-                if(typeof(doneCallback) !== "undefined") {
+                if (typeof(doneCallback) === "function") {
                     doneCallback();
                 }
             }.bind(this), 800);
         }).catch((ex) => {
             console.log(ex.message);
-            if(typeof(doneCallback) !== "undefined") {
+            if (typeof(doneCallback) === "function") {
                 doneCallback();
             }
 
@@ -177,6 +188,7 @@ class MainNavigation extends React.Component {
 
     renderPage(route, navigator) {
         console.log("Rendering Page");
+        console.log("Menu is " + this.state.menuIsOpen ? "open" : "closed");
         const props = route.props || {};
         props.navigator = navigator;
         props.route = route;
