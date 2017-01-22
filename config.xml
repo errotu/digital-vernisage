@@ -2,10 +2,10 @@
 <widget index="com.weedoocare.wdcVernissage" version="1.0.7" versionCode="14">
     <name>Vernissage</name>
     <description>
-        The Vernissage of WeeDooCare
+        The Digital Vernissage of WeeDooCare
     </description>
-    <author email="erik.tuchtfeld@weedoocare.com" href="http://weedoocare.com">
-        Erik Tuchtfeld - WeeDooCare
+    <author email="apps@weedoocare.com" href="http://weedoocare.com">
+        WeeDooCare Business Solutions GmbH
     </author>
     <content src="index.html" />
     <preference name="DisallowOverscroll" value="true" />
