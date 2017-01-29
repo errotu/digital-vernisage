@@ -17,7 +17,7 @@ export default class StartPageContent extends React.Component {
                     <p>Loading data</p>
                 </div>);
             } else if (this.props.status.state == "fetched") {
-                return (<div className="content">
+                return (<Page>
                     <PullHook
                         onLoad={this.props.refresh}
                         onChange={() => {return true}}
@@ -28,7 +28,7 @@ export default class StartPageContent extends React.Component {
                     <Intro title={this.props.title} intro={this.props.intro}/>
                     <OverviewGrid entries={this.props.entries} baseurl={this.props.baseurl}
                                   navigation={this.props.navigation}/>
-                </div>);
+                </Page>);
             }
         } else if (this.props.view.page == "swiper") {
             return (<div className="content">
