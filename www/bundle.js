@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "4512754eeaff568cabaa"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b865665e1ff5194e0881"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -62493,6 +62493,7 @@
 	                                    cached: true,
 	                                    src: cached
 	                                });
+	                                _this2.render();
 	                            });
 	                        } else {
 	                            console.log("Is not cached");
@@ -64085,7 +64086,7 @@
 	    _createClass(About, [{
 	        key: "render",
 	        value: function render() {
-	            var version = ("1.0.8");
+	            var version = ("1.0.9");
 	            return _react3.default.createElement(
 	                _reactOnsenui.Row,
 	                { className: "about-page" },

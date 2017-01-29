@@ -1,6 +1,6 @@
 {
   "name": "digital-vernissage",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Cordova / Phonegap App for a digital vernissage. Scan a QR Code and get the related information. This is currently an alpha version.",
   "bugs": {
     "url": "https://github.com/errotu/digital-vernissage/issues"
