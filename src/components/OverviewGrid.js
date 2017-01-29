@@ -15,6 +15,6 @@ export default class OverviewGrid extends React.Component {
     }
 
     handleClick(index, event) {
-        this.props.navigation.pushPage("swiper", index);
+        this.props.navigation.pushPage("detail", index);
     }
 }

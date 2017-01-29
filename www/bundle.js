@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "3b413f7355edcab85dbe"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "4512754eeaff568cabaa"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -684,12 +684,8 @@
 	var ERR_INVALID_JSON = exports.ERR_INVALID_JSON = 2;
 
 	/*
-	 Multi-Sprache ✓
-	 Bild nicht im Video ✓
-	 Versionsnummer in About ✓
-	 "Tap to detail" nur einmal am Tag ✓
-	 Pull-to-refresh ✓
-	 QR-Code auf App-Store weiterleiten ✓
+	TODO: Pull-to-refresh bei hochscrollen
+	TODO: Beim ersten öffnen funktioniert das Scrollen nicht (iOS)
 	 */
 
 	var MainNavigation = _wrapComponent("MainNavigation")(function (_React$Component) {
@@ -817,6 +813,7 @@
 	                menuIsOpen: false
 	            });
 	            fetch('https://media.weedoocare.com/DigitalVernissage/blog.json').then(function (response) {
+	                _imgcache2.default.clearCache();
 	                return response.json();
 	            }).then(function (vernissage) {
 	                setTimeout(function () {
@@ -62368,7 +62365,7 @@
 	    }, {
 	        key: "handleClick",
 	        value: function handleClick(index, event) {
-	            this.props.navigation.pushPage("swiper", index);
+	            this.props.navigation.pushPage("detail", index);
 	        }
 	    }]);
 
@@ -64088,7 +64085,7 @@
 	    _createClass(About, [{
 	        key: "render",
 	        value: function render() {
-	            var version = ("1.0.7");
+	            var version = ("1.0.8");
 	            return _react3.default.createElement(
 	                _reactOnsenui.Row,
 	                { className: "about-page" },

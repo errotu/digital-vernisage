@@ -26,12 +26,8 @@ export const ERR_NO_CONNECTION = 1;
 export const ERR_INVALID_JSON = 2;
 
 /*
- Multi-Sprache ✓
- Bild nicht im Video ✓
- Versionsnummer in About ✓
- "Tap to detail" nur einmal am Tag ✓
- Pull-to-refresh ✓
- QR-Code auf App-Store weiterleiten ✓
+TODO: Pull-to-refresh bei hochscrollen
+TODO: Beim ersten öffnen funktioniert das Scrollen nicht (iOS)
  */
 
 class MainNavigation extends React.Component {
@@ -146,6 +142,7 @@ class MainNavigation extends React.Component {
         });
         fetch('https://media.weedoocare.com/DigitalVernissage/blog.json')
             .then((response) => {
+                ImgCache.clearCache();
                 return response.json();
             }).then((vernissage) => {
             setTimeout(function(){
