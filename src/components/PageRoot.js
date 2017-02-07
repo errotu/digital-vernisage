@@ -39,7 +39,7 @@ export default class PageRoot extends React.Component {
                         <ProgressCircular indeterminate />
                             Pull to refresh
                     </PullHook>,<div className="content">
-                    <Intro title={this.props.title} intro={this.props.intro}/>,
+                    <Intro title={this.props.title} intro={this.props.intro}/>
                     <OverviewGrid entries={this.props.entries} baseurl={this.props.baseurl}
                                   navigation={this.props.navigation}/></div>
                 );
