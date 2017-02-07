@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "8a4565923b6a53da5b2b"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "a224be5fee4b0a8b59e6"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -994,7 +994,8 @@
 	                        width: 200,
 	                        collapse: true,
 	                        isSwipeable: true,
-	                        isOpen: this.state.menuIsOpen
+	                        isOpen: this.state.menuIsOpen,
+	                        swipeTargetWidth: "20px"
 	                    },
 	                    _react3.default.createElement(
 	                        _reactOnsenui.Page,
@@ -29635,7 +29636,6 @@
 	                        "div",
 	                        { className: "content" },
 	                        _react3.default.createElement(_Intro2.default, { title: this.props.title, intro: this.props.intro }),
-	                        ",",
 	                        _react3.default.createElement(_OverviewGrid2.default, { entries: this.props.entries, baseurl: this.props.baseurl,
 	                            navigation: this.props.navigation })
 	                    ));
@@ -63871,7 +63871,7 @@
 	    _createClass(About, [{
 	        key: "render",
 	        value: function render() {
-	            var version = ("1.0.10");
+	            var version = ("1.0.11");
 	            return _react3.default.createElement(
 	                _reactOnsenui.Row,
 	                { className: "about-page" },
