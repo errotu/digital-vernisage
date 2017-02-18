@@ -14,7 +14,8 @@ export default class PageRoot extends React.Component {
     pageWrapper(a, b, c, d) {
         return(<Page
             style={{height: "100%",
-            overflow: "scroll"}}
+            overflow: "scroll",
+            overflowY: "scroll"}}
             key={this.props.view.page + this.props.view.index}
                      renderToolbar={() => <Toolbar view={this.props.view} navigation={this.props.navigation}
                                                    backButton={this.props.view.index !== undefined}/>}
