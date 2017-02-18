@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "4c024bb5f7575c274b37"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "572e92f0867fa48c079f"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -39215,7 +39215,7 @@ var SingleImage = _wrapComponent("SingleImage")(function (_React$Component) {
         value: function render() {
             var _this2 = this;
 
-            var img = _react3.default.createElement("img", { src: this.state.src, onClick: this.state.onClick, alt: this.state.alt, onLoad: this.render });
+            var img = _react3.default.createElement("img", { src: this.state.src, onClick: this.state.onClick, alt: this.state.alt, onLoad: this.forceUpdate });
             if (_imgcache2.default.ready && !this.state.cached) {
                 (function () {
                     var callback = function callback(path, success) {
@@ -39227,14 +39227,13 @@ var SingleImage = _wrapComponent("SingleImage")(function (_React$Component) {
                                     cached: true,
                                     src: cached
                                 });
-                                _this2.render();
+                                _this2.forceUpdate();
                             });
                         } else {
                             console.log("Is not cached");
                             _imgcache2.default.cacheFile(path, function () {
                                 console.log("Success!");
                                 _imgcache2.default.isCached(path, callback);
-                                _this2.render();
                             }, function () {
                                 console.log("Error");
                             });
