@@ -30,7 +30,7 @@ export default class SingleImage extends React.Component {
     }
 
     render() {
-        let img = (<img src={this.state.src} onClick={this.state.onClick} alt={this.state.alt} onLoad={this.forceUpdate}/>);
+        let img = (<img src={this.state.src} onClick={this.state.onClick} alt={this.state.alt} />);
         if (ImgCache.ready && !this.state.cached) {
             let callback = (path, success) => {
                 console.log(path);
@@ -41,7 +41,6 @@ export default class SingleImage extends React.Component {
                             cached: true,
                             src: cached,
                         });
-                        this.forceUpdate();
                     })
                 } else {
                     console.log("Is not cached");

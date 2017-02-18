@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "572e92f0867fa48c079f"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "716db81b30e566c8c0c2"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -39215,7 +39215,7 @@ var SingleImage = _wrapComponent("SingleImage")(function (_React$Component) {
         value: function render() {
             var _this2 = this;
 
-            var img = _react3.default.createElement("img", { src: this.state.src, onClick: this.state.onClick, alt: this.state.alt, onLoad: this.forceUpdate });
+            var img = _react3.default.createElement("img", { src: this.state.src, onClick: this.state.onClick, alt: this.state.alt });
             if (_imgcache2.default.ready && !this.state.cached) {
                 (function () {
                     var callback = function callback(path, success) {
@@ -39227,7 +39227,6 @@ var SingleImage = _wrapComponent("SingleImage")(function (_React$Component) {
                                     cached: true,
                                     src: cached
                                 });
-                                _this2.forceUpdate();
                             });
                         } else {
                             console.log("Is not cached");
@@ -47955,7 +47954,10 @@ var PageRoot = _wrapComponent("PageRoot")(function (_React$Component) {
 
             return _react3.default.createElement(
                 _reactOnsenui.Page,
-                { key: this.props.view.page + this.props.view.index,
+                {
+                    style: { height: "100%",
+                        overflow: "scroll" },
+                    key: this.props.view.page + this.props.view.index,
                     renderToolbar: function renderToolbar() {
                         return _react3.default.createElement(_Toolbar2.default, { view: _this2.props.view, navigation: _this2.props.navigation,
                             backButton: _this2.props.view.index !== undefined });

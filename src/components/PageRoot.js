@@ -12,7 +12,10 @@ import {Page, ProgressCircular, PullHook} from "react-onsenui";
 export default class PageRoot extends React.Component {
 
     pageWrapper(a, b, c, d) {
-        return(<Page key={this.props.view.page + this.props.view.index}
+        return(<Page
+            style={{height: "100%",
+            overflow: "scroll"}}
+            key={this.props.view.page + this.props.view.index}
                      renderToolbar={() => <Toolbar view={this.props.view} navigation={this.props.navigation}
                                                    backButton={this.props.view.index !== undefined}/>}
                      renderFixed={() => (this.props.status.state != "error" && this.props.status.state != "fetching") ?
