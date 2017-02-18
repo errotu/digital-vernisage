@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "2b7a415fcc7caac50ba2"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "4c024bb5f7575c274b37"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -39215,7 +39215,7 @@ var SingleImage = _wrapComponent("SingleImage")(function (_React$Component) {
         value: function render() {
             var _this2 = this;
 
-            var img = _react3.default.createElement("img", { src: this.state.src, onClick: this.state.onClick, alt: this.state.alt });
+            var img = _react3.default.createElement("img", { src: this.state.src, onClick: this.state.onClick, alt: this.state.alt, onLoad: this.render });
             if (_imgcache2.default.ready && !this.state.cached) {
                 (function () {
                     var callback = function callback(path, success) {
