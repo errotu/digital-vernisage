@@ -51,13 +51,15 @@ ons-col {
     margin-bottom: 20px;
 }
 
+ons-page {
+    overflow: auto;
+}
+
 audio, video {
     max-width: 100%;
 }
 
 * {
-    margin: 0;
-    padding: 0;
     -webkit-user-select: none;
     -khtml-user-select:none;
     -moz-user-select:none;

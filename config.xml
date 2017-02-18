@@ -106,4 +106,5 @@
     <preference name="ShowSplashScreenSpinner" value="false" />
     <preference name="StatusBarBackgroundColor" value="#7cb342" />
     <plugin name="cordova-plugin-globalization" spec="~1.0.5" />
+    <preference name="DisallowOverscroll" value="true" />
 </widget>

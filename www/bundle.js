@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "b612d48c4dbd289332f7"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "2b7a415fcc7caac50ba2"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -39306,7 +39306,7 @@ exports = module.exports = __webpack_require__(22)();
 
 
 // module
-exports.push([module.i, ".content {\n  padding: 10px;\n}\n\n.centered {\n    text-align: center;\n}\n\nh2#headline {\n    font-weight: bold;\n    font-size: 18px;\n}\n\n#overview img {\n    width: inherit;\n    max-width: 90%;\n    margin: auto;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    display: block;\n}\n\n#swiper div.container {\n    height: 100%;\n    width: 100%;\n    text-align: center;\n}\n\n#swiper div.container img {\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    margin: auto;\n    max-width: 100%;\n    max-height: 100%;\n}\n\nons-toolbar .right .ons-icon {\n    padding-right: 16px;\n}\n\nimg {\n    max-width: 100%;\n}\n\nons-col {\n    margin-bottom: 20px;\n}\n\naudio, video {\n    max-width: 100%;\n}", ""]);
+exports.push([module.i, ".content {\n  padding: 10px;\n}\n\n.centered {\n    text-align: center;\n}\n\nh2#headline {\n    font-weight: bold;\n    font-size: 18px;\n}\n\n#overview img {\n    width: inherit;\n    max-width: 90%;\n    margin: auto;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    display: block;\n}\n\n#swiper div.container {\n    height: 100%;\n    width: 100%;\n    text-align: center;\n}\n\n#swiper div.container img {\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    margin: auto;\n    max-width: 100%;\n    max-height: 100%;\n}\n\nons-toolbar .right .ons-icon {\n    padding-right: 16px;\n}\n\nimg {\n    max-width: 100%;\n}\n\nons-col {\n    margin-bottom: 20px;\n}\n\nons-page {\n    overflow: auto;\n}\n\naudio, video {\n    max-width: 100%;\n}\n\n* {\n    -webkit-user-select: none;\n    -khtml-user-select:none;\n    -moz-user-select:none;\n    -ms-user-select:none;\n    user-select:none;\n}", ""]);
 
 // exports
 
@@ -42095,12 +42095,9 @@ var MainNavigation = _wrapComponent("MainNavigation")(function (_React$Component
                 _reactOnsenui.Splitter,
                 null,
                 _react3.default.createElement(
-                    _reactOnsenui.SplitterSide
-                    /*style={{
-                        boxShadow: '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)'
-                    }}*/
-                    ,
-                    { side: "left",
+                    _reactOnsenui.SplitterSide,
+                    {
+                        side: "left",
                         width: 200,
                         collapse: true,
                         isSwipeable: true,
