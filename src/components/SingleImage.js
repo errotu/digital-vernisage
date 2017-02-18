@@ -49,6 +49,7 @@ export default class SingleImage extends React.Component {
                         () => {
                             console.log("Success!");
                             ImgCache.isCached(path, callback);
+                            this.render();
                         },
                         () => {
                             console.log("Error");

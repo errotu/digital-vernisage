@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "bd83ade6e09bd26cf4ab"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b612d48c4dbd289332f7"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -39234,6 +39234,7 @@ var SingleImage = _wrapComponent("SingleImage")(function (_React$Component) {
                             _imgcache2.default.cacheFile(path, function () {
                                 console.log("Success!");
                                 _imgcache2.default.isCached(path, callback);
+                                _this2.render();
                             }, function () {
                                 console.log("Error");
                             });
@@ -42094,12 +42095,12 @@ var MainNavigation = _wrapComponent("MainNavigation")(function (_React$Component
                 _reactOnsenui.Splitter,
                 null,
                 _react3.default.createElement(
-                    _reactOnsenui.SplitterSide,
-                    {
-                        style: {
-                            boxShadow: '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)'
-                        },
-                        side: "left",
+                    _reactOnsenui.SplitterSide
+                    /*style={{
+                        boxShadow: '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)'
+                    }}*/
+                    ,
+                    { side: "left",
                         width: 200,
                         collapse: true,
                         isSwipeable: true,
