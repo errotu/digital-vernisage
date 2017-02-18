@@ -316,7 +316,6 @@ class MainNavigation extends React.Component {
                     collapse={true}
                     isSwipeable={true}
                     isOpen={this.state.menuIsOpen}
-                    swipeTargetWidth={"20px"}
                 >
                     <Page>
                         <List
