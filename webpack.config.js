@@ -25,7 +25,7 @@ const common = {
         loaders: [
             {
                 test: /\.css$/,
-                loaders: ['style', 'css'],
+                loaders: ['style-loader', 'css-loader'],
                 //include: PATHS.src,
             },
             {
@@ -35,7 +35,7 @@ const common = {
             {test: /\.(ttf|eot|svg|jpg|jpeg|gif|png)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader"},
             {
                 test: /\.jsx?$/,
-                loader: 'babel?cacheDirectory',
+                loader: 'babel-loader?cacheDirectory',
                 include: PATHS.src,
             },
             {test: /\.styl$/, loader: 'style-loader!css-loader!stylus-loader'}
@@ -61,7 +61,7 @@ if (ENV === 'development') {
             historyApiFallback: true,
             hot: true,
             inline: true,
-            progress: true,
+            //progress: true,
 
             // Display only errors to reduce the amount of output.
             stats: 'errors-only',
