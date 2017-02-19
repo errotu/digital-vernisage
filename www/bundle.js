@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "060d6656900adaff5cf7"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "d196f74906b9b07d418d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -39196,7 +39196,7 @@ var SingleImage = _wrapComponent("SingleImage")(function (_React$Component) {
                     if (code === 1) {
                         alert('No file handler found');
                     } else {
-                        alert('Undefined error');
+                        alert('Undefined error: ' + code);
                     }
                 }
 
@@ -39217,26 +39217,29 @@ var SingleImage = _wrapComponent("SingleImage")(function (_React$Component) {
 
             var img = _react3.default.createElement("img", { src: this.state.src, onClick: this.state.onClick, alt: this.state.alt });
             if (_imgcache2.default.ready && !this.state.cached) {
-                var callback = function callback(path, success) {
-                    console.log(path);
-                    if (success) {
-                        console.log("Is cached: " + path);
-                        _imgcache2.default.getCachedFileURL(path, function (src, cached) {
-                            _this2.setState({
-                                cached: true,
-                                src: cached
+                (function () {
+                    var callback = function callback(path, success) {
+                        console.log(path);
+                        if (success) {
+                            console.log("Is cached: " + path);
+                            _imgcache2.default.getCachedFileURL(path, function (src, cached) {
+                                _this2.setState({
+                                    cached: true,
+                                    src: cached
+                                });
                             });
-                        });
-                    } else {
-                        console.log("Is not cached");
-                        _imgcache2.default.cacheFile(path, function () {
-                            console.log("Success!");
-                        }, function () {
-                            console.log("Error");
-                        });
-                    }
-                };
-                _imgcache2.default.isCached(this.state.src, callback);
+                        } else {
+                            console.log("Is not cached");
+                            _imgcache2.default.cacheFile(path, function () {
+                                console.log("Success!");
+                                _imgcache2.default.isCached(_this2.state.src, callback);
+                            }, function () {
+                                console.log("Error");
+                            });
+                        }
+                    };
+                    _imgcache2.default.isCached(_this2.state.src, callback);
+                })();
             }
             return img;
         }
@@ -42168,7 +42171,7 @@ function start() {
     //if (!ons.platform.isIOS()) {
     //    ons.platform.select("android");
     //}
-    _imgcache2.default.options.debug = true;
+    _imgcache2.default.options.debug = false;
     _imgcache2.default.init(function () {
         console.log('ImgCache init: success!');
     }, function () {
@@ -47951,7 +47954,7 @@ var PageRoot = _wrapComponent("PageRoot")(function (_React$Component) {
                     key: this.props.view.page + this.props.view.index,
                     renderToolbar: function renderToolbar() {
                         return _react3.default.createElement(_Toolbar2.default, { view: _this2.props.view, navigation: _this2.props.navigation,
-                            backButton: _this2.props.view.index !== undefined });
+                            backButton: _this2.props.view.index !== undefined, refresh: _this2.props.view.page == "overview" ? _this2.props.refresh : null });
                     },
                     renderFixed: function renderFixed() {
                         return _this2.props.status.state != "error" && _this2.props.status.state != "fetching" ? _react3.default.createElement(_QRButton2.default, {
@@ -48460,6 +48463,12 @@ var Toolbar = _wrapComponent("Toolbar")(function (_React$Component) {
                 { onClick: this.props.navigation.openMenu },
                 _react3.default.createElement(_reactOnsenui.Icon, { icon: "ion-navicon, material:md-menu" })
             );
+            var toolbarRightBtn = this.props.refresh !== null ? _react3.default.createElement(
+                _reactOnsenui.ToolbarButton,
+                { onClick: this.props.refresh },
+                _react3.default.createElement(_reactOnsenui.Icon, { icon: "ion-ios-refresh-empty, material:ion-android-refresh" })
+            ) : null;
+            ;
             return _react3.default.createElement(
                 _reactOnsenui.Toolbar,
                 null,
@@ -48475,7 +48484,11 @@ var Toolbar = _wrapComponent("Toolbar")(function (_React$Component) {
                     !_onsenui2.default.platform.isAndroid() ? _react3.default.createElement("img", { src: logo, style: { verticalAlign: 'middle', height: '50%' } }) : null,
                     " Vernissage"
                 ),
-                _react3.default.createElement("div", { className: "right" })
+                _react3.default.createElement(
+                    "div",
+                    { className: "right" },
+                    toolbarRightBtn
+                )
             );
         }
     }, {

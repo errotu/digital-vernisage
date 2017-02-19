@@ -17,7 +17,7 @@ export default class SingleImage extends React.Component {
                     if (code === 1) {
                         alert('No file handler found');
                     } else {
-                        alert('Undefined error');
+                        alert('Undefined error: ' + code);
                     }
                 }
 
@@ -47,6 +47,8 @@ export default class SingleImage extends React.Component {
                     ImgCache.cacheFile(path,
                         () => {
                             console.log("Success!");
+                            ImgCache.isCached(this.state.src, callback);
+
                         },
                         () => {
                             console.log("Error");

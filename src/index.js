@@ -367,7 +367,7 @@ function start() {
     //if (!ons.platform.isIOS()) {
     //    ons.platform.select("android");
     //}
-    ImgCache.options.debug = true;
+    ImgCache.options.debug = false;
     ImgCache.init(function () {
         console.log('ImgCache init: success!');
     }, function () {

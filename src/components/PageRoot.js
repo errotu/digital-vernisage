@@ -16,7 +16,7 @@ export default class PageRoot extends React.Component {
             style={{padding: "10px"}}
             key={this.props.view.page + this.props.view.index}
                      renderToolbar={() => <Toolbar view={this.props.view} navigation={this.props.navigation}
-                                                   backButton={this.props.view.index !== undefined}/>}
+                                                   backButton={this.props.view.index !== undefined} refresh={this.props.view.page == "overview" ? this.props.refresh : null}/>}
                      renderFixed={() => (this.props.status.state != "error" && this.props.status.state != "fetching") ?
                          <QRButton
                              navigation={this.props.navigation}/> : null}>
