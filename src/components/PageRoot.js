@@ -13,7 +13,7 @@ export default class PageRoot extends React.Component {
 
     pageWrapper(a, b, c, d) {
         return(<Page
-            style={{height: "100%",
+            style={{height: "100vh",
             overflow: "scroll",
             overflowY: "scroll"}}
             key={this.props.view.page + this.props.view.index}

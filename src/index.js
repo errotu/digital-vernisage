@@ -25,10 +25,6 @@ export const ERR_INVALID_QR = 0;
 export const ERR_NO_CONNECTION = 1;
 export const ERR_INVALID_JSON = 2;
 
-/*
-TODO: Pull-to-refresh bei hochscrollen
-TODO: Beim ersten öffnen funktioniert das Scrollen nicht (iOS)
- */
 
 class MainNavigation extends React.Component {
 

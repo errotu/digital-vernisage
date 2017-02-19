@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "716db81b30e566c8c0c2"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "3ad82c9f53a602b28f03"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -39216,30 +39216,27 @@ var SingleImage = _wrapComponent("SingleImage")(function (_React$Component) {
             var _this2 = this;
 
             var img = _react3.default.createElement("img", { src: this.state.src, onClick: this.state.onClick, alt: this.state.alt });
-            if (_imgcache2.default.ready && !this.state.cached) {
-                (function () {
-                    var callback = function callback(path, success) {
-                        console.log(path);
-                        if (success) {
-                            console.log("Is cached: " + path);
-                            _imgcache2.default.getCachedFileURL(path, function (src, cached) {
-                                _this2.setState({
-                                    cached: true,
-                                    src: cached
-                                });
+            if (false) {
+                var callback = function callback(path, success) {
+                    console.log(path);
+                    if (success) {
+                        console.log("Is cached: " + path);
+                        _imgcache2.default.getCachedFileURL(path, function (src, cached) {
+                            _this2.setState({
+                                cached: true,
+                                src: cached
                             });
-                        } else {
-                            console.log("Is not cached");
-                            _imgcache2.default.cacheFile(path, function () {
-                                console.log("Success!");
-                                _imgcache2.default.isCached(path, callback);
-                            }, function () {
-                                console.log("Error");
-                            });
-                        }
-                    };
-                    _imgcache2.default.isCached(_this2.state.src, callback);
-                })();
+                        });
+                    } else {
+                        console.log("Is not cached");
+                        _imgcache2.default.cacheFile(path, function () {
+                            console.log("Success!");
+                        }, function () {
+                            console.log("Error");
+                        });
+                    }
+                };
+                _imgcache2.default.isCached(this.state.src, callback);
             }
             return img;
         }
@@ -39304,7 +39301,7 @@ exports = module.exports = __webpack_require__(22)();
 
 
 // module
-exports.push([module.i, ".content {\n  padding: 10px;\n}\n\n.centered {\n    text-align: center;\n}\n\nh2#headline {\n    font-weight: bold;\n    font-size: 18px;\n}\n\n#overview img {\n    width: inherit;\n    max-width: 90%;\n    margin: auto;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    display: block;\n}\n\n#swiper div.container {\n    height: 100%;\n    width: 100%;\n    text-align: center;\n}\n\n#swiper div.container img {\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    margin: auto;\n    max-width: 100%;\n    max-height: 100%;\n}\n\nons-toolbar .right .ons-icon {\n    padding-right: 16px;\n}\n\nimg {\n    max-width: 100%;\n}\n\nons-col {\n    margin-bottom: 20px;\n}\n\nons-page {\n    overflow: auto;\n}\n\naudio, video {\n    max-width: 100%;\n}\n\n* {\n    -webkit-user-select: none;\n    -khtml-user-select:none;\n    -moz-user-select:none;\n    -ms-user-select:none;\n    user-select:none;\n}", ""]);
+exports.push([module.i, ".content {\n  padding: 10px;\n}\n\n.centered {\n    text-align: center;\n}\n\nh2#headline {\n    font-weight: bold;\n    font-size: 18px;\n}\n\n#overview img {\n    width: inherit;\n    height: auto;\n    max-width: 90%;\n    margin: auto;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    display: block;\n}\n\n#swiper div.container {\n    height: 100%;\n    width: 100%;\n    text-align: center;\n}\n\n#swiper div.container img {\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    margin: auto;\n    max-width: 100%;\n    max-height: 100%;\n}\n\nons-toolbar .right .ons-icon {\n    padding-right: 16px;\n}\n\nimg {\n    max-width: 100%;\n}\n\nons-col {\n    margin-bottom: 20px;\n}\n\nons-page {\n    overflow: auto;\n}\n\naudio, video {\n    max-width: 100%;\n}\n\n* {\n    -webkit-user-select: none;\n    -khtml-user-select:none;\n    -moz-user-select:none;\n    -ms-user-select:none;\n    user-select:none;\n}", ""]);
 
 // exports
 
@@ -41790,11 +41787,6 @@ __webpack_require__(371);
 var ERR_INVALID_QR = exports.ERR_INVALID_QR = 0;
 var ERR_NO_CONNECTION = exports.ERR_NO_CONNECTION = 1;
 var ERR_INVALID_JSON = exports.ERR_INVALID_JSON = 2;
-
-/*
-TODO: Pull-to-refresh bei hochscrollen
-TODO: Beim ersten öffnen funktioniert das Scrollen nicht (iOS)
- */
 
 var MainNavigation = _wrapComponent("MainNavigation")(function (_React$Component) {
     _inherits(MainNavigation, _React$Component);
@@ -47955,8 +47947,9 @@ var PageRoot = _wrapComponent("PageRoot")(function (_React$Component) {
             return _react3.default.createElement(
                 _reactOnsenui.Page,
                 {
-                    style: { height: "100%",
-                        overflow: "scroll" },
+                    style: { height: "100vh",
+                        overflow: "scroll",
+                        overflowY: "scroll" },
                     key: this.props.view.page + this.props.view.index,
                     renderToolbar: function renderToolbar() {
                         return _react3.default.createElement(_Toolbar2.default, { view: _this2.props.view, navigation: _this2.props.navigation,

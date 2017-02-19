@@ -31,7 +31,7 @@ export default class SingleImage extends React.Component {
 
     render() {
         let img = (<img src={this.state.src} onClick={this.state.onClick} alt={this.state.alt} />);
-        if (ImgCache.ready && !this.state.cached) {
+        if (false && ImgCache.ready && !this.state.cached) {
             let callback = (path, success) => {
                 console.log(path);
                 if (success) {
@@ -47,7 +47,6 @@ export default class SingleImage extends React.Component {
                     ImgCache.cacheFile(path,
                         () => {
                             console.log("Success!");
-                            ImgCache.isCached(path, callback);
                         },
                         () => {
                             console.log("Error");

@@ -13,6 +13,7 @@ h2#headline {
 
 #overview img {
     width: inherit;
+    height: auto;
     max-width: 90%;
     margin: auto;
     top: 0;
