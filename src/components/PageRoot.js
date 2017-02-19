@@ -7,15 +7,13 @@ import About from "./About";
 import Contact from "./Contact";
 import Toolbar from "./Toolbar";
 import QRButton from "./QRButton";
-import {Page, ProgressCircular, PullHook} from "react-onsenui";
+import {Page, ProgressCircular, PullHook, Row} from "react-onsenui";
 
 export default class PageRoot extends React.Component {
 
     pageWrapper(a, b, c, d) {
         return(<Page
-            style={{height: "100vh",
-            overflow: "scroll",
-            overflowY: "scroll"}}
+            style={{padding: "10px"}}
             key={this.props.view.page + this.props.view.index}
                      renderToolbar={() => <Toolbar view={this.props.view} navigation={this.props.navigation}
                                                    backButton={this.props.view.index !== undefined}/>}
@@ -42,10 +40,10 @@ export default class PageRoot extends React.Component {
                     >
                         <ProgressCircular indeterminate />
                             Pull to refresh
-                    </PullHook>,<div className="content">
-                    <Intro title={this.props.title} intro={this.props.intro}/>
+                    </PullHook>,
+                    <Row><div className="content"><Intro title={this.props.title} intro={this.props.intro}/></div></Row>,
                     <OverviewGrid entries={this.props.entries} baseurl={this.props.baseurl}
-                                  navigation={this.props.navigation}/></div>
+                                  navigation={this.props.navigation}/>
                 );
             }
         } else if (this.props.view.page == "swiper") {

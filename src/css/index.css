@@ -1,11 +1,10 @@
-.content {
-  padding: 10px;
-}
-
 .centered {
     text-align: center;
 }
 
+div.content {
+    padding: 10px;
+}
 h2#headline {
     font-weight: bold;
     font-size: 18px;
@@ -46,14 +45,6 @@ ons-toolbar .right .ons-icon {
 
 img {
     max-width: 100%;
-}
-
-ons-col {
-    margin-bottom: 20px;
-}
-
-ons-page {
-    overflow: auto;
 }
 
 audio, video {

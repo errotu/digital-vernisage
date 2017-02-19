@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "3ad82c9f53a602b28f03"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "73732f0f4c886273b35a"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -39216,7 +39216,7 @@ var SingleImage = _wrapComponent("SingleImage")(function (_React$Component) {
             var _this2 = this;
 
             var img = _react3.default.createElement("img", { src: this.state.src, onClick: this.state.onClick, alt: this.state.alt });
-            if (false) {
+            if (_imgcache2.default.ready && !this.state.cached) {
                 var callback = function callback(path, success) {
                     console.log(path);
                     if (success) {
@@ -39301,7 +39301,7 @@ exports = module.exports = __webpack_require__(22)();
 
 
 // module
-exports.push([module.i, ".content {\n  padding: 10px;\n}\n\n.centered {\n    text-align: center;\n}\n\nh2#headline {\n    font-weight: bold;\n    font-size: 18px;\n}\n\n#overview img {\n    width: inherit;\n    height: auto;\n    max-width: 90%;\n    margin: auto;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    display: block;\n}\n\n#swiper div.container {\n    height: 100%;\n    width: 100%;\n    text-align: center;\n}\n\n#swiper div.container img {\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    margin: auto;\n    max-width: 100%;\n    max-height: 100%;\n}\n\nons-toolbar .right .ons-icon {\n    padding-right: 16px;\n}\n\nimg {\n    max-width: 100%;\n}\n\nons-col {\n    margin-bottom: 20px;\n}\n\nons-page {\n    overflow: auto;\n}\n\naudio, video {\n    max-width: 100%;\n}\n\n* {\n    -webkit-user-select: none;\n    -khtml-user-select:none;\n    -moz-user-select:none;\n    -ms-user-select:none;\n    user-select:none;\n}", ""]);
+exports.push([module.i, ".centered {\n    text-align: center;\n}\n\ndiv.content {\n    padding: 10px;\n}\nh2#headline {\n    font-weight: bold;\n    font-size: 18px;\n}\n\n#overview img {\n    width: inherit;\n    height: auto;\n    max-width: 90%;\n    margin: auto;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    display: block;\n}\n\n#swiper div.container {\n    height: 100%;\n    width: 100%;\n    text-align: center;\n}\n\n#swiper div.container img {\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    margin: auto;\n    max-width: 100%;\n    max-height: 100%;\n}\n\nons-toolbar .right .ons-icon {\n    padding-right: 16px;\n}\n\nimg {\n    max-width: 100%;\n}\n\naudio, video {\n    max-width: 100%;\n}\n\n* {\n    -webkit-user-select: none;\n    -khtml-user-select:none;\n    -moz-user-select:none;\n    -ms-user-select:none;\n    user-select:none;\n}", ""]);
 
 // exports
 
@@ -42090,7 +42090,7 @@ var MainNavigation = _wrapComponent("MainNavigation")(function (_React$Component
                         side: "left",
                         width: 200,
                         collapse: true,
-                        isSwipeable: true,
+                        isSwipeable: false,
                         isOpen: this.state.menuIsOpen
                     },
                     _react3.default.createElement(
@@ -47947,9 +47947,7 @@ var PageRoot = _wrapComponent("PageRoot")(function (_React$Component) {
             return _react3.default.createElement(
                 _reactOnsenui.Page,
                 {
-                    style: { height: "100vh",
-                        overflow: "scroll",
-                        overflowY: "scroll" },
+                    style: { padding: "10px" },
                     key: this.props.view.page + this.props.view.index,
                     renderToolbar: function renderToolbar() {
                         return _react3.default.createElement(_Toolbar2.default, { view: _this2.props.view, navigation: _this2.props.navigation,
@@ -47994,12 +47992,15 @@ var PageRoot = _wrapComponent("PageRoot")(function (_React$Component) {
                         _react3.default.createElement(_reactOnsenui.ProgressCircular, { indeterminate: true }),
                         "Pull to refresh"
                     ), _react3.default.createElement(
-                        "div",
-                        { className: "content" },
-                        _react3.default.createElement(_Intro2.default, { title: this.props.title, intro: this.props.intro }),
-                        _react3.default.createElement(_OverviewGrid2.default, { entries: this.props.entries, baseurl: this.props.baseurl,
-                            navigation: this.props.navigation })
-                    ));
+                        _reactOnsenui.Row,
+                        null,
+                        _react3.default.createElement(
+                            "div",
+                            { className: "content" },
+                            _react3.default.createElement(_Intro2.default, { title: this.props.title, intro: this.props.intro })
+                        )
+                    ), _react3.default.createElement(_OverviewGrid2.default, { entries: this.props.entries, baseurl: this.props.baseurl,
+                        navigation: this.props.navigation }));
                 }
             } else if (this.props.view.page == "swiper") {
                 return this.pageWrapper(_react3.default.createElement(

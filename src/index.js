@@ -305,9 +305,9 @@ class MainNavigation extends React.Component {
             <Splitter>
                 <SplitterSide
                     side='left'
-                    width={200}
+                                        width={200}
                     collapse={true}
-                    isSwipeable={true}
+                    isSwipeable={false}
                     isOpen={this.state.menuIsOpen}
                 >
                     <Page>
