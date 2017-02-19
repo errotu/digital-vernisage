@@ -17,7 +17,7 @@ export default class SingleImage extends React.Component {
                     if (code === 1) {
                         alert('No file handler found');
                     } else {
-                        alert('Undefined error: ' + code);
+                        //alert('Undefined error: ' + code);
                     }
                 }
 
@@ -25,7 +25,7 @@ export default class SingleImage extends React.Component {
                     console.log("Success opening image!");
                 }
 
-                cordova.plugins.disusered.open(this.state.src, success, error);};
+                cordova.plugins.disusered.open(props.src, success, error);};
         }
     }
 
@@ -47,8 +47,7 @@ export default class SingleImage extends React.Component {
                     ImgCache.cacheFile(path,
                         () => {
                             console.log("Success!");
-                            ImgCache.isCached(this.state.src, callback);
-
+                            this.forceUpdate();
                         },
                         () => {
                             console.log("Error");

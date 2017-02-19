@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "d196f74906b9b07d418d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "fc01e3de9baf56aeb8b8"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -39204,7 +39204,7 @@ var SingleImage = _wrapComponent("SingleImage")(function (_React$Component) {
                     console.log("Success opening image!");
                 }
 
-                cordova.plugins.disusered.open(_this.state.src, success, error);
+                cordova.plugins.disusered.open(props.src, success, error);
             };
         }
         return _this;
@@ -39217,29 +39217,27 @@ var SingleImage = _wrapComponent("SingleImage")(function (_React$Component) {
 
             var img = _react3.default.createElement("img", { src: this.state.src, onClick: this.state.onClick, alt: this.state.alt });
             if (_imgcache2.default.ready && !this.state.cached) {
-                (function () {
-                    var callback = function callback(path, success) {
-                        console.log(path);
-                        if (success) {
-                            console.log("Is cached: " + path);
-                            _imgcache2.default.getCachedFileURL(path, function (src, cached) {
-                                _this2.setState({
-                                    cached: true,
-                                    src: cached
-                                });
+                var callback = function callback(path, success) {
+                    console.log(path);
+                    if (success) {
+                        console.log("Is cached: " + path);
+                        _imgcache2.default.getCachedFileURL(path, function (src, cached) {
+                            _this2.setState({
+                                cached: true,
+                                src: cached
                             });
-                        } else {
-                            console.log("Is not cached");
-                            _imgcache2.default.cacheFile(path, function () {
-                                console.log("Success!");
-                                _imgcache2.default.isCached(_this2.state.src, callback);
-                            }, function () {
-                                console.log("Error");
-                            });
-                        }
-                    };
-                    _imgcache2.default.isCached(_this2.state.src, callback);
-                })();
+                        });
+                    } else {
+                        console.log("Is not cached");
+                        _imgcache2.default.cacheFile(path, function () {
+                            console.log("Success!");
+                            _this2.forceUpdate();
+                        }, function () {
+                            console.log("Error");
+                        });
+                    }
+                };
+                _imgcache2.default.isCached(this.state.src, callback);
             }
             return img;
         }
