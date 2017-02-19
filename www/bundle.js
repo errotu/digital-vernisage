@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "73732f0f4c886273b35a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "060d6656900adaff5cf7"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -42090,7 +42090,7 @@ var MainNavigation = _wrapComponent("MainNavigation")(function (_React$Component
                         side: "left",
                         width: 200,
                         collapse: true,
-                        isSwipeable: false,
+                        isSwipeable: true,
                         isOpen: this.state.menuIsOpen
                     },
                     _react3.default.createElement(
@@ -47981,17 +47981,15 @@ var PageRoot = _wrapComponent("PageRoot")(function (_React$Component) {
                         )
                     ));
                 } else if (this.props.status.state == "fetched") {
-                    return this.pageWrapper(_react3.default.createElement(
-                        _reactOnsenui.PullHook,
-                        {
-                            onLoad: this.props.refresh,
-                            onChange: function onChange() {
-                                return true;
-                            }
-                        },
-                        _react3.default.createElement(_reactOnsenui.ProgressCircular, { indeterminate: true }),
-                        "Pull to refresh"
-                    ), _react3.default.createElement(
+                    return this.pageWrapper(
+                    /*<PullHook
+                        onLoad={this.props.refresh}
+                        onChange={() => {return true}}
+                     >
+                        <ProgressCircular indeterminate />
+                            Pull to refresh
+                    </PullHook>,*/
+                    _react3.default.createElement(
                         _reactOnsenui.Row,
                         null,
                         _react3.default.createElement(

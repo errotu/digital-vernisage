@@ -34,13 +34,14 @@ export default class PageRoot extends React.Component {
                 return this.pageWrapper(<div className="content centered"> <ProgressCircular indeterminate/><p>Loading data</p></div>);
             } else if (this.props.status.state == "fetched") {
                 return this.pageWrapper(
-                    <PullHook
+                    /*<PullHook
                         onLoad={this.props.refresh}
                         onChange={() => {return true}}
+
                     >
                         <ProgressCircular indeterminate />
                             Pull to refresh
-                    </PullHook>,
+                    </PullHook>,*/
                     <Row><div className="content"><Intro title={this.props.title} intro={this.props.intro}/></div></Row>,
                     <OverviewGrid entries={this.props.entries} baseurl={this.props.baseurl}
                                   navigation={this.props.navigation}/>

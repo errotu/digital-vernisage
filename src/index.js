@@ -307,7 +307,7 @@ class MainNavigation extends React.Component {
                     side='left'
                                         width={200}
                     collapse={true}
-                    isSwipeable={false}
+                    isSwipeable={true}
                     isOpen={this.state.menuIsOpen}
                 >
                     <Page>
