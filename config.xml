@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget index="com.weedoocare.wdcVernissage" version="1.0.12" versionCode="20">
+<widget index="com.weedoocare.wdcVernissage" version="1.0.13" 
+versionCode="20">
     <name>Vernissage</name>
     <description>
         The Digital Vernissage of WeeDooCare
