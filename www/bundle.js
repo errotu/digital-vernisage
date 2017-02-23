@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "fc01e3de9baf56aeb8b8"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "85b423b98b87f12f1d7c"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -39196,7 +39196,7 @@ var SingleImage = _wrapComponent("SingleImage")(function (_React$Component) {
                     if (code === 1) {
                         alert('No file handler found');
                     } else {
-                        alert('Undefined error: ' + code);
+                        //alert('Undefined error: ' + code);
                     }
                 }
 
@@ -47303,7 +47303,7 @@ var About = _wrapComponent("About")(function (_React$Component) {
     _createClass(About, [{
         key: "render",
         value: function render() {
-            var version = "1.0.12";
+            var version = "1.0.13";
             return _react3.default.createElement(
                 _reactOnsenui.Row,
                 { className: "about-page" },
@@ -47344,6 +47344,53 @@ var About = _wrapComponent("About")(function (_React$Component) {
                         null,
                         "App-Version: ",
                         version
+                    )
+                ),
+                _react3.default.createElement(
+                    _reactOnsenui.Col,
+                    { width: "100%" },
+                    _react3.default.createElement(
+                        "h1",
+                        null,
+                        "Privacy Statement"
+                    ),
+                    _react3.default.createElement(
+                        "p",
+                        null,
+                        "While using this application no user-related, anonymized or similar data are collected or forwarded."
+                    ),
+                    _react3.default.createElement(
+                        "p",
+                        null,
+                        "The permission for the use of the camera are exclusively used to enable the internal qr-scanner of the application."
+                    ),
+                    _react3.default.createElement(
+                        "h2",
+                        null,
+                        "Provider data:"
+                    ),
+                    _react3.default.createElement(
+                        "p",
+                        null,
+                        "WeeDooCare Business Solutions GmbH"
+                    ),
+                    _react3.default.createElement(
+                        "p",
+                        null,
+                        "Im Breispiel 11B",
+                        _react3.default.createElement("br", null),
+                        "69126 Heidelberg",
+                        _react3.default.createElement("br", null),
+                        "Germany"
+                    ),
+                    _react3.default.createElement(
+                        "p",
+                        null,
+                        _react3.default.createElement(
+                            "a",
+                            { href: "mailto:apps@weedoocare.com" },
+                            "apps@weedoocare.com"
+                        )
                     )
                 )
             );
