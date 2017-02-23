@@ -20,12 +20,12 @@ export default class About extends React.Component {
                 <p>App-Version: {version}</p>
             </Col>
 	         <Col width="100%">            
-	            <h1>Privacy Statement</h1>
+	            <b>Privacy Statement</b>
 					<p>While using this application no user-related, anonymized or similar data are collected or forwarded.</p>
 					<p>Die Berechtigung zur Nutzung der Kamera ermöglicht ausschließlich
 					die Verwendung des app-eigenen QR-Scanners.</p>
 					<p>The permission for the use of the camera are exclusively used to enable the internal qr-scanner of the application.</p>
-					<h2>Provider data:</h2>
+					<b>Provider data:</b>
 					<p>WeeDooCare Business Solutions GmbH</p>
 					<p>Im Breispiel 11B<br>
 					69126 Heidelberg<br>
