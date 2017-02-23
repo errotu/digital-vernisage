@@ -25,8 +25,8 @@ export default class About extends React.Component {
 					<p>The permission for the use of the camera are exclusively used to enable the internal qr-scanner of the application.</p>
 					<h2>Provider data:</h2>
 					<p>WeeDooCare Business Solutions GmbH</p>
-					<p>Im Breispiel 11B<br>
-					69126 Heidelberg<br>
+					<p>Im Breispiel 11B<br />
+					69126 Heidelberg<br />
 					Germany</p>
 					<p><a href="mailto:apps@weedoocare.com">apps@weedoocare.com</a></p>
 	         </Col>				
