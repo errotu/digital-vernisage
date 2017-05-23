@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget index="com.weedoocare.wdcVernissage" version="1.0.13" 
-versionCode="21">
+<widget index="com.weedoocare.wdcVernissage" version="1.0.14" 
+versionCode="22">
     <name>Vernissage</name>
     <description>
-        The Digital Vernissage of WeeDooCare
+        WeeDooCare’s Digital Vernissage App
     </description>
     <author email="apps@weedoocare.com" href="http://weedoocare.com">
         WeeDooCare Business Solutions GmbH
