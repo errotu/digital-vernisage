@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget index="com.weedoocare.wdcVernissage" version="1.0.15" versionCode="23">
+<widget index="com.weedoocare.wdcVernissage" version="1.0.16" versionCode="24">
     <name>Vernissage</name>
     <description>
         WeeDooCare’s Digital Vernissage App
@@ -105,6 +105,7 @@
     <plugin name="cordova-plugin-whitelist" spec="~1.2.2" />
     <plugin name="phonegap-plugin-barcodescanner" spec="~6.0.3" />
     <plugin name="cordova-plugin-media-capture" source="npm" spec="*">
-  <variable name="CAMERA_USAGE_DESCRIPTION" value="App needs access to camera to scan QR-Codes. " />
+  <variable name="CAMERA_USAGE_DESCRIPTION" value="App needs access to camera to scan QR-Codes." />
+  <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="App needs access to photo library to save and open images." />
 </plugin>
 </widget>
