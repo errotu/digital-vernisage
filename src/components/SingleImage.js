@@ -1,5 +1,6 @@
 import React from "react";
 import ImgCache from "imgcache.js";
+import * as PhotoViewer from "../../plugins/com-sarriaroman-photoviewer/www/PhotoViewer";
 
 export default class SingleImage extends React.Component {
 
@@ -12,7 +13,8 @@ export default class SingleImage extends React.Component {
             cached: false
         };
         if (props.clickable) {
-            this.state.onClick = () => {console.log("click!");
+            this.state.onClick = () => {
+                console.log("Open Image!");
                 function error(code) {
                     if (code === 1) {
                         alert('No file handler found');
@@ -25,7 +27,7 @@ export default class SingleImage extends React.Component {
                     console.log("Success opening image!");
                 }
 
-                cordova.plugins.disusered.open(props.src, success, error);};
+                PhotoViewer.show(props.src, props.alt);};
         }
     }
 
