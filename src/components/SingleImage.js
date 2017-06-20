@@ -14,20 +14,21 @@ export default class SingleImage extends React.Component {
         };
         if (props.clickable) {
             this.state.onClick = () => {
-                console.log("Open Image!");
+                console.log("click!");
                 function error(code) {
                     if (code === 1) {
                         alert('No file handler found');
                     } else {
-                        //alert('Undefined error: ' + code);
+                        alert('Undefined error: ' + code);
                     }
                 }
 
                 function success() {
                     console.log("Success opening image!");
                 }
-
-                PhotoViewer.show(props.src, props.alt);};
+                PhotoViewer.show(props.src, props.alt);
+                //cordova.plugins.disusered.open(props.src, success, error);
+                };
         }
     }
 
