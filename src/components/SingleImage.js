@@ -1,6 +1,7 @@
 import React from "react";
 import ImgCache from "imgcache.js";
 import * as PhotoViewer from "../../plugins/com-sarriaroman-photoviewer/www/PhotoViewer";
+import ons from "onsenui";
 
 export default class SingleImage extends React.Component {
 
@@ -26,9 +27,12 @@ export default class SingleImage extends React.Component {
                 function success() {
                     console.log("Success opening image!");
                 }
-                PhotoViewer.show(props.src, props.alt);
-                //cordova.plugins.disusered.open(props.src, success, error);
-                };
+                if(ons.platform.isAndroid()) {
+                    PhotoViewer.show(props.src, props.alt);
+                } else {
+                    cordova.plugins.disusered.open(props.src, success, error);
+                }
+            };
         }
     }
 

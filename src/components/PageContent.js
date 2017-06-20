@@ -10,13 +10,13 @@ import {ProgressCircular, PullHook} from "react-onsenui";
 export default class StartPageContent extends React.Component {
 
     render() {
-        if (this.props.view.page == "overview") {
-            if (this.props.status.state == "fetching") {
+        if (this.props.view.page === "overview") {
+            if (this.props.status.state === "fetching") {
                 return (<div className="content centered">
                     <ProgressCircular indeterminate/>
                     <p>Loading data</p>
                 </div>);
-            } else if (this.props.status.state == "fetched") {
+            } else if (this.props.status.state === "fetched") {
                 return (<Page>
                     <PullHook
                         onLoad={this.props.refresh}
