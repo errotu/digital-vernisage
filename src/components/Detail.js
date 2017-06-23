@@ -19,10 +19,10 @@ export default class StartPageContent extends React.Component {
                     <Col width="100%">
                         <Intro title={entry.title} intro={entry.text}/>
                     </Col>
-                    {entry.mp3 !== undefined ?
+                    {entry.mp3 !== undefined && entry.mp3 !== null ?
                         <Col width="100%"><b>Audio</b><br /><AudioPlayer
                             src={this.props.baseurl + "/" + entry.mp3}/></Col> : ""}
-                    {entry.video !== undefined ?
+                    {entry.video !== undefined && entry.video !== null ?
                         <Col width="100%">
                         <b>Video</b><br />
                             <Video sources={entry.video}

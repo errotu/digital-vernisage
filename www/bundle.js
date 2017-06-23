@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f83f777aa2e1bad6af22"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "441dc4b3349d5a938f5b"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -39587,7 +39587,7 @@ exports = module.exports = __webpack_require__(23)();
 
 
 // module
-exports.push([module.i, ".centered {\n    text-align: center;\n}\n\ndiv.content {\n    padding: 10px;\n}\nh2#headline {\n    font-weight: bold;\n    font-size: 18px;\n}\n\n#overview img {\n    width: inherit;\n    height: auto;\n    max-width: 90%;\n    margin: auto;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    display: block;\n}\n\n#swiper div.container {\n    height: 100%;\n    width: 100%;\n    text-align: center;\n}\n\n#swiper div.container img {\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    margin: auto;\n    max-width: 100%;\n    max-height: 100%;\n}\n\nons-toolbar .right .ons-icon {\n    padding-right: 16px;\n}\n\nimg {\n    max-width: 100%;\n}\n\naudio, video {\n    max-width: 100%;\n}\n\n* {\n    -webkit-user-select: none;\n    -khtml-user-select:none;\n    -moz-user-select:none;\n    -ms-user-select:none;\n    user-select:none;\n}", ""]);
+exports.push([module.i, ".centered {\n    text-align: center;\n}\n\ndiv.content {\n    padding: 10px;\n}\nh2#headline {\n    font-weight: bold;\n    font-size: 18px;\n}\n\n#overview img {\n    width: inherit;\n    height: auto;\n    max-width: 90%;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    display: block;\n    margin: auto auto 1rem;\n}\n\n#swiper div.container {\n    height: 100%;\n    width: 100%;\n    text-align: center;\n}\n\n#swiper div.container img {\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    margin: auto;\n    max-width: 100%;\n    max-height: 100%;\n}\n\nons-toolbar .right .ons-icon {\n    padding-right: 16px;\n}\n\nimg {\n    max-width: 100%;\n}\n\naudio, video {\n    max-width: 100%;\n}\n\n* {\n    -webkit-user-select: none;\n    -khtml-user-select:none;\n    -moz-user-select:none;\n    -ms-user-select:none;\n    user-select:none;\n}", ""]);
 
 // exports
 
@@ -48508,7 +48508,7 @@ var StartPageContent = _wrapComponent("StartPageContent")(function (_React$Compo
                         { width: "100%" },
                         _react3.default.createElement(_Intro2.default, { title: entry.title, intro: entry.text })
                     ),
-                    entry.mp3 !== undefined ? _react3.default.createElement(
+                    entry.mp3 !== undefined && entry.mp3 !== null ? _react3.default.createElement(
                         _reactOnsenui.Col,
                         { width: "100%" },
                         _react3.default.createElement(
@@ -48520,7 +48520,7 @@ var StartPageContent = _wrapComponent("StartPageContent")(function (_React$Compo
                         _react3.default.createElement(_AudioPlayer2.default, {
                             src: this.props.baseurl + "/" + entry.mp3 })
                     ) : "",
-                    entry.video !== undefined ? _react3.default.createElement(
+                    entry.video !== undefined && entry.video !== null ? _react3.default.createElement(
                         _reactOnsenui.Col,
                         { width: "100%" },
                         _react3.default.createElement(
