@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "382d4315987a5b48ea42"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "f83f777aa2e1bad6af22"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -42113,7 +42113,7 @@ var MainNavigation = _wrapComponent("MainNavigation")(function (_React$Component
                 status: { state: 'fetching', msg: undefined },
                 menuIsOpen: false
             });
-            fetch('https://media.weedoocare.com/DigitalVernissage/blog.json').then(function (response) {
+            fetch('https://media.weedoocare.com/DigitalVernissage/blog.json?nocache=' + Math.random()).then(function (response) {
                 _imgcache2.default.clearCache();
                 return response.json();
             }).then(function (vernissage) {

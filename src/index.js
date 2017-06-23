@@ -136,7 +136,7 @@ class MainNavigation extends React.Component {
             status: {state: 'fetching', msg: undefined},
             menuIsOpen: false
         });
-        fetch('https://media.weedoocare.com/DigitalVernissage/blog.json')
+        fetch('https://media.weedoocare.com/DigitalVernissage/blog.json?nocache=' + Math.random())
             .then((response) => {
                 ImgCache.clearCache();
                 return response.json();
