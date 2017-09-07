@@ -9,7 +9,7 @@ export default class StartPageContent extends React.Component {
 
     render() {
         let infoText = {
-            'de': 'Tippen sie auf das Bild, um es in der Vollbildansicht zu öffnen',
+            'de': 'Tippe auf das Bild, um es in der Vollbildansicht zu öffnen',
             'en': 'Tap the image to open fullscreen'
         };
         let entry = this.props.entry;

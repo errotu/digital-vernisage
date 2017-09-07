@@ -34,7 +34,7 @@ export default class Swiper extends React.Component {
 
     render() {
         let infoText = {
-            'de': 'Tippen sie auf ein Bild, um weitere Informationen zu erhalten',
+            'de': 'Tippe auf ein Bild, um weitere Informationen zu erhalten',
             'en': 'Tap an image to get more information'
         };
         let infoModal = (<Modal
