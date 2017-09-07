@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "0e166126a969b35c4b52"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "bf139e4325973030a272"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -48493,7 +48493,7 @@ var StartPageContent = _wrapComponent("StartPageContent")(function (_React$Compo
         key: "render",
         value: function render() {
             var infoText = {
-                'de': 'Tippen sie auf das Bild, um es in der Vollbildansicht zu öffnen',
+                'de': 'Tippe auf das Bild, um es in der Vollbildansicht zu öffnen',
                 'en': 'Tap the image to open fullscreen'
             };
             var entry = this.props.entry;
@@ -49124,7 +49124,7 @@ var Swiper = _wrapComponent('Swiper')(function (_React$Component) {
             var _this2 = this;
 
             var infoText = {
-                'de': 'Tippen sie auf ein Bild, um weitere Informationen zu erhalten',
+                'de': 'Tippe auf ein Bild, um weitere Informationen zu erhalten',
                 'en': 'Tap an image to get more information'
             };
             var infoModal = _react3.default.createElement(
