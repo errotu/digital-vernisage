@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "bf139e4325973030a272"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "0fba85ea376f88f60ff8"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -48097,7 +48097,7 @@ var About = _wrapComponent("About")(function (_React$Component) {
     _createClass(About, [{
         key: "render",
         value: function render() {
-            var version = "1.0.19";
+            var version = "1.0.21";
             return _react3.default.createElement(
                 _reactOnsenui.Row,
                 { className: "about-page" },
