@@ -93,7 +93,6 @@
     <preference name="ShowSplashScreenSpinner" value="false" />
     <preference name="StatusBarBackgroundColor" value="#7cb342" />
     <preference name="DisallowOverscroll" value="true" />
-    <engine name="android" spec="^6.2.3" />
     <plugin name="com-sarriaroman-photoviewer" spec="^1.1.10" />
     <plugin name="cordova-open" spec="^1.0.12" />
     <plugin name="cordova-plugin-device" spec="^1.1.6" />
@@ -103,11 +102,14 @@
     <plugin name="cordova-plugin-inappbrowser" spec="^1.5.0" />
     <plugin name="cordova-plugin-ios-camera-permissions" spec="^1.0.5" />
     <plugin name="cordova-plugin-media-capture" spec="^1.4.3">
-        <variable name="CAMERA_USAGE_DESCRIPTION" value="App needs access to camera to scan QR-Codes." />
         <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="App needs access to photo library to save and open images." />
     </plugin>
     <plugin name="cordova-plugin-splashscreen" spec="^4.0.3" />
     <plugin name="cordova-plugin-statusbar" spec="^2.2.3" />
     <plugin name="cordova-plugin-whitelist" spec="^1.2.2" />
-    <plugin name="phonegap-plugin-barcodescanner" spec="^6.0.6" />
+    <plugin name="phonegap-plugin-barcodescanner" spec="^6.0.6">
+        <variable name="CAMERA_USAGE_DESCRIPTION" value="App needs access to camera to scan QR-Codes." />
+    </plugin>
+    <engine name="android" spec="^6.2.3" />
+    <engine name="ios" spec="~4.4.0" />
 </widget>

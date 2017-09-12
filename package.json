@@ -23,6 +23,7 @@
         "classnames": "^2.2.5",
         "com-sarriaroman-photoviewer": "^1.1.10",
         "cordova-android": "^6.2.3",
+        "cordova-ios": "^4.5.0",
         "cordova-open": "^1.0.12",
         "cordova-plugin-compat": "^1.1.0",
         "cordova-plugin-device": "^1.1.6",
@@ -81,7 +82,8 @@
     ],
     "cordova": {
         "platforms": [
-            "android"
+            "android",
+            "ios"
         ],
         "plugins": {
             "cordova-open": {},
@@ -94,7 +96,10 @@
             "cordova-plugin-splashscreen": {},
             "cordova-plugin-statusbar": {},
             "cordova-plugin-whitelist": {},
-            "phonegap-plugin-barcodescanner": {},
+            "phonegap-plugin-barcodescanner": {
+                "CAMERA_USAGE_DESCRIPTION": "App needs access to camera to scan QR-Codes.",
+                "PHOTOLIBRARY_USAGE_DESCRIPTION": "App needs access to photo library to save and open images."
+            },
             "cordova-plugin-media-capture": {
                 "CAMERA_USAGE_DESCRIPTION": "App needs access to camera to scan QR-Codes.",
                 "PHOTOLIBRARY_USAGE_DESCRIPTION": "App needs access to photo library to save and open images."
