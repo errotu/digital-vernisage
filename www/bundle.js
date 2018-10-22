@@ -44440,7 +44440,7 @@ var About = function (_React$Component) {
     _createClass(About, [{
         key: "render",
         value: function render() {
-            var version = "1.0.21";
+            var version = "1.0.23";
             return _react2.default.createElement(
                 _reactOnsenui.Row,
                 { className: "about-page" },
