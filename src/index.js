@@ -234,7 +234,7 @@ class MainNavigation extends React.Component {
                 };
                 break;
             case "blog":
-                window.open("http://weedoocare.tumblr.com/", "_system");
+                window.open("https://gemmadurany.com/", "_system");
                 return;
             case "contact":
                 pageProps = {
