@@ -18,7 +18,7 @@ import ons from "onsenui";
 import ImgCache from "imgcache.js/js/imgcache";
 
 require('onsenui/css/onsenui.css');
-require('onsenui/css/onsen-css-components-sunshine-theme.css');
+require('onsenui/css/onsen-css-components.css');
 require('./css/theme.styl');
 
 export const ERR_INVALID_QR = 0;

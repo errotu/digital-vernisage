@@ -22,7 +22,7 @@
         "babel-preset-react": "^6.23.0",
         "classnames": "^2.2.6",
         "com-sarriaroman-photoviewer": "^1.1.18",
-        "cordova-android": "^6.4.0",
+        "cordova-android": "^7.1.1",
         "cordova-ios": "^4.5.5",
         "cordova-open": "^1.0.12",
         "cordova-plugin-compat": "^1.2.0",
@@ -37,6 +37,7 @@
         "cordova-plugin-statusbar": "^2.4.2",
         "cordova-plugin-whitelist": "^1.3.3",
         "imgcache.js": "^1.1.1",
+        "onsenui": "^2.1.0",
         "phonegap-plugin-barcodescanner": "^6.0.8",
         "react": "^15.6.2",
         "react-addons-css-transition-group": "^15.6.2",
@@ -53,7 +54,6 @@
         "css-loader": "^0.26.1",
         "elementtree": "^0.1.7",
         "file-loader": "^0.10.0",
-        "onsenui": "^2.10.5",
         "react-onsenui": "^1.11.1",
         "replace": "^1.0.0",
         "script-loader": "^0.7.2",
@@ -80,8 +80,8 @@
     ],
     "cordova": {
         "platforms": [
-            "android",
-            "ios"
+            "ios",
+            "android"
         ],
         "plugins": {
             "cordova-open": {},
@@ -95,8 +95,8 @@
             "cordova-plugin-statusbar": {},
             "cordova-plugin-whitelist": {},
             "phonegap-plugin-barcodescanner": {
-                "CAMERA_USAGE_DESCRIPTION": "App needs access to camera to scan QR-Codes.",
-                "PHOTOLIBRARY_USAGE_DESCRIPTION": "App needs access to photo library to save and open images."
+                "ANDROID_SUPPORT_V4_VERSION": "27.1.1",
+                "CAMERA_USAGE_DESCRIPTION": "App needs access to camera to scan QR-Codes."
             },
             "cordova-plugin-media-capture": {
                 "CAMERA_USAGE_DESCRIPTION": "App needs access to camera to scan QR-Codes.",
