@@ -35,7 +35,7 @@
     "create-react-class": "^15.6.3",
     "imgcache.js": "^1.1.1",
     "npm-check-updates": "^2.14.2",
-    "onsenui": "^2.10.5",
+    "onsenui": "^2.0.4",
     "phonegap-plugin-barcodescanner": "^8.0.0",
     "react": "^16.6.0",
     "react-addons-css-transition-group": "^15.6.2",
