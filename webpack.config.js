@@ -22,7 +22,7 @@ const common = {
         filename: 'bundle.js',
     },
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.css$/,
                 loaders: ['style-loader', 'css-loader'],
@@ -37,7 +37,10 @@ const common = {
                 test: /\.jsx?$/,
                 loader: 'babel-loader?cacheDirectory',
                 include: PATHS.src,
-            },
+		"query": {
+  			"presets": ["@babel/preset-env", "@babel/preset-react"],
+		}	
+	    },
             {test: /\.styl$/, loader: 'style-loader!css-loader!stylus-loader'}
         ],
     },
