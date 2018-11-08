@@ -94,6 +94,7 @@
     <preference name="ShowSplashScreenSpinner" value="false" />
     <preference name="StatusBarBackgroundColor" value="#7cb342" />
     <preference name="DisallowOverscroll" value="true" />
+    <preference name="phonegap-version" value="cli-7.1.0" />
     <plugin name="cordova-open" spec="1.0.12" />
     <plugin name="cordova-plugin-device" spec="2.0.2" />
     <plugin name="cordova-plugin-file" spec="6.0.1" />
@@ -114,5 +115,5 @@
     </plugin>
     <plugin name="com-sarriaroman-photoviewer" spec="^1.1.18" />
     <engine name="ios" spec="^4.5.5" />
-    <engine name="android" spec="^7.1.1" />
+    <engine name="android" spec="7.1.2" />
 </widget>
