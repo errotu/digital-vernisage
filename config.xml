@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.weedoocare.wdcVernissage" android-packageName="com.errotu.wdcVernisage" version="1.0.26" versionCode="32">
+<widget android-packageName="com.errotu.wdcVernisage" id="com.weedoocare.wdcVernissage" version="1.0.27" versionCode="33">
     <name>Vernissage</name>
     <description>
         WeeDooCare’s Digital Vernissage App
@@ -96,8 +96,8 @@
     <preference name="StatusBarBackgroundColor" value="#7cb342" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="phonegap-version" value="cli-7.1.0" />
-    <plugin name="cordova-open" spec="1.0.12" />
-    <plugin name="cordova-plugin-device" spec="2.0.2" />
+    <engine name="android" spec="7.1.2" />
+    <engine name="ios" spec="^4.5.5" />
     <plugin name="cordova-plugin-file" spec="6.0.1" />
     <plugin name="cordova-plugin-file-transfer" spec="1.7.1" />
     <plugin name="cordova-plugin-globalization" spec="^1.11.0" />
@@ -109,16 +109,16 @@
     <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
     <plugin name="cordova-plugin-statusbar" spec="^2.4.2" />
     <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
-    <plugin name="phonegap-plugin-barcodescanner" spec="^8.0.0">
-        <variable name="ANDROID_SUPPORT_V4_VERSION" value="27.1.1" />
-        <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="App needs access to photo library to save and open images." />
-        <variable name="CAMERA_USAGE_DESCRIPTION" value="App needs access to camera to scan QR-Codes." />
-    </plugin>
+    <plugin name="com-sarriaroman-photoviewer" spec="^1.2.0" />
+    <plugin name="cordova-open" spec="1.0.12" />
+    <plugin name="cordova-plugin-device" spec="2.0.2" />
     <plugin name="cordova-plugin-media-capture" spec="3.0.2">
         <variable name="CAMERA_USAGE_DESCRIPTION" value="App needs access to camera to scan QR-Codes." />
         <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="App needs access to photo library to save and open images." />
     </plugin>
-    <plugin name="com-sarriaroman-photoviewer" spec="^1.1.18" />
-    <engine name="android" spec="7.1.2" />
-    <engine name="ios" spec="~4.5.5" />
+    <plugin name="phonegap-plugin-barcodescanner" spec="^8.0.1">
+        <variable name="ANDROID_SUPPORT_V4_VERSION" value="27.1.1" />
+        <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="App needs access to photo library to save and open images." />
+        <variable name="CAMERA_USAGE_DESCRIPTION" value="App needs access to camera to scan QR-Codes." />
+    </plugin>
 </widget>

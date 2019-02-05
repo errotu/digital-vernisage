@@ -17,7 +17,7 @@
   "main": "src/index.js",
   "dependencies": {
     "classnames": "^2.2.6",
-    "com-sarriaroman-photoviewer": "^1.1.18",
+    "com-sarriaroman-photoviewer": "^1.2.0",
     "cordova-android": "7.1.2",
     "cordova-ios": "^4.5.5",
     "cordova-open": "1.0.12",
@@ -34,37 +34,37 @@
     "cordova-plugin-whitelist": "^1.3.3",
     "create-react-class": "^15.6.3",
     "imgcache.js": "^1.1.1",
-    "npm-check-updates": "^2.14.2",
+    "npm-check-updates": "^2.15.0",
     "onsenui": "^2.0.4",
-    "phonegap-plugin-barcodescanner": "^8.0.0",
-    "react": "^16.6.0",
+    "phonegap-plugin-barcodescanner": "^8.0.1",
+    "react": "^16.7.0",
     "react-addons-css-transition-group": "^15.6.2",
-    "react-dom": "^16.6.0",
+    "react-dom": "^16.7.0",
     "react-native-zoomable": "latest",
     "react-tappable": "^1.0.4",
-    "webpack-dev-server": "^3.1.10",
+    "webpack-dev-server": "^3.1.14",
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.1.2",
-    "@babel/preset-env": "^7.1.0",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.0.4",
+    "babel-loader": "^8.0.5",
     "copy-webpack-plugin": "^4.6.0",
     "css-loader": "^1.0.1",
     "elementtree": "^0.1.7",
     "file-loader": "^2.0.0",
-    "react-onsenui": "^1.11.1",
-    "replace": "^1.0.0",
+    "react-onsenui": "^1.11.2",
+    "replace": "^1.0.1",
     "script-loader": "^0.7.2",
     "style-loader": "^0.23.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "url-loader": "^1.1.2",
-    "webpack": "^4.25.0",
+    "webpack": "^4.29.1",
     "webpack-auto-inject-version": "^1.2.2",
-    "webpack-cli": "^3.1.2",
-    "webpack-merge": "^4.1.4"
+    "webpack-cli": "^3.2.3",
+    "webpack-merge": "^4.2.1"
   },
   "scripts": {
     "android": "\"$(npm bin)/webpack\" && cordova run android",
@@ -97,17 +97,17 @@
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-statusbar": {},
       "cordova-plugin-whitelist": {},
-      "phonegap-plugin-barcodescanner": {
-        "ANDROID_SUPPORT_V4_VERSION": "27.1.1",
-        "CAMERA_USAGE_DESCRIPTION": "App needs access to camera to scan QR-Codes.",
-        "PHOTOLIBRARY_USAGE_DESCRIPTION": "App needs access to photo library to save and open images."
-      },
       "com-sarriaroman-photoviewer": {},
       "cordova-open": {},
       "cordova-plugin-device": {},
       "cordova-plugin-media-capture": {
         "CAMERA_USAGE_DESCRIPTION": "App needs access to camera to scan QR-Codes.",
         "PHOTOLIBRARY_USAGE_DESCRIPTION": "App needs access to photo library to save and open images."
+      },
+      "phonegap-plugin-barcodescanner": {
+            "ANDROID_SUPPORT_V4_VERSION": "27.1.1",
+            "CAMERA_USAGE_DESCRIPTION": "App needs access to camera to scan QR-Codes.",
+            "PHOTOLIBRARY_USAGE_DESCRIPTION": "App needs access to photo library to save and open images."
       }
     }
   }

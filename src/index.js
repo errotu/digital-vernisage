@@ -44,6 +44,7 @@ class MainNavigation extends React.Component {
                 openMenu: this.open.bind(this),
                 displayError: this.displayError.bind(this),
             },
+            currentPage: "overview",
             language: {
                 fallback: 'de',
                 possible: ['de', 'en'],
@@ -245,10 +246,10 @@ class MainNavigation extends React.Component {
                 };
                 break;
         }
-
-        this.navigator.replacePage({component: PageRoot, props: pageProps}, {animation: "none"});
-        this.setState({menuIsOpen: false});
-
+        if(pageProps.view.page !== this.state.currentPage) {
+            this.navigator.replacePage({component: PageRoot, props: pageProps}, {animation: "none"});
+        }
+        this.setState({menuIsOpen: false, currentPage: pageProps.view.page});
 
     }
 
@@ -307,7 +308,7 @@ class MainNavigation extends React.Component {
                     side='left'
                                         width={200}
                     collapse={true}
-                    isSwipeable={true}
+                    swipeable={true}
                     isOpen={this.state.menuIsOpen}
                 >
                     <Page>
