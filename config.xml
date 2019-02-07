@@ -122,7 +122,7 @@
     <plugin name="cordova-plugin-splashscreen" spec="5.0.2" />
     <plugin name="cordova-plugin-inappbrowser" spec="3.0.0" />
     <plugin name="cordova-plugin-globalization" spec="1.11.0" />
-    <plugin name="com-sarriaroman-photoviewer" spec="^1.1.16" />
+    <plugin name="com-sarriaroman-photoviewer" spec="~1.1.18" />
     <engine name="ios" spec="^4.5.5" />
     <engine name="android" spec="^7.1.4" />
 </widget>
