@@ -368,6 +368,10 @@ function start() {
     //if (!ons.platform.isIOS()) {
     //    ons.platform.select("android");
     //}
+    if (typeof(cordova) !== "undefined") {
+        window.open = cordova.InAppBrowser.open;
+        ImgCache.options.cordovaFilesystemRoot = cordova.file.dataDirectory;
+    }
     ImgCache.options.debug = false;
     ImgCache.init(function () {
         console.log('ImgCache init: success!');
@@ -378,9 +382,6 @@ function start() {
     ons.ready(function () {
         ReactDOM.render(<MainNavigation />, document.getElementById('app'));
     });
-    if (typeof(cordova) !== "undefined") {
-        window.open = cordova.InAppBrowser.open;
-    }
 
 }
 

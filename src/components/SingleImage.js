@@ -1,6 +1,7 @@
 import React from "react";
 import ImgCache from "imgcache.js";
-import * as PhotoViewer from "../../plugins/com-sarriaroman-photoviewer/www/PhotoViewer";
+//import PhotoViewer from "com-sarriaroman-photoviewer";
+//import * as PhotoViewer from "../../plugins/com-sarriaroman-photoviewer/www/PhotoViewer";
 import ons from "onsenui";
 
 export default class SingleImage extends React.Component {
@@ -15,7 +16,6 @@ export default class SingleImage extends React.Component {
         };
         if (props.clickable) {
             this.state.onClick = () => {
-                console.log("click!");
                 function error(code) {
                     if (code === 1) {
                         alert('No file handler found');
@@ -28,9 +28,12 @@ export default class SingleImage extends React.Component {
                     console.log("Success opening image!");
                 }
                 if(ons.platform.isAndroid()) {
+                    console.log("Open in PhotoViewer");
+                    console.log(JSON.stringify(window.cordova));
                     PhotoViewer.show(props.src, props.alt);
                 } else {
-                    cordova.plugins.disusered.open(props.src, success, error);
+                    console.log("Open " + this.state.src);
+                    cordova.plugins.disusered.open(this.state.src, success, error);
                 }
             };
         }
@@ -40,9 +43,7 @@ export default class SingleImage extends React.Component {
         let img = (<img src={this.state.src} onClick={this.state.onClick} alt={this.state.alt} />);
         if (ImgCache.ready && !this.state.cached) {
             let callback = (path, success) => {
-                console.log(path);
                 if (success) {
-                    console.log("Is cached: " + path);
                     ImgCache.getCachedFileURL(path, (src, cached) => {
                         this.setState({
                             cached: true,
@@ -50,14 +51,13 @@ export default class SingleImage extends React.Component {
                         });
                     })
                 } else {
-                    console.log("Is not cached");
                     ImgCache.cacheFile(path,
                         () => {
-                            console.log("Success!");
+                            console.log("Success on caching file: " + this.state.src);
                             this.forceUpdate();
                         },
                         () => {
-                            console.log("Error");
+                            console.log("Could not cache file: " + this.state.src);
                         });
                 }
             };

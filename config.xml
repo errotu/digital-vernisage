@@ -64,6 +64,7 @@
     </platform>
     <access origin="https://media.weedoocare.com" />
     <access origin="*" />
+    <access origin="cdvfile://*" />
     <platform name="android">
         <allow-intent href="market:*" />
         <allow-intent href="cdvfile://*" />
@@ -76,6 +77,7 @@
     </platform>
     <allow-intent href="http://*" />
     <allow-intent href="https://*" />
+    <allow-intent href="cdvfile://*" />
     <allow-intent href="mailto://*" />
     <feature name="Device">
         <param name="ios-package" value="CDVDevice" />
@@ -122,4 +124,5 @@
     <plugin name="cordova-plugin-splashscreen" spec="5.0.2" />
     <plugin name="cordova-plugin-inappbrowser" spec="3.0.0" />
     <plugin name="cordova-plugin-globalization" spec="1.11.0" />
+    <plugin name="com-sarriaroman-photoviewer" spec="^1.2.0" />
 </widget>

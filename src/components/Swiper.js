@@ -56,7 +56,7 @@ export default class Swiper extends React.Component {
             {this.props.entries.map((entry, index) => {
                 return(<CarouselItem key={"swiper-" + entry.id}>
                     <div className={"container"}>
-                        <SingleImage alt={entry.title} src={this.props.baseurl + "/" + entry.source} key={"overview-" + entry.id} onClick={this.handleClick.bind(this, index)} />
+                        <SingleImage alt={entry.title} src={this.props.baseurl + entry.source} key={"overview-" + entry.id} onClick={this.handleClick.bind(this, index)} />
                     </div>
                 </CarouselItem>);
             })}
