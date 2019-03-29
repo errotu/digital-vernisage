@@ -27,15 +27,15 @@ export default class SingleImage extends React.Component {
                 function success() {
                     console.log("Success opening image!");
                 }
-                if(ons.platform.isAndroid()) {
+//                if(ons.platform.isAndroid()) {
                     console.log("Open in PhotoViewer");
                     console.log(JSON.stringify(window.cordova));
                     PhotoViewer.show(props.src, props.alt);
-                } else {
+/*                } else {
                     console.log("Open " + this.state.src);
                     cordova.plugins.disusered.open(this.state.src, success, error);
                 }
-            };
+*/            };
         }
     }
 
