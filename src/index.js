@@ -216,7 +216,6 @@ class MainNavigation extends React.Component {
     }
 
     open() {
-        console.log("open menu");
         this.setState({
             menuIsOpen: true
         });
@@ -359,6 +358,7 @@ class MainNavigation extends React.Component {
                         inputId={`${language}`}
                         checked={language === this.state.language.inUse}
                         onChange={this.state.language.onChange}
+			name="language"
                         type='radio'
                     />
                 </label>
