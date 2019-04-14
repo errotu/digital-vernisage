@@ -73,6 +73,7 @@ class MainNavigation extends React.Component {
         
         if (ons.platform.isIPhoneX()) { // Utility function
           // Add empty attribute to the <html> element
+          document.documentElement.setAttribute('onsflag-iphonex-landscape', '');
           document.documentElement.setAttribute('onsflag-iphonex-portrait', '');
         }
 
