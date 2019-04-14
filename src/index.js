@@ -70,6 +70,12 @@ class MainNavigation extends React.Component {
             console.log("Use fallback");
             console.log("Language is: " + this.state.language.inUse);
         }
+        
+        if (ons.platform.isIPhoneX()) { // Utility function
+          // Add empty attribute to the <html> element
+          document.documentElement.setAttribute('onsflag-iphonex-portrait', '');
+        }
+
     }
 
     onLanguageChange(changeEvent) {
