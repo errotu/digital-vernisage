@@ -1,4 +1,6 @@
 import "./css/index.css";
+import "./css/theme.css";
+import "./css/onsen-css-components.min.css";
 import React from "react";
 import ReactDOM from "react-dom";
 import PageRoot from "./components/PageRoot";
@@ -11,15 +13,13 @@ import {
     SplitterSide,
     List,
     ListItem,
-    Input,
-    ListHeader
+    ListHeader,
+    Radio
 } from "react-onsenui";
 import ons from "onsenui";
 import ImgCache from "imgcache.js/js/imgcache";
 
-require('onsenui/css/onsenui.css');
-require('onsenui/css/onsen-css-components.css');
-require('./css/theme.styl');
+require('onsenui/css/onsenui-core.css');
 
 export const ERR_INVALID_QR = 0;
 export const ERR_NO_CONNECTION = 1;
@@ -354,12 +354,12 @@ class MainNavigation extends React.Component {
         return (
             <ListItem key={language} tappable>
                 <label className='left'>
-                    <Input
+                    <Radio
+                       
                         inputId={`${language}`}
                         checked={language === this.state.language.inUse}
                         onChange={this.state.language.onChange}
-			name="language"
-                        type='radio'
+			            name="language"
                     />
                 </label>
                 <label htmlFor={`${language}`} className='center'>
