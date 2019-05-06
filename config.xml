@@ -112,10 +112,10 @@
         <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="App needs access to photo library to save and open images." />
     </plugin>
     <plugin name="cordova-plugin-ios-camera-permissions" spec="1.2.0">
-        <variable name="CAMERA_USAGE_DESCRIPTION" value="This app needs camera access" />
+        <variable name="CAMERA_USAGE_DESCRIPTION" value="App needs access to camera to scan QR-Codes." />
         <variable name="MICROPHONE_USAGE_DESCRIPTION" value="This app needs microphone access" />
-        <variable name="PHOTOLIBRARY_ADD_USAGE_DESCRIPTION" value="This app needs write-access to photo library" />
-        <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="This app needs read/write-access photo library access" />
+        <variable name="PHOTOLIBRARY_ADD_USAGE_DESCRIPTION" value="App needs access to photo library to save and open images" />
+        <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="App needs access to photo library to save and open images" />
     </plugin>
     <plugin name="com-sarriaroman-photoviewer" spec="1.2.1" />
     <plugin name="cordova-plugin-whitelist" spec="1.3.3" />
