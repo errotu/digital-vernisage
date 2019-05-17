@@ -21,6 +21,9 @@ import ImgCache from "imgcache.js/js/imgcache";
 
 require('onsenui/css/onsenui-core.css');
 
+var attachFastClick = require('./fastclick.min.js');
+attachFastClick(document.body);
+
 export const ERR_INVALID_QR = 0;
 export const ERR_NO_CONNECTION = 1;
 export const ERR_INVALID_JSON = 2;
