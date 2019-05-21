@@ -26,6 +26,12 @@ export const ERR_NO_CONNECTION = 1;
 export const ERR_INVALID_JSON = 2;
 
 
+if (ons.platform.isIPhoneX()) { // Utility function
+  // Add empty attribute to the <html> element
+  document.documentElement.setAttribute('onsflag-iphonex-landscape', '');
+  document.documentElement.setAttribute('onsflag-iphonex-portrait', '');
+}
+
 class MainNavigation extends React.Component {
 
     constructor() {
@@ -71,11 +77,6 @@ class MainNavigation extends React.Component {
             console.log("Language is: " + this.state.language.inUse);
         }
         
-        if (ons.platform.isIPhoneX()) { // Utility function
-          // Add empty attribute to the <html> element
-          document.documentElement.setAttribute('onsflag-iphonex-landscape', '');
-          document.documentElement.setAttribute('onsflag-iphonex-portrait', '');
-        }
 
     }
 
