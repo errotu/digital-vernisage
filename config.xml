@@ -9,7 +9,7 @@
     </author>
     <content src="index.html" />
     <preference name="DisallowOverscroll" value="true" />
-    <preference name="android-minSdkVersion" value="16" />
+    <preference name="android-minSdkVersion" value="19" />
     <preference name="android-targetSdkVersion" value="26" />
     <preference name="android-build-tool" value="gradle" />
     <preference name="android-build-tool" value="gradle" />
@@ -128,5 +128,4 @@
     <plugin name="cordova-plugin-globalization" spec="1.11.0" />
     <plugin name="com-sarriaroman-photoviewer" spec="1.2.2" />
     <plugin name="cordova-open" spec="1.1.0" />
-    <engine name="android" spec="^8.0.0" />
 </widget>

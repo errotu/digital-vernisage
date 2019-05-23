@@ -28,7 +28,7 @@ export default class SingleImage extends React.Component {
                     console.log("Success opening image!");
                 }
 //                if(ons.platform.isAndroid()) {
-                    console.log("Open in PhotoViewer");
+                    console.log("Open in PhotoViewer: " + this.state.src);
                     PhotoViewer.show(this.state.src, props.alt);
 /*                } else {
                     console.log("Open " + this.state.src);
