@@ -379,6 +379,7 @@ function start() {
     if (typeof(cordova) !== "undefined") {
         window.open = cordova.InAppBrowser.open;
         ImgCache.options.cordovaFilesystemRoot = cordova.file.tmpDirectory;
+        ImgCache.options.localCacheFolder = cordova.file.tmpDirectory;
     }
     ImgCache.options.debug = false;
     ImgCache.init(function () {

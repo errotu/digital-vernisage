@@ -1,7 +1,5 @@
 import React from "react";
 import ImgCache from "imgcache.js";
-//import PhotoViewer from "com-sarriaroman-photoviewer";
-//import * as PhotoViewer from "../../plugins/com-sarriaroman-photoviewer/www/PhotoViewer";
 import ons from "onsenui";
 
 export default class SingleImage extends React.Component {
@@ -27,15 +25,11 @@ export default class SingleImage extends React.Component {
                 function success() {
                     console.log("Success opening image!");
                 }
-//                if(ons.platform.isAndroid()) {
-                    console.log("Open in PhotoViewer: " + this.state.src);
-                    PhotoViewer.show(this.state.src, props.alt);
-/*                } else {
-                    console.log("Open " + this.state.src);
-                    cordova.plugins.disusered.open(this.state.src, success, error);
-                }
-*/            };
-        }
+                    
+		console.log("Open in PhotoViewer: " + this.state.src);
+                PhotoViewer.show(this.state.src, props.alt);
+        	}
+	}
     }
 
     render() {
@@ -45,7 +39,6 @@ export default class SingleImage extends React.Component {
                 if (success) {
                     ImgCache.getCachedFileURL(path, (src, cached) => {
 			resolveLocalFileSystemURL(cached, (entry) => {
-                        	
 				this.setState({
                             		cached: true,
                             		src: entry.toURL(),
@@ -67,6 +60,6 @@ export default class SingleImage extends React.Component {
         } else {
 		console.log("File is cached: " + this.state.src);
 	}
-        return (img);
+        return img;
     }
 }
