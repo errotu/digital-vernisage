@@ -91,12 +91,10 @@
         <param name="ios-package" value="CDVFileTransfer" />
         <param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer" />
     </feature>
-
     <feature name="CDVWKWebViewEngine">
         <param name="ios-package" value="CDVWKWebViewEngine" />
     </feature>
     <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
-
     <preference name="AutoHideSplashScreen" value="true" />
     <preference name="FadeSplashScreen" value="false" />
     <preference name="SplashScreenDelay" value="2000" />
@@ -104,8 +102,7 @@
     <preference name="StatusBarBackgroundColor" value="#7cb342" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="phonegap-version" value="cli-8.1.1" />
-    
-    <plugin name="cordova-plugin-wkwebview-engine"/>
+    <plugin name="cordova-plugin-wkwebview-engine" />
     <plugin name="cordova-plugin-file" spec="6.0.1" />
     <plugin name="cordova-plugin-file-transfer" spec="1.7.1" />
     <plugin name="cordova-plugin-device" spec="2.0.2" />
@@ -131,8 +128,5 @@
     <plugin name="cordova-plugin-globalization" spec="1.11.0" />
     <plugin name="com-sarriaroman-photoviewer" spec="1.2.2" />
     <plugin name="cordova-open" spec="1.1.0" />
-
-
-    <engine name="ios" spec="^5.0.1" />
     <engine name="android" spec="^8.0.0" />
 </widget>

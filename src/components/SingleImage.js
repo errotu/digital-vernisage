@@ -29,8 +29,7 @@ export default class SingleImage extends React.Component {
                 }
 //                if(ons.platform.isAndroid()) {
                     console.log("Open in PhotoViewer");
-                    console.log(JSON.stringify(window.cordova));
-                    PhotoViewer.show(props.src, props.alt);
+                    PhotoViewer.show(this.state.src, props.alt);
 /*                } else {
                     console.log("Open " + this.state.src);
                     cordova.plugins.disusered.open(this.state.src, success, error);
@@ -45,10 +44,13 @@ export default class SingleImage extends React.Component {
             let callback = (path, success) => {
                 if (success) {
                     ImgCache.getCachedFileURL(path, (src, cached) => {
-                        this.setState({
-                            cached: true,
-                            src: cached,
-                        });
+			resolveLocalFileSystemURL(cached, (entry) => {
+                        	
+				this.setState({
+                            		cached: true,
+                            		src: entry.toURL(),
+                        	});
+			});
                     })
                 } else {
                     ImgCache.cacheFile(path,
@@ -62,7 +64,9 @@ export default class SingleImage extends React.Component {
                 }
             };
             ImgCache.isCached(this.state.src, callback);
-        }
+        } else {
+		console.log("File is cached: " + this.state.src);
+	}
         return (img);
     }
 }
