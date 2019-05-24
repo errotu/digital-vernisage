@@ -26,8 +26,8 @@ export default class SingleImage extends React.Component {
                     console.log("Success opening image!");
                 }
                     
-		console.log("Open in PhotoViewer: " + this.state.src);
-                PhotoViewer.show(this.state.src, props.alt);
+		        console.log("Open in PhotoViewer: " + props.src);
+                PhotoViewer.show(props.src, props.alt);
         	}
 	}
     }
@@ -39,11 +39,11 @@ export default class SingleImage extends React.Component {
             let callback = (path, success) => {
                 if (success) {
                     ImgCache.getCachedFileURL(path, (src, cached) => {
-			resolveLocalFileSystemURL(cached, (entry) => {
-				this.setState({
+			        resolveLocalFileSystemURL(cached, (entry) => {
+				    this.setState({
                             		cached: true,
                             		src: entry.toURL(),
-                        	});
+                    });
 			});
                     })
                 } else {
